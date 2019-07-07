@@ -21,7 +21,7 @@ function getCurrentUser() {
                           console.log("Document data:", doc.data());
                           document.getElementById("profile_name").innerHTML = doc.data().name;
                           var result = timeStampConverter(doc.data().dob.seconds);
-                          console.log("DOB ", doc.data().dob.seconds);
+                          console.log("DOB ", typeof doc.data().dob.seconds);
                           console.log("DOB converted ", result );
                       } else {
                           // doc.data() will be undefined in this case
@@ -38,17 +38,23 @@ function getCurrentUser() {
 }
 
 function timeStampConverter(unix_timestamp) {
+    console.log(unix_timestamp);
     // Create a new JavaScript Date object based on the timestamp
     // multiplied by 1000 so that the argument is in milliseconds, not seconds.
     var date = new Date(unix_timestamp*1000);
     // Hours part from the timestamp
-    var hours = date.getHours();
-    // Minutes part from the timestamp
-    var minutes = "0" + date.getMinutes();
-    // Seconds part from the timestamp
-    var seconds = "0" + date.getSeconds();
+    var day = date.getDate();
 
+    var month = date.getMonth();
+
+    var year = date.getFullYear();
+    // Minutes part from the timestamp
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    
     // Will display time in 10:30:23 format
-    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    var formattedTime = day + " " + monthNames[month] + " " + year;
     return formattedTime;
 }

@@ -28,7 +28,7 @@ function login(){
     
         if (errorCode === 'auth/wrong-password') {
             console.log('Wrong password');
-            windew.alert('Wrong password.');
+            window.alert('Wrong password.');
             
         } else {
             window.alert(errorMessage);
