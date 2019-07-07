@@ -1,3 +1,19 @@
+function onLoad() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        firebase.auth().signOut().then(function() {
+          console.log('A user successfully logged out');
+        }).catch(function(error) {
+          window.alert('Something happened!');
+        });
+    } else {
+        console.log("no user signed in");
+    }
+    
+  });
+}
+
+
 function login(){
 
     var userEmail = document.getElementById("inputEmail").value;
@@ -22,20 +38,13 @@ function login(){
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // User is signed in.  
-        var user = firebase.auth().currentUser;
-    
-        if(user != null){
-          // Debug
-          // var email_id = user.email;
-          // document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
+          var user = firebase.auth().currentUser;
           console.log("user successfully signed in")
           window.location.assign('dashboard.html')
-    
-        } else {
-          console.log("no user signed in");
-        }
+      } else {
+        console.log("no user signed in");
       }
+      
     });
   }
 
