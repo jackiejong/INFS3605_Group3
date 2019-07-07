@@ -1,5 +1,13 @@
+
 function signup() {
 
+    var db = firebase.firestore();
+    
+    var userFirstName = document.getElementById("inputFirstName").value;
+    var userLastName = document.getElementById("inputLastName").value;
+    var fullName = userFirstName + " " + userLastName;
+    var userDOB = document.getElementById("inputDOB").value;
+    userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
 
@@ -16,25 +24,31 @@ function signup() {
         console.log(error);
         // [END_EXCLUDE]
     });
-
-
     // [END createwithemail]    
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.  
           var user = firebase.auth().currentUser;
-      
-          if(user != null){
-            console.log('User successfully signed up')
-            // Debug
-            // var email_id = user.email;
-            // document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-            window.location.assign('dashboard.html')
-      
-          } else {
-            console.log("no user signed in");
-          }
+          var userUID = user.uid.toString();
+          console.log('User successfully signed up');
+
+          db.collection("applicant").doc(userUID).set({
+            name: fullName,
+            dob: userDOB
+          })
+          .then(function() {
+            console.log("Document successfully written!");
+            window.location.assign('dashboard.html');
+          })
+          .catch(function(error) {
+            console.error("Error writing document: ", error);
+          });
+
+
+        } else {
+          console.log("no user signed in");
         }
       });
+      
 }

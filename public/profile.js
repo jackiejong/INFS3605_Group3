@@ -20,8 +20,8 @@ function getCurrentUser() {
                       if (doc.exists) {
                           console.log("Document data:", doc.data());
                           document.getElementById("profile_name").innerHTML = doc.data().name;
-                          var result = timeStampConverter(doc.data().dob.seconds);
-                          console.log("DOB ", typeof doc.data().dob.seconds);
+                          var result = timeStampConverter(doc.data().dob);
+                          console.log("DOB ", typeof doc.data().dob);
                           console.log("DOB converted ", result );
                       } else {
                           // doc.data() will be undefined in this case

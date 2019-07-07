@@ -1,19 +1,3 @@
-function onLoad() {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        firebase.auth().signOut().then(function() {
-          console.log('A user successfully logged out');
-        }).catch(function(error) {
-          window.alert('Something happened!');
-        });
-    } else {
-        console.log("no user signed in");
-    }
-    
-  });
-}
-
-
 function login(){
 
     var userEmail = document.getElementById("inputEmail").value;
