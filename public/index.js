@@ -18,7 +18,7 @@ function login(){
             window.alert(errorMessage);
         }
         console.log(error);
-    });        
+    });
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -28,7 +28,6 @@ function login(){
       } else {
         console.log("no user signed in");
       }
-      
     });
   }
 

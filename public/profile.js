@@ -1,6 +1,8 @@
 var db = firebase.firestore();
 function getCurrentUser() {
         
+        var profileName = document.getElementById("profile_name");
+        var profileDOB = document.getElementById("profile_dob");
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.  
@@ -19,10 +21,11 @@ function getCurrentUser() {
                   docRef.get().then(function(doc) {
                       if (doc.exists) {
                           console.log("Document data:", doc.data());
-                          document.getElementById("profile_name").innerHTML = doc.data().name;
-                          var result = timeStampConverter(doc.data().dob);
+                          var result = timeStampConverter(doc.data().dob);     
                           console.log("DOB ", typeof doc.data().dob);
                           console.log("DOB converted ", result );
+                          profileName.innerHTML = doc.data().name;
+                          profileDOB.innerHTML = result.toString;
                       } else {
                           // doc.data() will be undefined in this case
                           console.log("No such document!");
@@ -57,4 +60,14 @@ function timeStampConverter(unix_timestamp) {
     // Will display time in 10:30:23 format
     var formattedTime = day + " " + monthNames[month] + " " + year;
     return formattedTime;
+}
+
+
+function logout() {
+    firebase.auth().signOut().then(function() {
+        console.log('A user successfully logged out');
+        window.location.assign("index.html");
+      }).catch(function(error) {
+        window.alert('Something happened!');
+      });  
 }

@@ -1,4 +1,3 @@
-
 /*
 var db = firebase.firestore();
 db.collection("applicant").get().then(function(querySnapshot) {
@@ -16,6 +15,9 @@ function logout() {
       }).catch(function(error) {
         window.alert('Something happened!');
       });
+
+    
+      
 }
 
 function getCurrentUser() {   
@@ -23,13 +25,11 @@ function getCurrentUser() {
       if (user) {
         // User is signed in.  
         var user = firebase.auth().currentUser;
-    
         console.log(user.uid);
         var userUID = user.uid.toString();
         console.log("User UID in string ",userUID);
       } else {
         console.log("no user signed in");
       }
-      
     });
 }
