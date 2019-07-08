@@ -25,7 +25,7 @@ function getCurrentUser() {
                           console.log("DOB ", typeof doc.data().dob);
                           console.log("DOB converted ", result );
                           profileName.innerHTML = doc.data().name;
-                          profileDOB.innerHTML = result.toString;
+                          profileDOB.innerHTML = result;
                       } else {
                           // doc.data() will be undefined in this case
                           console.log("No such document!");
