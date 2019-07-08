@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body onload="getCurrentUser()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">Dashboard</a>
+      <!--
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto" >
+            <li class="nav-item active">
+                <a class="nav-link" href="profile.html">My Profile<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" onclick="logout()">Log Out<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">INFS1602</h5>
+            <p class="card-text">Digital Transformation in Business</p>
+            <a href="apply.html?course=INFS1602" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">INFS1603</h5>
+            <p class="card-text">Introduction to Business Databases</p>
+            <a href="apply.html?course=INFS1603" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">INFS2603</h5>
+            <p class="card-text">Business Analysis</p>
+            <a href="apply.html?course=INFS2603" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+      
+      <!-- TODO: Add SDKs for Firebase products that you want to use 
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+     <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+     <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+     <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+          authDomain: "infs3605group3.firebaseapp.com",
+          databaseURL: "https://infs3605group3.firebaseio.com",
+          projectId: "infs3605group3",
+          storageBucket: "infs3605group3.appspot.com",
+          messagingSenderId: "757094635140",
+          appId: "1:757094635140:web:23089838804a1db6"
+        };
+      // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+     </script>
+
+     <script src="dashboard.js"></script>
+
+     
+  </body>
+</html>
