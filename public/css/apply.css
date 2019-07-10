@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.createJobListingForm {
+    margin-top: 40px;
+        font-weight: bold;
+}
