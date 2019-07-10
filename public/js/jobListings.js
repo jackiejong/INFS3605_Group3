@@ -4,7 +4,7 @@ function onLoad() {
 
 
     var arrHead = new Array();
-    arrHead = ['Course Code', 'Role', 'Description', 'Skill Requirement','Experience Requirement','WAM Requirement'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+    arrHead = ['Course Code', 'Role', 'Responsibilities', 'Skill Requirement','Experience Requirement','WAM Requirement'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
 
     // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
     // ADD THE TABLE TO YOUR WEB PAGE.
@@ -36,7 +36,7 @@ function onLoad() {
                     tr.appendChild(td);
 
                     td = document.createElement('td');
-                    td.innerHTML = doc.data().description;
+                    td.innerHTML = doc.data().responsibilities;
                     tr.appendChild(td);
 
                     td = document.createElement('td');
