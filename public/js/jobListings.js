@@ -4,7 +4,7 @@ function onLoad() {
 
 
     var arrHead = new Array();
-    arrHead = ['Course Code', 'Role', 'Responsibilities', 'Skill Requirement','Experience Requirement','WAM Requirement'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+    arrHead = ['Course Code', 'Role', 'Responsibilities', 'Skill Requirement','Experience Requirement','WAM Requirement',''];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
 
     // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
     // ADD THE TABLE TO YOUR WEB PAGE.
@@ -50,6 +50,20 @@ function onLoad() {
                     td = document.createElement('td');
                     td.innerHTML = doc.data().marksRequirement;
                     tr.appendChild(td);
+
+                    
+                    td = document.createElement('td');
+                    var button = document.createElement('button');
+                    console.log(typeof doc.id);
+                    var theLink = 'onClick("' + 'jobListingDetail.html?' + doc.id + '")';
+                    console.log(typeof theLink);
+                    button.setAttribute("onclick",theLink);
+                    button.setAttribute("class","btn btn-dark");
+                    button.innerHTML = "View Details";
+                    td.appendChild(button);
+                    tr.appendChild(td);
+                    
+
             });
         });
 
@@ -57,7 +71,14 @@ function onLoad() {
 
         div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
     
-
+    }
+     
+     
+     
+        function onClick(something) {
+            //window.alert(something);
+            window.location.href=something;
+        }
 
 
 
@@ -68,4 +89,15 @@ function onLoad() {
      });
 
      */
+
+
+
+
+function logout() {
+    firebase.auth().signOut().then(function() {
+        console.log('A user successfully logged out');
+        window.location.assign("index.html");
+      }).catch(function(error) {
+        window.alert('Something happened!');
+      });
 }

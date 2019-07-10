@@ -88,7 +88,6 @@ function onLoad() {
   var db = firebase.firestore();
   var queryString = decodeURIComponent(window.location.search);
   var jobListingOverview = document.getElementById("jobListingOverview");
-  
   queryString = queryString.substring(1);
   queryString = queryString.split("=");
   console.log(queryString[1]);

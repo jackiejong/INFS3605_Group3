@@ -15,9 +15,6 @@ function logout() {
       }).catch(function(error) {
         window.alert('Something happened!');
       });
-
-    
-      
 }
 
 function getCurrentUser() {   
