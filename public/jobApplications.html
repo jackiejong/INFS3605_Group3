@@ -7,34 +7,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   </head>
-  <body onload="getCurrentUser()">
+  <body onload="onLoad()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand">TOM</a>
-      <!--
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto" >
             <li class="nav-item active">
                 <a class="nav-link" href="profile.html">My Profile<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="jobListings.html">All Job Listings<span class="sr-only">(current)</span></a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="jobApplications.html">All Job Applications<span class="sr-only">(current)</span></a>
-        </li>
-
-          
-
+                <a class="nav-link" href="jobListings.html">All Job Listings<span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="apply.html">Create Job Listing<span class="sr-only">(current)</span></a>
-          </li>
-
-
+                <a class="nav-link" href="apply.html">Create Job Listing<span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" onclick="logout()">Log Out<span class="sr-only">(current)</span></a>
             </li>
@@ -43,70 +29,7 @@
     </nav>
 
 
-
-
-
-    <!--
-    <div class="row">
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS1602</h5>
-            <p class="card-text">Digital Transformation in Business</p>
-            <a href="apply.html?course=INFS1602" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS1603</h5>
-            <p class="card-text">Introduction to Business Databases</p>
-            <a href="apply.html?course=INFS1603" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS2603</h5>
-            <p class="card-text">Business Analysis</p>
-            <a href="apply.html?course=INFS2603" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div id='insertTableHere'></div>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
@@ -132,7 +55,7 @@
         firebase.initializeApp(firebaseConfig);
      </script>
 
-     <script src="../js/dashboard.js"></script>
+     <script src="../js/jobApplications.js"></script>
 
      
   </body>
