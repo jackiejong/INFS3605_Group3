@@ -1,0 +1,25 @@
+[debug] [2019-07-13T06:09:32.573Z] ----------------------------------------------------------------------
+[debug] [2019-07-13T06:09:32.576Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Charmaine Batulan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-07-13T06:09:32.577Z] CLI Version:   7.0.2
+[debug] [2019-07-13T06:09:32.577Z] Platform:      win32
+[debug] [2019-07-13T06:09:32.577Z] Node Version:  v10.16.0
+[debug] [2019-07-13T06:09:32.578Z] Time:          Sat Jul 13 2019 16:09:32 GMT+1000 (Australian Eastern Standard Time)
+[debug] [2019-07-13T06:09:32.578Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-13T06:09:32.594Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-13T06:09:32.595Z] > authorizing via signed-in user
+[debug] [2019-07-13T06:09:32.595Z] [iam] checking project infs3605group3 for permissions ["firebase.projects.get"]
+[debug] [2019-07-13T06:09:32.598Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/infs3605group3:testIamPermissions  
+
+[debug] [2019-07-13T06:09:34.670Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-13T06:09:34.677Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/infs3605group3  
+ 
+[debug] [2019-07-13T06:09:36.194Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Charmaine Batulan\Documents\GitHub\INFS3605_Group3'...
+[info] 
+[debug] [2019-07-13T06:09:36.236Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/757094635140/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-13T06:09:37.115Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
