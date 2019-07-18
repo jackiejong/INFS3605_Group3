@@ -1,49 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Job Listing Detail</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="../css/jobListingDetails.css" rel="stylesheet">
-  </head>
-  <body onload="onLoad()">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">TOM</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto" >
-            <li class="nav-item active">
-                <a class="nav-link" href="profile.html">My Profile<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="jobListings.html">All Job Listings<span class="sr-only">(current)</span></a>
-          </li>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Pricing - All Job Listings Page</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
 
-            <li class="nav-item active">
-              <a class="nav-link" href="apply.html">Create Job Listing<span class="sr-only">(current)</span></a>
-          </li>
-
-
-            <li class="nav-item active">
-                <a class="nav-link" onclick="logout()">Log Out<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
+<body onload="onLoad()">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#"><strong>TOM</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Calendar</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Interviews</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="Job Listing View Page.html">Job listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="pricing.html">Applicants</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="apply.html">New</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact-us.html">Lecturer</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-pricing dark" style="height:fit-content; overflow:scroll;">
+            <div class="container">
+                <div class="block-heading" style="height: 87px;">
+                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;"><strong>Listing Details</strong></h2>
+                    <p class="text-left" style="width: 1100px;height: 50px;margin: 0px 60px;">View, edit, or delete all details of your listing here</p>
+                </div>
+                <div class="row">
+                    <div class="col" style="height: 260px;">
+                        <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height: 902px;">
+                            <div class="heading" style="height: 42px;">
+                                <h3 class="text-left" style="height: 3px;">&lt;&lt;COURSE CODE&gt;&gt; &lt;&lt;COURSE NAME&gt;&gt;</h3>
+                            </div>
+                            <div class="features"></div>
+                            <div class="price"></div>
+                            <div class="col">
+                            <!--Course name-->                            
+                            <div class="col">
+                                <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
+                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text"></div>
+                            <!--Course code-->
+                            <div class="col">
+                                <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
+                                <input id="inputCourseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
+                            <!--Course Description-->
+                            <div class="col">
+                                <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
+                                <input id="inputCourseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
+                            <!--Role-->    
+                            <div class="col">
+                                <p class="d-inline-block">Role &nbsp;&nbsp;</p>
+                                <input id="inputRole" class="border rounded d-block" type="text" ></div>
+                                   
+                            <!--Responsibilities-->
+                            <div class="col" style="height: 177px;">
+                                <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
+                                <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                            
+                                <!--Marks Requirement-->
+                            <div class="col">
+                                <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
+                                <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
+                            
+                            <!--Skills Requirement-->
+                            <div class="col" style="height: 177px;">
+                                    <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
+                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
 
-    <h1 id=title></h1>
-    <label class="title-label">Course Name</label>
-    <p id=courseName></p>
-    <label class="title-label">Course Description</label>
-    <p id=courseDescription></p>
-    <label class="title-label">Experience Requirement</label>
-    <p id=experienceRequirement></p>
-    <label class="title-label">Skills Requirement</label>
-    <p id=skillsRequirement></p>
-    <label class="title-label">WAM Requirement</label>
-    <p id=marksRequirement></p>
-    <label class="title-label">Expiry Date</label>
-    <p id=expiryDate></p>
+                            <!-- Experience Requirement-->
+                            <div class="col" style="height: 177px;">
+                                    <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
+                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
+
+                            <!--Expiry Date-->
+                            <div class="col">
+                            <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
+                            <input type="date" id="inputExpiryDate" class="form-control" style="width:auto">
+                            </div>
+
+                            <button id = saveBtn class="btn btn-primary" type="button" style="padding-right: 12px;margin-left: 15px;margin-top: -101px;">Save</button>
+                            <button id = deleteBtn class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;margin-top: -96px;">Delete Listing</button>
+                                <section></section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
@@ -70,7 +126,6 @@
      </script>
 
      <script src="../js/jobListingDetail.js"></script>
+</body>
 
-     
-  </body>
 </html>
