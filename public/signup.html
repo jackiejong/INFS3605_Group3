@@ -1,28 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="../css/signup.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#">TOM</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <!-- NEED TO FINALISE NAVIGATION BAR-->
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">CALENDAR</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">interviews</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">job listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">applicants</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">new</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">lecturer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END OF NAVIGATION BAR CODE-->
 
 
-  </head>
-  <body>
-      <div class="form-signin">
-            <h1 class="h1 mb-3 font-weight-normal" style="margin-bottom: 25px;" id ="user_para">Sign Up</h1>
-            <input type="text" id=inputFirstName placeholder="First Name" class="form-control" required>
-            <input type="text" id=inputLastName placeholder="Last Name" class="form-control" required> 
-            <input type="date" id="inputDOB" placeholder="Date of Birth" class="form-control" required>
-            <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" required>
-            <input type="password" id="inputPassword" placeholder="Password" class="form-control" required>
-            <button class="btn btn-dark" onclick="signup()">Sign Up</button><br>
-            <a href="index.html">Sign In</a>
-      </div>
+    <main class="page registration-page">
+        <section class="clean-block clean-form dark">
+            <div class="container" style="width:auto">
+                <div class="block-heading">
+                    <h2 class="text-info">Registration</h2>
+                    <p id="user_para">Sign up to have access to TOM.</p>
+                </div>
+                <div style="max-width: 500px;">
+                    <div class="form-group"><label for="name">First Name</label>
+                        <input required id="inputFirstName" class="form-control item" type="text" id="name">
+                    </div>
+                    <div class="form-group"><label for="name">Last Name</label>
+                        <input required id="inputLastName" class="form-control item" type="text" id="name">
+                    </div>
+                    <div class="form-group"><label for="name">Date of Birth</label>
+                        <input type="date" id="inputDOB" class="form-control" required>
+                    </div>
+                    <div class="form-group"><label for="name">Email</label>
+                        <input type="date" id="inputEmail" class="form-control" required>
+                    </div>
 
-
-
+                    <div class="form-group"><label for="name">Password</label>
+                        <input id="inputPassword" class="form-control item" type="text" id="name"></div>
+                    
+                    <button class="btn btn-primary btn-block" type="submit" onclick="signup()">Sign Up</button>
+                    <a href="index.html">Sign In</a>
+                    </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+   
+   
+   
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
@@ -49,5 +103,7 @@
    firebase.initializeApp(firebaseConfig);
   </script>
         <script src="../js/signup.js"></script>
-  </body>
+
+</body>
+
 </html>
