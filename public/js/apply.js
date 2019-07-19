@@ -65,6 +65,17 @@ function onSubmit() {
 }
 
 
+function addClassTimes() {
+    var noOfClass = document.getElementById("inputNoOfClass").value;
+    var heading = document.createElement("h1");
+    heading.innerHTML = noOfClass;
+
+    var div = document.getElementById("insertClassTimesHere");
+    div.appendChild(heading);
+
+}
+
+
 
 
 
