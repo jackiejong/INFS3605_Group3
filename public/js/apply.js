@@ -26,6 +26,7 @@ function onSubmit() {
     var skillsRequirement = document.getElementById("inputSkillsRequirement").value;
     var experienceRequirement = document.getElementById("inputExperienceRequirement").value;
     var expiryDate = document.getElementById("inputExpiryDate").value;
+    var noOfClass = document.getElementById("inputNoOfClass").value;
 
     // Debugging: Whether Inputting works
     console.log("DEBUG: Create Job Listing");
@@ -38,6 +39,7 @@ function onSubmit() {
     console.log(skillsRequirement);
     console.log(experienceRequirement);
     console.log(expiryDate);
+    console.log(noOfClass);
 
     // Add a new document with a generated id.
     db.collection("jobListing").add({
@@ -49,7 +51,8 @@ function onSubmit() {
       marksRequirement:marksRequirement,
       responsibilities:responsibilities,
       role:role,
-      skillsRequirement:skillsRequirement
+      skillsRequirement:skillsRequirement,
+      noOfClass: noOfClass
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
