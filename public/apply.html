@@ -14,22 +14,35 @@
 <body>
 
     <!-- Links here need to be fixed up later-->
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" id="navbarNav">
-        <div class="container"><a class="navbar-brand logo" href="#"><strong>TOM</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Calendar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Interviews</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="404.html">Job listing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Applicants</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">New</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Lecturer</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" onclick="logout()">Log Out</a></li>
-    
-                </ul>
-            </div>
-        </div>
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                        <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                            <!--My details dropdown-->
+                            <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="myListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myInterviews</a>
+                            </div>
+            </li>
+            </li>
+            </ul>
+        </div><img src="assets/img/ICON.png"></div>
     </nav>
 
     <main class="createJobListingForm">
