@@ -5,34 +5,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard - All Created Listings</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
 <body onload="onLoad()">
-    <!--Start of NavBar code: WILL NEED TO BE UPDATED-->
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="index.html"><strong>TOM</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Calendar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#.html">Interviews</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="dashboard.html">Job listing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Applicants</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="apply.html">New</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.html">Lecturer</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> <!-- End of NavBar code-->
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                            <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                                <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                                    <!--My details dropdown-->
+                                    <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                        <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                        <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myInterviews</a>
+                                    </div>
+                    </li>
+                    </li>
+                    </ul>
+                </div><img src="assets/img/ICON.png"></div>
+            </nav>
 
     <section style="height:fit-content; overflow:scroll">
         <div id='insertTableHere' style="height:fit-content; overflow:scroll"></div>
     </section>
-    <!--
+    
 <main class="page pricing-table-page">
         <section class="clean-block clean-pricing dark">
             <div class="container">
@@ -49,7 +63,9 @@
                             <p class="text-right d-block float-right" style="font-size: 13px;"><em>(Nice to have details on the side for quick view)</em><br><strong>Due Date:</strong> DD/MM/YY<br><strong>Applications: </strong>4/20</p>
                             <p class="text-left" style="height: 65px;width: 731px;">Short Description of Listing</p>
                             <div class="row text-right">
-                                <div class="col" style="width: 1050px;"><button class="btn btn-primary" type="button">View/Edit</button></div>
+                                <div class="col" style="width: 1050px;">
+                                    <a class="btn btn-primary" type="button" href="jobListingDetail_static.html"> View/Edit</a>
+                                </div>
                             </div>
                             <div class="features"></div>
                             <div class="price"></div>
@@ -119,7 +135,7 @@
     
     <footer class="page-footer dark" style="height: 48px;"></footer>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>

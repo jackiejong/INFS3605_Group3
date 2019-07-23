@@ -11,7 +11,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Create new Listing</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/apply.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
@@ -20,43 +21,55 @@
 <body>
 
     <!-- Links here need to be fixed up later-->
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" id="navbarNav">
-        <div class="container"><a class="navbar-brand logo" href="#"><strong>TOM</strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Calendar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Interviews</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="404.html">Job listing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Applicants</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">New</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="404.html">Lecturer</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" onclick="logout()">Log Out</a></li>
-    
-                </ul>
-            </div>
-        </div>
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                        <li id="navDropdown" class="nav-item dropdown">
+                            <!--My details dropdown-->
+                            <a id="navDropdownText" class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myInterviews</a>
+                            </div>
+            </li>
+            </li>
+            </ul>
+        </div><img src="assets/img/ICON.png"></div>
     </nav>
 
     <main class="createJobListingForm">
-        <section class="clean-block clean-pricing dark" style="height:fit-content; overflow:scroll;"> <!--height here stopping footer from coming up-->
+        <section class="clean-block clean-pricing dark" style="overflow:scroll;"> <!--height here stopping footer from coming up-->
             <div class="container">
-                <div class="block-heading" style="height: 87px;">
-                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;"><strong><span style="text-decoration: underline;">NEW</span></strong>&nbsp;<strong>Job Listing&nbsp;</strong></h2>
+                <div class="block-heading">
+                    <h2 id="newListingHeading" class="text-left text-info"><strong><span id="newSpan">NEW</span></strong>&nbsp;<strong>Job Listing&nbsp;</strong></h2>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height:fit-content;">
+                        <div id="newListingContainer" class="clean-pricing-item">
                             <div class="heading" style="height: 43px;">
                                 <h3 class="text-left" style="height: 3px;">Job Listing Application Form</h3>
                             </div>
-                            <p class="text-left" style="height: 9px;width: 713px;">Please fill in all details to submit a new job listing</p>
-                            <div class="features"></div>
-                            <div class="price"></div>
+                            <p class="text-left">Please fill in all details to submit a new job listing</p>
                                 <!--Course name-->                            
                             <div class="col">
                                 <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
-                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text"></div>
+                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
+                            </div>
                             <!--Course code-->
                             <div class="col">
                                 <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
@@ -64,7 +77,7 @@
                             <!--Course Description-->
                             <div class="col">
                                 <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
-                                <input id="inputCourseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
+                                <input id="inputCourseDescription" class="border rounded d-block" type="text"></div>
                             <!--Role-->    
                             <div class="col">
                                 <p class="d-inline-block">Role &nbsp;&nbsp;</p>
@@ -73,7 +86,7 @@
                             <!--Responsibilities-->
                             <div class="col" style="height: 177px;">
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
-                                <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                                <input id="inputResponsibilities" class="border rounded d-block" type="text"></div>
                             
                             <!--Marks Requirement-->
                             <div class="col">
@@ -81,20 +94,35 @@
                                 <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg.'85' " type="number"></div>
                             
                             <!--Skills Requirement-->
-                            <div class="col" style="height: 177px;">
+                            <div class="col">
                                     <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
-                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
+                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text"></div>
 
                             <!-- Experience Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
-                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
+                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text">
+                            </div>
 
                             <!--Expiry Date-->
                             <div class="col">
                             <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
-                            <input type="date" id="inputExpiryDate" class="form-control" style="width:auto">
+                            <input type="date" id="inputExpiryDate" class="form-control">
                             </div>
+                        
+                            <div>
+                                <p class="d-inline-block"><strong>Session Times - </strong></p>
+                                <p class="text-left d-inline-block"><strong>How many session times are available?</strong></p>
+                                <div class="row">
+                                    <div class="col"><input type="number" id="confirmSessionNoBtn" class="border rounded d-inline"/>
+                                        <button id =confirmSessionTimesNoBtn class="btn btn-primary d-inline-block" type="button">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Drop down stuff-->
+                            <div>
+                                <p class="text-left d-inline">Session Number</p>
+                                <input class="border rounded d-inline-block" name="Session No" type="number">
 
                             <!--Number of Classes-->
                             <div class="col">
@@ -143,8 +171,8 @@
                             </div>
 
                             <!--Submit button-->
-                            <div class="col" style="width:auto; padding-top: 10px">
-                            <button class="btn btn-primary" type="button" style="margin:auto;" onclick="onSubmit()">
+                            <div id="submitBtn" class="col">
+                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()">
                                 Submit
                             </button>
                             </div>
@@ -165,12 +193,12 @@
         </section> <!-- End of form section-->
     </main>
 
-   <!--Black bar at the bottom--> <footer class="page-footer dark" style = "height:3px">
+   <!--Black bar at the bottom--> <footer class="page-footer dark">
     </footer>
     
     
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
