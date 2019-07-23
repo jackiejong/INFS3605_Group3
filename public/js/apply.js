@@ -100,7 +100,9 @@ function onSubmit() {
 function addClassTimes() {
     var noOfClass = document.getElementById("inputNoOfClass").value;
     var noOfClassButton = document.getElementById("addClassTimesButton");
+    var submitButton = document.getElementById("createNewListingBtn");
     noOfClassButton.setAttribute("hidden", true);
+    submitButton.setAttribute("style", "visibility: visible;");
     
     var template = document.getElementById("classTimesSelection");
     

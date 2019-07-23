@@ -110,69 +110,22 @@
                             <input type="date" id="inputExpiryDate" class="form-control">
                             </div>
                         
-                            <div>
-                                <p class="d-inline-block"><strong>Session Times - </strong></p>
-                                <p class="text-left d-inline-block"><strong>How many session times are available?</strong></p>
-                                <div class="row">
-                                    <div class="col"><input type="number" id="confirmSessionNoBtn" class="border rounded d-inline"/>
-                                        <button id =confirmSessionTimesNoBtn class="btn btn-primary d-inline-block" type="button">Confirm</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Drop down stuff-->
-                            <div>
-                                <p class="text-left d-inline">Session Number</p>
-                                <input class="border rounded d-inline-block" name="Session No" type="number">
-
+                           
                             <!--Number of Classes-->
                             <div class="col">
                                 <p class="d-inline-block">Number of Classes &nbsp; &nbsp;</p>
                                 <input type="number" id="inputNoOfClass" class="form-control" style="width:auto">
+                                <button class="btn btn-dark" type="button" style="margin: auto;" onclick="addClassTimes()" id="addClassTimesButton">Confirm</button>
                             </div>
 
-                            <button class="btn btn-dark" type="button" style="margin: auto;" onclick="addClassTimes()" id="addClassTimesButton">Something</button>
 
-                            <div id="insertClassTimesHere">
-                            </div>
-
-                            <div id ="classSelectionTimesTemplate" style="visibility: hidden">
-                                <label for="class" id="classNo">classNo</label>
-                                <select id="classDay">
-                                    <option value=1>Monday</option>
-                                    <option value=2>Tuesday</option>
-                                    <option value=3>Wednesday</option>
-                                    <option value=4>Thursday</option>
-                                    <option value=5>Friday</option>
-                                </select>
-                                <select id="classHour">
-                                    <option value=1>8</option>
-                                    <option value=2>9</option>
-                                    <option value=3>10</option>
-                                    <option value=4>11</option>
-                                    <option value=5>12</option>
-                                    <option value=1>13</option>
-                                    <option value=2>14</option>
-                                    <option value=3>15</option>
-                                    <option value=4>16</option>
-                                    <option value=5>17</option>
-                                    <option value=2>18</option>
-                                    <option value=3>19</option>
-                                    <option value=4>20</option>
-                                    <option value=5>21</option>
-                                </select>
-                                <select id="classHour">
-                                    <option value=1>00</option>
-                                    <option value=2>30</option>
-                                </select>
-                            </div>
-
+                            <!--Class Times Allocation-->
                             <div id="classTimesSelection">
-
                             </div>
 
                             <!--Submit button-->
                             <div id="submitBtn" class="col">
-                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()">
+                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()" style="visibility: hidden">
                                 Submit
                             </button>
                             </div>
