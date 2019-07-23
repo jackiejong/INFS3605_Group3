@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Create new Listing</title>
     <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/apply.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
@@ -27,13 +28,13 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html">Class allocations</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
                     <li class="nav-item" role="presentation" style="height: auto;width: auto;">
-                        <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                        <li id="navDropdown" class="nav-item dropdown">
                             <!--My details dropdown-->
-                            <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                            <a id="navDropdownText" class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#">myDetails</a>
                             <div class="dropdown-menu" role="menu">
                                 <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
                                 <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
@@ -48,22 +49,21 @@
     <main class="createJobListingForm">
         <section class="clean-block clean-pricing dark" style="overflow:scroll;"> <!--height here stopping footer from coming up-->
             <div class="container">
-                <div class="block-heading" style="height: 87px;">
-                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;"><strong><span style="text-decoration: underline;">NEW</span></strong>&nbsp;<strong>Job Listing&nbsp;</strong></h2>
+                <div class="block-heading">
+                    <h2 id="newListingHeading" class="text-left text-info"><strong><span id="newSpan">NEW</span></strong>&nbsp;<strong>Job Listing&nbsp;</strong></h2>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px; height: auto;">
+                        <div id="newListingContainer" class="clean-pricing-item">
                             <div class="heading" style="height: 43px;">
                                 <h3 class="text-left" style="height: 3px;">Job Listing Application Form</h3>
                             </div>
-                            <p class="text-left" style="height: 9px;width: 713px;">Please fill in all details to submit a new job listing</p>
-                            <div class="features"></div>
-                            <div class="price"></div>
+                            <p class="text-left">Please fill in all details to submit a new job listing</p>
                                 <!--Course name-->                            
                             <div class="col">
                                 <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
-                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text"></div>
+                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
+                            </div>
                             <!--Course code-->
                             <div class="col">
                                 <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
@@ -71,7 +71,7 @@
                             <!--Course Description-->
                             <div class="col">
                                 <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
-                                <input id="inputCourseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
+                                <input id="inputCourseDescription" class="border rounded d-block" type="text"></div>
                             <!--Role-->    
                             <div class="col">
                                 <p class="d-inline-block">Role &nbsp;&nbsp;</p>
@@ -80,7 +80,7 @@
                             <!--Responsibilities-->
                             <div class="col" style="height: 177px;">
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
-                                <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                                <input id="inputResponsibilities" class="border rounded d-block" type="text"></div>
                             
                                 <!--Marks Requirement-->
                             <div class="col">
@@ -88,36 +88,46 @@
                                 <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
                             
                             <!--Skills Requirement-->
-                            <div class="col" style="height: 177px;">
+                            <div class="col">
                                     <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
-                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
+                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text"></div>
 
                             <!-- Experience Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
-                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
+                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text">
+                            </div>
 
                             <!--Expiry Date-->
                             <div class="col">
                             <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
-                            <input type="date" id="inputExpiryDate" class="form-control" style="width:auto">
+                            <input type="date" id="inputExpiryDate" class="form-control">
                             </div>
-
-                            
-                            <div style="height:auto">
+                        
+                            <div>
                                 <p class="d-inline-block"><strong>Session Times - </strong></p>
-                                <p class="text-left d-inline-block" style="margin: -0px 0px 0px;"><strong>How many session times are available?</strong></p>
+                                <p class="text-left d-inline-block"><strong>How many session times are available?</strong></p>
                                 <div class="row">
-                                    <div class="col"><input type="number" class="border rounded d-inline" style="margin: 0px;margin-right: 10px;margin-bottom: 12px;margin-left: -2px;margin-top: -5px;" /><button id =confirmSessionTimesNoBtn class="btn btn-primary d-inline-block" type="button">Confirm</button></div>
+                                    <div class="col"><input type="number" id="confirmSessionNoBtn" class="border rounded d-inline"/>
+                                        <button id =confirmSessionTimesNoBtn class="btn btn-primary d-inline-block" type="button">Confirm</button>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Drop down stuff-->
-                            <div style="height: auto;">
-                                <p class="text-left d-inline" style="margin: -0px 0px 0px;width: 100px;">Session Number</p><input class="border rounded d-inline-block" type="number" style="margin: 0px;margin-right: 20px;margin-bottom: 12px;margin-left: 7px;margin-top: 12px;width: 50px;"><select class="border rounded" name="Day"
-                                    style="margin-right: 15px;"><option value="12" selected="">Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="">Friday</option></select>
+                            <div>
+                                <p class="text-left d-inline">Session Number</p>
+                                <input class="border rounded d-inline-block" name="Session No" type="number">
+
+                                <select class="border rounded" name="Day" style="margin-right: 15px;">
+                                    <option value="12" selected="">Day</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="">Friday</option>
+                                </select>
                                 
-                                <select
-                                    class="border rounded" name="Day" style="margin-right: 15px;">
+                                <select class="border rounded" name="Starting Hour" style="margin-right: 15px;">
                                     <option value="12" selected="">Hour</option>
                                     <option value="9">9</option>
                                     <option value="10">10</option>
@@ -134,101 +144,16 @@
                                     <option value="21">21</option>
                                     </select>
                                     
-                                    <select class="border rounded" name="Day" style="margin-right: 15px;">
+                                    <select class="border rounded" name="Starting Minute" style="margin-right: 15px;">
                                     <option value="Minute" selected="">Minute</option>
                                     <option value="00">00</option><option value="15">15</option>
                                     <option value="30">30</option><option value="45">45</option>
                                     </select>
                                     </div>
-
-                                    <div style="height: auto;">
-                                        <p class="text-left d-inline" style="margin: -0px 0px 0px;width: 100px;">Session Number</p><input class="border rounded d-inline-block" type="number" style="margin: 0px;margin-right: 20px;margin-bottom: 12px;margin-left: 7px;margin-top: 12px;width: 50px;"><select class="border rounded" name="Day"
-                                            style="margin-right: 15px;"><option value="12" selected="">Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="">Friday</option></select>
-                                        
-                                        <select
-                                            class="border rounded" name="Day" style="margin-right: 15px;">
-                                            <option value="12" selected="">Hour</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            </select>
-                                            
-                                            <select class="border rounded" name="Day" style="margin-right: 15px;">
-                                            <option value="Minute" selected="">Minute</option>
-                                            <option value="00">00</option><option value="15">15</option>
-                                            <option value="30">30</option><option value="45">45</option>
-                                            </select>
-                                            </div>
-                                            <div style="height: auto;">
-                                                <p class="text-left d-inline" style="margin: -0px 0px 0px;width: 100px;">Session Number</p><input class="border rounded d-inline-block" type="number" style="margin: 0px;margin-right: 20px;margin-bottom: 12px;margin-left: 7px;margin-top: 12px;width: 50px;"><select class="border rounded" name="Day"
-                                                    style="margin-right: 15px;"><option value="12" selected="">Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="">Friday</option></select>
-                                                
-                                                <select
-                                                    class="border rounded" name="Day" style="margin-right: 15px;">
-                                                    <option value="12" selected="">Hour</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                    <option value="13">13</option>
-                                                    <option value="14">14</option>
-                                                    <option value="15">15</option>
-                                                    <option value="16">16</option>
-                                                    <option value="17">17</option>
-                                                    <option value="18">18</option>
-                                                    <option value="19">19</option>
-                                                    <option value="20">20</option>
-                                                    <option value="21">21</option>
-                                                    </select>
-                                                    
-                                                    <select class="border rounded" name="Day" style="margin-right: 15px;">
-                                                    <option value="Minute" selected="">Minute</option>
-                                                    <option value="00">00</option><option value="15">15</option>
-                                                    <option value="30">30</option><option value="45">45</option>
-                                                    </select>
-                                                    </div>
-                                                    <div style="height: auto;">
-                                                        <p class="text-left d-inline" style="margin: -0px 0px 0px;width: 100px;">Session Number</p><input class="border rounded d-inline-block" type="number" style="margin: 0px;margin-right: 20px;margin-bottom: 12px;margin-left: 7px;margin-top: 12px;width: 50px;"><select class="border rounded" name="Day"
-                                                            style="margin-right: 15px;"><option value="12" selected="">Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="">Friday</option></select>
-                                                        
-                                                        <select
-                                                            class="border rounded" name="Day" style="margin-right: 15px;">
-                                                            <option value="12" selected="">Hour</option>
-                                                            <option value="9">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="14">14</option>
-                                                            <option value="15">15</option>
-                                                            <option value="16">16</option>
-                                                            <option value="17">17</option>
-                                                            <option value="18">18</option>
-                                                            <option value="19">19</option>
-                                                            <option value="20">20</option>
-                                                            <option value="21">21</option>
-                                                            </select>
-                                                            
-                                                            <select class="border rounded" name="Day" style="margin-right: 15px;">
-                                                            <option value="Minute" selected="">Minute</option>
-                                                            <option value="00">00</option><option value="15">15</option>
-                                                            <option value="30">30</option><option value="45">45</option>
-                                                            </select>
-                                                            </div>
                                     
                             <!--Submit button-->
-                            <div class="col" style="width:auto; padding-top: 10px">
-                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" style="margin:auto;" onclick="onSubmit()">
+                            <div id="submitBtn" class="col">
+                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()">
                                 Submit
                             </button>
                             </div>
@@ -240,7 +165,7 @@
         </section> <!-- End of form section-->
     </main>
 
-   <!--Black bar at the bottom--> <footer class="page-footer dark" style = "height:3px">
+   <!--Black bar at the bottom--> <footer class="page-footer dark">
     </footer>
     
     
