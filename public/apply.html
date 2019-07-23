@@ -75,7 +75,7 @@
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
                                 <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
                             
-                                <!--Marks Requirement-->
+                            <!--Marks Requirement-->
                             <div class="col">
                                 <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
                                 <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg.'85' " type="number"></div>
@@ -102,17 +102,66 @@
                                 <input type="number" id="inputNoOfClass" class="form-control" style="width:auto">
                             </div>
 
+                            <button class="btn btn-dark" type="button" style="margin: auto;" onclick="addClassTimes()" id="addClassTimesButton">Something</button>
+
+                            <div id="insertClassTimesHere">
+                            </div>
+
+                            <div id ="classSelectionTimesTemplate" style="visibility: hidden">
+                                <label for="class" id="classNo">classNo</label>
+                                <select id="classDay">
+                                    <option value=1>Monday</option>
+                                    <option value=2>Tuesday</option>
+                                    <option value=3>Wednesday</option>
+                                    <option value=4>Thursday</option>
+                                    <option value=5>Friday</option>
+                                </select>
+                                <select id="classHour">
+                                    <option value=1>8</option>
+                                    <option value=2>9</option>
+                                    <option value=3>10</option>
+                                    <option value=4>11</option>
+                                    <option value=5>12</option>
+                                    <option value=1>13</option>
+                                    <option value=2>14</option>
+                                    <option value=3>15</option>
+                                    <option value=4>16</option>
+                                    <option value=5>17</option>
+                                    <option value=2>18</option>
+                                    <option value=3>19</option>
+                                    <option value=4>20</option>
+                                    <option value=5>21</option>
+                                </select>
+                                <select id="classHour">
+                                    <option value=1>00</option>
+                                    <option value=2>30</option>
+                                </select>
+                            </div>
+
+                            <div id="classTimesSelection">
+
+                            </div>
+
                             <!--Submit button-->
                             <div class="col" style="width:auto; padding-top: 10px">
                             <button class="btn btn-primary" type="button" style="margin:auto;" onclick="onSubmit()">
                                 Submit
                             </button>
                             </div>
-                        
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
         </section> <!-- End of form section-->
     </main>
 
