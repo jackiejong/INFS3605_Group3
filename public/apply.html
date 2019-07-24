@@ -1,3 +1,9 @@
+<!-- 
+    THIS IS CREATE A JOB LISTING PAGE
+    SORRY FOR THE IRRELEVANT NAME
+    - JACK
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -82,10 +88,10 @@
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
                                 <input id="inputResponsibilities" class="border rounded d-block" type="text"></div>
                             
-                                <!--Marks Requirement-->
+                            <!--Marks Requirement-->
                             <div class="col">
                                 <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
-                                <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
+                                <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg.'85' " type="number"></div>
                             
                             <!--Skills Requirement-->
                             <div class="col">
@@ -104,64 +110,39 @@
                             <input type="date" id="inputExpiryDate" class="form-control">
                             </div>
                         
-                            <div>
-                                <p class="d-inline-block"><strong>Session Times - </strong></p>
-                                <p class="text-left d-inline-block"><strong>How many session times are available?</strong></p>
-                                <div class="row">
-                                    <div class="col"><input type="number" id="confirmSessionNoBtn" class="border rounded d-inline"/>
-                                        <button id =confirmSessionTimesNoBtn class="btn btn-primary d-inline-block" type="button">Confirm</button>
-                                    </div>
-                                </div>
+                           
+                            <!--Number of Classes-->
+                            <div class="col">
+                                <p class="d-inline-block">Number of Classes &nbsp; &nbsp;</p>
+                                <input type="number" id="inputNoOfClass" class="form-control" style="width:auto">
+                                <button class="btn btn-dark" type="button" style="margin: auto;" onclick="addClassTimes()" id="addClassTimesButton">Confirm</button>
                             </div>
-                            <!-- Drop down stuff-->
-                            <div>
-                                <p class="text-left d-inline">Session Number</p>
-                                <input class="border rounded d-inline-block" name="Session No" type="number">
 
-                                <select class="border rounded" name="Day" style="margin-right: 15px;">
-                                    <option value="12" selected="">Day</option>
-                                    <option value="Monday">Monday</option>
-                                    <option value="Tuesday">Tuesday</option>
-                                    <option value="Wednesday">Wednesday</option>
-                                    <option value="Thursday">Thursday</option>
-                                    <option value="">Friday</option>
-                                </select>
-                                
-                                <select class="border rounded" name="Starting Hour" style="margin-right: 15px;">
-                                    <option value="12" selected="">Hour</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    </select>
-                                    
-                                    <select class="border rounded" name="Starting Minute" style="margin-right: 15px;">
-                                    <option value="Minute" selected="">Minute</option>
-                                    <option value="00">00</option><option value="15">15</option>
-                                    <option value="30">30</option><option value="45">45</option>
-                                    </select>
-                                    </div>
-                                    
+
+                            <!--Class Times Allocation-->
+                            <div id="classTimesSelection">
+                            </div>
+
                             <!--Submit button-->
                             <div id="submitBtn" class="col">
-                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()">
+                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()" style="visibility: hidden">
                                 Submit
                             </button>
                             </div>
-                        
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
         </section> <!-- End of form section-->
     </main>
 
