@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Pricing - All Job Listings Page</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/jobListingDetail.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
@@ -33,9 +34,9 @@
                                     <!--My details dropdown-->
                                     <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" role="presentation" href="myListings.html">myListings</a>
+                                        <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
                                         <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
-                                        <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myInterviews</a>
+                                        <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
                                     </div>
                     </li>
                     </li>
@@ -52,59 +53,56 @@
                 <div class="row">
                     <div class="col">
                         <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height:fit-content;">
-                            <div class="heading" style="height: 42px;">
-                                <h3 class="text-left" style="height: 3px;">&lt;&lt;COURSE CODE&gt;&gt; &lt;&lt;COURSE NAME&gt;&gt;</h3>
-                            </div>
-                            <div class="features"></div>
-                            <div class="price"></div>
+
                             <div class="col">
                             <!--Course name-->                            
                             <div class="col">
                                 <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
-                                <input id="courseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text"></div>
+                                <p id="courseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
+                            </div>
                             <!--Course code-->
                             <div class="col">
                                 <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
-                                <input id="courseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text" size="auto"></div>
+                                <p id="courseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
                             <!--Course Description-->
                             <div class="col">
                                 <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
-                                <input id="courseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
+                                <p id="courseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
                             <!--Role-->    
                             <div class="col">
                                 <p class="d-inline-block">Role &nbsp;&nbsp;</p>
-                                <input id="inputRole" class="border rounded d-block" type="text" ></div>
+                                <p id="role" class="border rounded d-block" type="text" ></div>
                                    
                             <!--Responsibilities-->
                             <div class="col" style="height: 177px;">
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
-                                <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                                <p id="responsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
                             
                                 <!--Marks Requirement-->
                             <div class="col">
                                 <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
-                                <input id="marksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
+                                <p id="marksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
                             
                             <!--Skills Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
-                                    <input id="skillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
+                                    <p id="skillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
 
                             <!-- Experience Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
-                                    <input id="experienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
+                                    <p id="experienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
 
                             <!--Expiry Date-->
                             <div class="col">
                             <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
-                            <input type="date" id="expiryDate" class="form-control" style="width:auto">
+                            <p type="date" id="expiryDate" class="form-control" style="width:auto">
                             </div>
 
-                            <!--buttons-->
+                            <!--Buttons-->
                             <div style="padding-top:10px">
-                                <button id = saveBtn onclick= "updateListing()" class="btn btn-primary" type="button" style="padding-right: 12px;margin-left: 15px;">Update</button>
-                                <button id = deleteBtn onclick= "deleteListing()" class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;">Delete Listing</button>
+                                <a id = editBtn class="btn btn-primary" type="button" style="padding-right: 12px;margin-left: 15px;" onclick="editListing()">Edit</a>
+                                <button id = deleteBtn class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;">Delete Listing</button>
                                 </div>
                             
                         </div>
@@ -119,7 +117,7 @@
     </footer>
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>

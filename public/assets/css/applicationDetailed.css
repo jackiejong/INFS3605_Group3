@@ -1,0 +1,16 @@
+html, body {
+    height: 100%;
+    width: 100%;
+  }
+  #navDropdown{
+    padding: 8px;
+    height: auto;
+    width: auto;
+  }
+  #navDropdownText{
+    padding: 8px;
+    height: 34.6667px;
+    width: auto;
+    color:red;
+    filter: hue-rotate(0deg) sepia(0%);
+  }

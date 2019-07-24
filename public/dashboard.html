@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
 
   </head>
   <body onload="getCurrentUser()">
@@ -24,54 +24,27 @@
                   <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
                   <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
                   <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
-                  <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+
+
+                  
+                  <li class="nav-item" role="presentation">
                       <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
                           <!--My details dropdown-->
-                          <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                          <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);" href="#">myDetails</a>
                           <div class="dropdown-menu" role="menu">
-                              <a class="dropdown-item" role="presentation" href="myListings.html">myListings</a>
+                              <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
                               <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
-                              <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myInterviews</a>
+                              <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
                           </div>
-          </li>
-          </li>
+                      </li>
+                  </li>
           </ul>
       </div><img src="assets/img/ICON.png"></div>
   </nav>
-  <main> 
-    <div class="row">
-      <header>This is a placeholder for the home page</header>
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS1602</h5>
-            <p class="card-text">Digital Transformation in Business</p>
-            <a href="apply.html?course=INFS1602" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS1603</h5>
-            <p class="card-text">Introduction to Business Databases</p>
-            <a href="apply.html?course=INFS1603" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">INFS2603</h5>
-            <p class="card-text">Business Analysis</p>
-            <a href="apply.html?course=INFS2603" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+ 
     ---------------------------Footer required------------------------------------------------------    
 
+    <script src="assets/js/TOM_baselineJS.js"></script>
 
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->

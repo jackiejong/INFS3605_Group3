@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Product - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/applicationDetailed.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
@@ -15,21 +16,30 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">TOM</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="#">Applications</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="#" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="pricing.html">new listing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="Contact.html">Contact</a></li>
-                    <li class="nav-item" role="presentation" style="height: auto;width: auto;">
-                        <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;"><a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
-                            <div
-                                class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">myListings</a><a class="dropdown-item" role="presentation" href="#">myAvailabilities</a><a class="dropdown-item" role="presentation" href="#">myInterviews</a></div>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation">
+                        <li id="navDropdown" class="nav-item dropdown">
+                            <!--My details dropdown-->
+                            <a id="navDropdownText"class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
+                            </div>
             </li>
             </li>
             </ul>
@@ -112,7 +122,7 @@
         </div>
     </footer>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
