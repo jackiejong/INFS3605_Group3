@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
@@ -44,71 +44,9 @@
             </ul>
         </div><img src="assets/img/ICON.png"></div>
     </nav>
-    <main class="page pricing-table-page">
-        <section class="text-left clean-block clean-pricing dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">Applicants</h2>
-                </div>
-            </div>
-            <div class="container text-right">
-                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Filter</button>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Pending</a><a class="dropdown-item" role="presentation" href="#">Name - Alphabetical</a><a class="dropdown-item" role="presentation" href="#">Course</a></div>
-                </div><i class="fa fa-search"></i><input type="search"></div>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Applicant</th>
-                            <th>Course</th>
-                            <th>Offer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="application-detail-page.html">Ben Samuels</a></td>
-                            <td>INFS2605</td>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
-                            <td><a href="application-detail-page.html">Cindy Le</a></td>
-                            <td>INFS1603</td>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
-                            <td><a href="application-detail-page.html">Jonathan Tran</a></td>
-                            <td>INFS1603</td>
-                            <td>Accepted</td>
-                        </tr>
-                        <tr>
-                            <td><a href="application-detail-page.html">Selina Ma</a></td>
-                            <td>INFS3605</td>
-                            <td>Rejected</td>
-                            <tr>
-                                <td><a href="application-detail-page.html">Ben Samuels</a></td>
-                                <td>INFS2605</td>
-                                <td>Pending</td>
-                            </tr>
-                            <tr>
-                                <td><a href="application-detail-page.html">Cindy Le</a></td>
-                                <td>INFS1603</td>
-                                <td>Pending</td>
-                            </tr>
-                            <tr>
-                                <td><a href="application-detail-page.html">Jonathan Tran</a></td>
-                                <td>INFS1603</td>
-                                <td>Accepted</td>
-                            </tr>
-                            <tr>
-                                <td><a href="application-detail-page.html">Selina Ma</a></td>
-                                <td>INFS3605</td>
-                                <td>Rejected</td>                            
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+  
+    <div id='insertTableHere' style="height:fit-content; overflow:scroll"></div>
+
     <footer class="page-footer dark">
         <div class="footer-copyright">
             <p>© 2019 Copyright TOM</p>
@@ -119,6 +57,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    
+<!-- TODO: Add SDKs for Firebase products that you want to use 
+https://firebase.google.com/docs/web/setup#config-web-app -->
+ <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+ <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+ <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+ <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+ <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+ <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+      authDomain: "infs3605group3.firebaseapp.com",
+      databaseURL: "https://infs3605group3.firebaseio.com",
+      projectId: "infs3605group3",
+      storageBucket: "infs3605group3.appspot.com",
+      messagingSenderId: "757094635140",
+      appId: "1:757094635140:web:23089838804a1db6"
+    };
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+ </script>
+
+    <script src="../js/allApplications.js"></script>
 </body>
 
 </html>
