@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>myInterviews</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                        <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                            <!--My details dropdown-->
+                            <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="myListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
+                            </div>
+            </li>
+            </li>
+            </ul>
+        </div><img src="assets/img/ICON.png"></div>
+    </nav>
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-pricing dark" style="height: 800px;">
+            <div class="container">
+                <div class="block-heading" style="height: 87px;">
+                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;width: 747px;"><strong>Interviews</strong></h2>
+                    <p class="text-left" style="margin: -40px 60px;width: 700px;height: 56px;font-size: 14px;">View of all scheduled interviews with applicants</p>
+                </div>
+                <div class="row">
+                    <div class="col" style="height: 700px;">
+                        <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height: 500px;">
+                            <div class="row text-right">
+                                <div class="col" style="margin: 0px 0px;margin-top: -6px;height: 40px;"><select class="border rounded" name="Filter"><option value="Name">Name</option><option value="Interview Time">Interview Time</option><option value="Accepted">Accepted</option><option value="Rejected">Rejected</option><option value="" selected="">Filter</option></select></div>
+                            </div>
+                            <div class="col"><img class="d-block" src="assets/img/search.png" style="height: 17px;margin: -32px 690px;margin-top: -4px;"><input class="border rounded d-inline-block" type="search" style="margin: 0px 720px;margin-top: 12px;"></div>
+                            <div class="heading"
+                                style="height: 43px;">
+                                <h3 class="text-left" style="height: 3px;">All Interviews</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Applicant Name</th>
+                                            <th>Scheduled Interview Time</th>
+                                            <th style="width: 106px;">Accepted</th>
+                                            <th style="width: 106px;">Rejected</th>
+                                            <th style="width: 100px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Applicant 1</td>
+                                            <td>Monday 1pm</td>
+                                            <td><input type="checkbox"></td>
+                                            <td>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"></label></div>
+                                            </td>
+                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Applicant 2</td>
+                                            <td>Monday 4pm</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Applicant 3</td>
+                                            <td>Tuesday 12pm</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Applicant 4</td>
+                                            <td>Wednesday 5.30pm</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Applicant 5</td>
+                                            <td>Wednesday 6pm</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark" style="height: 48px;"></footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+         <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+         
+         <!-- TODO: Add SDKs for Firebase products that you want to use 
+           https://firebase.google.com/docs/web/setup#config-web-app -->
+        <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+        <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+        <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+        <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+        <script>
+           var firebaseConfig = {
+             apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+             authDomain: "infs3605group3.firebaseapp.com",
+             databaseURL: "https://infs3605group3.firebaseio.com",
+             projectId: "infs3605group3",
+             storageBucket: "infs3605group3.appspot.com",
+             messagingSenderId: "757094635140",
+             appId: "1:757094635140:web:23089838804a1db6"
+           };
+         // Initialize Firebase
+           firebase.initializeApp(firebaseConfig);
+        </script>
+   <h1>JS LINK NEEDED</h1>
+        <script src="../js/INSERT THE RELEVANT JS FILE NAME HERE.js”></script>
+
+</body>
+
+</html>
