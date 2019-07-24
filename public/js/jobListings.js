@@ -110,9 +110,47 @@ function onLoad() {
 
 
 }
+    
+     
+function onClick(something) {
+    //window.alert(something);
+    window.location.href=something;
+}
 
+
+function logout() {
+    firebase.auth().signOut().then(function() {
+        console.log('A user successfully logged out');
+        window.location.assign("index.html");
+      }).catch(function(error) {
+        window.alert('Something happened!');
+      });
+}
+
+
+function timeStampConverter(unix_timestamp) {
+    console.log(unix_timestamp);
+    // Create a new JavaScript Date object based on the timestamp
+    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+    var date = new Date(unix_timestamp*1000);
+    // Hours part from the timestamp
+    var day = date.getDate();
+
+    var month = date.getMonth();
+
+    var year = date.getFullYear();
+    // Minutes part from the timestamp
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
     
+    // Will display time in 10:30:23 format
+    var formattedTime = day + " " + monthNames[month] + " " + year;
+    return formattedTime;
+}
+
+
 
 
 
@@ -185,56 +223,3 @@ function onLoad() {
 
         div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
         */
-
-     
-     
-     
-function onClick(something) {
-    //window.alert(something);
-    window.location.href=something;
-}
-
-
-
-    /*
-    db.collection('jobListing').get().then(snap => {
-        size = snap.size // will return the collection size
-        console.log(size);
-     });
-
-     */
-
-
-
-
-function logout() {
-    firebase.auth().signOut().then(function() {
-        console.log('A user successfully logged out');
-        window.location.assign("index.html");
-      }).catch(function(error) {
-        window.alert('Something happened!');
-      });
-}
-
-
-function timeStampConverter(unix_timestamp) {
-    console.log(unix_timestamp);
-    // Create a new JavaScript Date object based on the timestamp
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-    var date = new Date(unix_timestamp*1000);
-    // Hours part from the timestamp
-    var day = date.getDate();
-
-    var month = date.getMonth();
-
-    var year = date.getFullYear();
-    // Minutes part from the timestamp
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-
-    
-    // Will display time in 10:30:23 format
-    var formattedTime = day + " " + monthNames[month] + " " + year;
-    return formattedTime;
-}

@@ -1,29 +1,29 @@
-[debug] [2019-07-24T09:59:36.595Z] ----------------------------------------------------------------------
-[debug] [2019-07-24T09:59:36.597Z] Command:       /usr/local/Cellar/node/12.4.0/bin/node /usr/local/bin/firebase serve
-[debug] [2019-07-24T09:59:36.597Z] CLI Version:   7.1.1
-[debug] [2019-07-24T09:59:36.597Z] Platform:      darwin
-[debug] [2019-07-24T09:59:36.598Z] Node Version:  v12.4.0
-[debug] [2019-07-24T09:59:36.598Z] Time:          Wed Jul 24 2019 19:59:36 GMT+1000 (Australian Eastern Standard Time)
-[debug] [2019-07-24T09:59:36.598Z] ----------------------------------------------------------------------
+[debug] [2019-07-24T12:32:43.305Z] ----------------------------------------------------------------------
+[debug] [2019-07-24T12:32:43.307Z] Command:       /usr/local/Cellar/node/12.4.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-07-24T12:32:43.307Z] CLI Version:   7.1.1
+[debug] [2019-07-24T12:32:43.307Z] Platform:      darwin
+[debug] [2019-07-24T12:32:43.307Z] Node Version:  v12.4.0
+[debug] [2019-07-24T12:32:43.308Z] Time:          Wed Jul 24 2019 22:32:43 GMT+1000 (Australian Eastern Standard Time)
+[debug] [2019-07-24T12:32:43.308Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-07-24T09:59:36.609Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-07-24T09:59:36.610Z] > authorizing via signed-in user
-[debug] [2019-07-24T09:59:36.610Z] [iam] checking project infs3605group3 for permissions ["firebase.projects.get"]
-[debug] [2019-07-24T09:59:36.611Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2019-07-24T09:59:36.612Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2019-07-24T12:32:43.318Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-24T12:32:43.318Z] > authorizing via signed-in user
+[debug] [2019-07-24T12:32:43.319Z] [iam] checking project infs3605group3 for permissions ["firebase.projects.get"]
+[debug] [2019-07-24T12:32:43.320Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-24T12:32:43.320Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2019-07-24T09:59:36.940Z] <<< HTTP RESPONSE 200
-[debug] [2019-07-24T09:59:36.966Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/infs3605group3:testIamPermissions  
+[debug] [2019-07-24T12:32:43.645Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-24T12:32:43.663Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/infs3605group3:testIamPermissions  
 
-[debug] [2019-07-24T09:59:37.422Z] <<< HTTP RESPONSE 200
-[debug] [2019-07-24T09:59:37.424Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3  
+[debug] [2019-07-24T12:32:45.046Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-24T12:32:45.047Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3  
  
-[debug] [2019-07-24T09:59:38.055Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-24T12:32:45.661Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/Jackie/Desktop/INFS3605_Group3'...
 [info] 
-[debug] [2019-07-24T09:59:38.058Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3/webApps/-/config  
+[debug] [2019-07-24T12:32:45.663Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3/webApps/-/config  
  
-[debug] [2019-07-24T09:59:38.568Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-24T12:32:46.276Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
