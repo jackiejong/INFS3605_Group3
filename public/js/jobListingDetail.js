@@ -24,15 +24,15 @@ function onLoad() {
         if (doc.exists) {
             console.log("Document data:", doc.data());
             //title.innerHTML = doc.data().role + " for " + doc.data().courseCode;
-            courseCode.innerHTML = doc.data().courseCode;
-            courseName.innerHTML = doc.data().courseName;
-            courseDescription.innerHTML = doc.data().courseDescription;
-            experienceRequirement.innerHTML = doc.data().experienceRequirement;
-            skillsRequirement.innerHTML = doc.data().skillsRequirement;
-            marksRequirement.innerHTML = doc.data().marksRequirement;
-            expiryDate.innerHTML = timeStampConverter(doc.data().expiryDate);
-            role.innerHTML = doc.data().role;
-            responsibilities.innerHTML = doc.data().responsibilities;
+            courseCode.value = doc.data().courseCode;
+            courseName.value = doc.data().courseName;
+            courseDescription.value = doc.data().courseDescription;
+            experienceRequirement.value = doc.data().experienceRequirement;
+            skillsRequirement.value = doc.data().skillsRequirement;
+            marksRequirement.value = doc.data().marksRequirement;
+            expiryDate.value = timeStampConverter(doc.data().expiryDate);
+            role.value = doc.data().role;
+            responsibilities.value = doc.data().responsibilities;
             
         } else {
             // doc.data() will be undefined in this case
