@@ -1,0 +1,29 @@
+[debug] [2019-07-22T07:21:30.078Z] ----------------------------------------------------------------------
+[debug] [2019-07-22T07:21:30.080Z] Command:       /usr/local/Cellar/node/12.4.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-07-22T07:21:30.080Z] CLI Version:   7.1.1
+[debug] [2019-07-22T07:21:30.080Z] Platform:      darwin
+[debug] [2019-07-22T07:21:30.080Z] Node Version:  v12.4.0
+[debug] [2019-07-22T07:21:30.081Z] Time:          Mon Jul 22 2019 17:21:30 GMT+1000 (Australian Eastern Standard Time)
+[debug] [2019-07-22T07:21:30.081Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-22T07:21:30.087Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-22T07:21:30.088Z] > authorizing via signed-in user
+[debug] [2019-07-22T07:21:30.088Z] [iam] checking project infs3605group3 for permissions ["firebase.projects.get"]
+[debug] [2019-07-22T07:21:30.089Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-22T07:21:30.089Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-22T07:21:30.407Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-22T07:21:30.424Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/infs3605group3:testIamPermissions  
+
+[debug] [2019-07-22T07:21:31.802Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-22T07:21:31.804Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3  
+ 
+[debug] [2019-07-22T07:21:32.282Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Jackie/Desktop/INFS3605_Group3'...
+[info] 
+[debug] [2019-07-22T07:21:32.285Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/infs3605group3/webApps/-/config  
+ 
+[debug] [2019-07-22T07:21:32.827Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
