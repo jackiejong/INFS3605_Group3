@@ -16,7 +16,7 @@ function getCurrentUser() {
                   var userUID = user.uid.toString();
                   console.log("User UID in string ",userUID);
                   
-                  var docRef = db.collection("applicant").doc(userUID);
+                  var docRef = db.collection("lecturer").doc(userUID);
 
                   docRef.get().then(function(doc) {
                       if (doc.exists) {

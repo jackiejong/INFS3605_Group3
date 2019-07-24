@@ -54,20 +54,19 @@
                     <div class="col">
                         <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height:fit-content;">
                             <div class="heading" style="height: 42px;">
-                                <h3 class="text-left" style="height: 3px;">&lt;&lt;COURSE CODE&gt;&gt; &lt;&lt;COURSE NAME&gt;&gt;</h3>
+                                <h3 class="text-left" style="height: 3px;" id="courseCodeCourseName">&lt;&lt;COURSE CODE&gt;&gt; &lt;&lt;COURSE NAME&gt;&gt;</h3>
                             </div>
                             <div class="features"></div>
                             <div class="price"></div>
                             <div class="col">
-                            <h1 id="courseName"></h1>
                             <!--Course name-->                            
                             <div class="col">
                                 <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
-                                <input id="courseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text"></div>
+                                <input id="courseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text" ></div>
                             <!--Course code-->
                             <div class="col">
                                 <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
-                                <input id="courseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text" size="auto"></div>
+                                <input id="courseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
                             <!--Course Description-->
                             <div class="col">
                                 <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
@@ -75,12 +74,12 @@
                             <!--Role-->    
                             <div class="col">
                                 <p class="d-inline-block">Role &nbsp;&nbsp;</p>
-                                <input id="inputRole" class="border rounded d-block" type="text" ></div>
+                                <input id="role" class="border rounded d-block" type="text" ></div>
                                    
                             <!--Responsibilities-->
                             <div class="col" style="height: 177px;">
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
-                                <input id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                                <input id="responsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
                             
                                 <!--Marks Requirement-->
                             <div class="col">
@@ -105,8 +104,7 @@
 
                             <!--buttons-->
                             <div style="padding-top:10px">
-                                <button id = saveBtn onclick= "updateListing()" class="btn btn-primary" type="button" style="padding-right: 12px;margin-left: 15px;">Update</button>
-                                <button id = deleteBtn onclick= "deleteListing()" class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;">Delete Listing</button>
+                                <button id = deleteBtn class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;">Save</button>
                                 </div>
                             
                         </div>
@@ -150,7 +148,7 @@
         firebase.initializeApp(firebaseConfig);
      </script>
 
-     <script src="../js/jobListingDetail.js"></script>
+     <script src="../js/jobListingDetail_editable.js"></script>
 </body>
 
 </html>
