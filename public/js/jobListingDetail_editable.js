@@ -9,14 +9,14 @@ var marksRequirement = document.getElementById("marksRequirement");
 var expiryDate = document.getElementById("expiryDate");
 var role = document.getElementById("role");
 var responsibilities = document.getElementById("responsibilities");
+var courseCodeCourseName = document.getElementById("courseCodeCourseName");
 
 
-var queryString = decodeURIComponent(window.location.search);
-queryString = queryString.substring(1);
-console.log("Document ID ", queryString);
 
 function onLoad() {
-    
+    var queryString = decodeURIComponent(window.location.search);
+    queryString = queryString.substring(1);
+    console.log("Document ID ", queryString);
 
     var docRef = db.collection("jobListing").doc(queryString);
 
@@ -24,16 +24,16 @@ function onLoad() {
         if (doc.exists) {
             console.log("Document data:", doc.data());
             //title.innerHTML = doc.data().role + " for " + doc.data().courseCode;
-            courseCode.innerHTML = doc.data().courseCode;
-            courseName.innerHTML = doc.data().courseName;
-            courseDescription.innerHTML = doc.data().courseDescription;
-            experienceRequirement.innerHTML = doc.data().experienceRequirement;
-            skillsRequirement.innerHTML = doc.data().skillsRequirement;
-            marksRequirement.innerHTML = doc.data().marksRequirement;
-            expiryDate.innerHTML = timeStampConverter(doc.data().expiryDate);
-            role.innerHTML = doc.data().role;
-            responsibilities.innerHTML = doc.data().responsibilities;
-            
+            courseCode.value = doc.data().courseCode;
+            courseName.value = doc.data().courseName;
+            courseDescription.value = doc.data().courseDescription;
+            experienceRequirement.value = doc.data().experienceRequirement;
+            skillsRequirement.value = doc.data().skillsRequirement;
+            marksRequirement.value = doc.data().marksRequirement;
+            expiryDate.value = timeStampConverter(doc.data().expiryDate);
+            role.value = doc.data().role;
+            responsibilities.value = doc.data().responsibilities;
+            courseCodeCourseName.innerHTML = doc.data().role + " for " + doc.data().courseCode;
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -58,17 +58,13 @@ function timeStampConverter(unix_timestamp) {
 
     var year = date.getFullYear();
     // Minutes part from the timestamp
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+    const monthNames = ["01", "02", "03", "04", "05", "06",
+        "07", "08", "09", "10", "11", "12"
     ];
 
     
     // Will display time in 10:30:23 format
-    var formattedTime = day + " " + monthNames[month] + " " + year;
+    var formattedTime = year + "-" + monthNames[month] + "-" + day;
     return formattedTime;
 }
 
-function editListing() {
-    var theLink = 'jobListingDetail_editable.html?' + queryString ;
-    window.location.assign(theLink);
-}

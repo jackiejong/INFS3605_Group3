@@ -57,51 +57,51 @@
                             <!--Course name-->                            
                             <div class="col">
                                 <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
-                                <p id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
+                                <p id="courseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
                             </div>
                             <!--Course code-->
                             <div class="col">
                                 <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
-                                <p id="inputCourseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
+                                <p id="courseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
                             <!--Course Description-->
                             <div class="col">
                                 <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
-                                <p id="inputCourseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
+                                <p id="courseDescription" class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
                             <!--Role-->    
                             <div class="col">
                                 <p class="d-inline-block">Role &nbsp;&nbsp;</p>
-                                <p id="inputRole" class="border rounded d-block" type="text" ></div>
+                                <p id="role" class="border rounded d-block" type="text" ></div>
                                    
                             <!--Responsibilities-->
                             <div class="col" style="height: 177px;">
                                 <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
-                                <p id="inputResponsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
+                                <p id="responsibilities" class="border rounded d-block" type="text" style="height: 90px;width: 700px;"></div>
                             
                                 <!--Marks Requirement-->
                             <div class="col">
                                 <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
-                                <p id="inputMarksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
+                                <p id="marksRequirement" class="border rounded d-block" placeholder="eg. HD or '85' " type="text"></div>
                             
                             <!--Skills Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
-                                    <p id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
+                                    <p id="skillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text" style="height: 90px;width: 700px;"></div>
 
                             <!-- Experience Requirement-->
                             <div class="col" style="height: 177px;">
                                     <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
-                                    <p id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
+                                    <p id="experienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text" style="height: 90px;width: 700px;"></div>
 
                             <!--Expiry Date-->
                             <div class="col">
                             <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
-                            <p type="date" id="inputExpiryDate" class="form-control" style="width:auto">
+                            <p type="date" id="expiryDate" class="form-control" style="width:auto">
                             </div>
 
-                            <!--buttons-->
+                            <!--Buttons-->
                             <div style="padding-top:10px">
-                                <a id = editBtn class="button" type="button" style="padding-right: 12px;margin-left: 15px;" href="jobListingDetail_editable.html">Edit</a>
-                                <a id = deleteBtn class="button" type="button" style="margin: 5px;padding-bottom: 6px;">Delete Listing</a>
+                                <a id = editBtn class="btn btn-primary" type="button" style="padding-right: 12px;margin-left: 15px;" onclick="editListing()">Edit</a>
+                                <button id = deleteBtn class="btn btn-primary" type="button" style="margin: 5px;padding-bottom: 6px;">Delete Listing</button>
                                 </div>
                             
                         </div>
