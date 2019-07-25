@@ -9,25 +9,36 @@
 
   </head>
   <body onload="onLoad()">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">TOM</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto" >
-            <li class="nav-item active">
-                <a class="nav-link" href="profile.html">My Profile<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="jobListings.html">All Job Listings<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="apply.html">Create Job Listing<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" onclick="logout()">Log Out<span class="sr-only">(current)</span></a>
-            </li>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+      <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse"
+              id="navcol-1">
+              <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                  <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                      <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                          <!--My details dropdown-->
+                          <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                          <div class="dropdown-menu" role="menu">
+                              <a class="dropdown-item" role="presentation" href="myListings.html">myListings</a>
+                              <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                              <a class="dropdown-item" role="presentation" href=“myInterviews.html”>myInterviews</a>
+                          </div>
+          </li>
+          </li>
           </ul>
-        </div>
-    </nav>
+      </div><img src="assets/img/ICON.png"></div>
+  </nav>
 
 
     <div id='insertTableHere'></div>
