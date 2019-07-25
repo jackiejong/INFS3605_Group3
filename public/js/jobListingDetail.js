@@ -34,6 +34,7 @@ function onLoad() {
             role.innerHTML = doc.data().role;
             responsibilities.innerHTML = doc.data().responsibilities;
             
+            
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -91,7 +92,7 @@ function timeStampConverter(unix_timestamp) {
     return formattedTime;
 }
 
-function editListing() {
+    function editListing() {
     var theLink = 'jobListingDetail_editable.html?' + queryString ;
     window.location.assign(theLink);
 }
