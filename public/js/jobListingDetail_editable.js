@@ -11,12 +11,13 @@ var role = document.getElementById("role");
 var responsibilities = document.getElementById("responsibilities");
 var courseCodeCourseName = document.getElementById("courseCodeCourseName");
 
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+console.log("Document ID ", queryString);
 
 
 function onLoad() {
-    var queryString = decodeURIComponent(window.location.search);
-    queryString = queryString.substring(1);
-    console.log("Document ID ", queryString);
+   
 
     var docRef = db.collection("jobListing").doc(queryString);
 
@@ -41,6 +42,29 @@ function onLoad() {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
+}
+
+function updateListing(){
+
+    db.collection("jobListing").doc(queryString).update({
+
+        courseName: courseName.value,
+        courseCode: courseCode.value,
+        courseDescription: courseDescription.value,
+        role: role.value,
+        responsibilities: responsibilities.value,
+        marksRequirement: marksRequirement.value,
+        skillsRequirement: skillsRequirement.value,
+        experienceRequirement:experienceRequirement.value,
+        expiryDate: expiryDate.value
+
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+
+    window.alert("yas");
+    var currentPage = 'jobListingDetail_static.html?' + queryString ;
+    window.location.assign(currentPage);
 
 
 
