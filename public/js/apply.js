@@ -55,6 +55,8 @@ function onSubmit() {
     
     }
 
+    expiryDate = new Date(expiryDate);
+    expiryDate = Math.round(expiryDate);
     // Debugging: Whether Inputting works
     console.log("DEBUG: Create Job Listing");
     console.log(courseCode);
@@ -69,6 +71,7 @@ function onSubmit() {
     console.log(noOfClass);
     console.log(classTimes);
 
+    
     
     // Add a new document with a generated id.
     db.collection("jobListing").add({
@@ -92,7 +95,7 @@ function onSubmit() {
       console.error("Error adding document: ", error);
       window.alert(error, "\nSomething went wrong. Try again!");
     });
-
+    
     
 }
 

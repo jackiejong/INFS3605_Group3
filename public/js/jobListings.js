@@ -88,6 +88,8 @@ function onLoad() {
             viewOrEditButton.setAttribute('class', 'btn btn-primary');
             viewOrEditButton.setAttribute('type','button');
             viewOrEditButton.innerHTML = "View";
+
+            
             var theLink = 'onClick("' + 'jobListingDetail_static.html?' + doc.id + '")';
             viewOrEditButton.setAttribute("onclick",theLink);
 

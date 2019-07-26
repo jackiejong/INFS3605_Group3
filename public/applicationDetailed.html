@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
@@ -56,17 +56,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="info">
-                                    <h3>Ben Samuels</h3>
+                                    <h3 id="applicantName"></h3>
                                     <div class="price">
-                                        <h3>Application for INFS2605</h3>
+                                        <h3 id="applicationName"></h3>
                                     </div><button class="btn btn-primary bg-success border-success" type="button">Accept</button><button class="btn btn-primary bg-danger border-danger" type="button">Reject</button>
                                     <div class="summary"></div>
                                 </div>
                             </div>
                             <div class="col">
-                                <p><strong>Prior experience</strong><input class="form-control-plaintext" type="text" value="Plain Text Value" readonly=""></p>
-                                <p><strong>Skills</strong><input class="form-control-plaintext" type="text" value="Plain Text Value" readonly=""></p>
-                                <p><strong>Availabilities</strong><input class="form-control-plaintext" type="text" value="Plain Text Value" readonly=""></p>
+                                <p><strong>Prior experience</strong><input id="applicantExperience" class="form-control-plaintext" type="text"  readonly></p>
+                                <p><strong>Skills</strong><input id="applicantSkills" class="form-control-plaintext" type="text"  readonly></p>
+                                <p><strong>Availabilities</strong><textarea id="applicantAvailabilities" class="form-control-plaintext" type="text" readonly></textarea></p>
                                 <p><strong>Attachments</strong></p><a href="#">Resume</a><a href="#">&nbsp; Cover Letter</a><a href="#">&nbsp; Academic Transcript</a></div>
                         </div>
                     </div>
@@ -126,6 +126,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use 
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+            authDomain: "infs3605group3.firebaseapp.com",
+            databaseURL: "https://infs3605group3.firebaseio.com",
+            projectId: "infs3605group3",
+            storageBucket: "infs3605group3.appspot.com",
+            messagingSenderId: "757094635140",
+            appId: "1:757094635140:web:23089838804a1db6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="../js/applicationDetailed.js"></script>
 </body>
 
 </html>

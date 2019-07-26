@@ -1,13 +1,3 @@
-/*
-var db = firebase.firestore();
-db.collection("applicant").get().then(function(querySnapshot) {
-  querySnapshot.forEach(function(doc) {
-    console.log(doc.id, " => ", doc.data());
-  });
-});
-
-*/
-
 function logout() {
     firebase.auth().signOut().then(function() {
         console.log('A user successfully logged out');

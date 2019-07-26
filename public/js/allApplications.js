@@ -4,13 +4,15 @@ function onLoad() {
 
 
     var arrHead = new Array();
-    arrHead = ['Course Code', 'Role', 'Responsibilities', 'Skill Requirement','Experience Requirement','WAM Requirement',''];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
+    arrHead = ['Applicant','Role', 'Course Code', 'Availabilities','Status',""];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
 
     // FIRST CREATE A TABLE STRUCTURE BY ADDING A FEW HEADERS AND
     // ADD THE TABLE TO YOUR WEB PAGE.
     
         var empTable = document.createElement('table');
-        empTable.setAttribute('id', 'empTable');            // SET THE TABLE ID.
+        empTable.setAttribute('id', 'empTable'); 
+        empTable.setAttribute('class', 'table table-striped table-hover');
+        empTable.setAttribute("style","padding-top: 100px");           // SET THE TABLE ID.
 
         var tr = empTable.insertRow(-1);
 
@@ -19,44 +21,70 @@ function onLoad() {
             th.innerHTML = arrHead[h];
             tr.appendChild(th);
         }
-
         
-        
-        db.collection("jobListing").get().then((querySnapshot) => {
+        db.collection("jobApplication").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
                     var tr = empTable.insertRow(-1);
+                    var applicantCol = document.createElement('td');
+                    var roleCol = document.createElement('td');
+                    var courseCodeCol = document.createElement('td');
+                    var sessionTimesCol = document.createElement('td');
+                    var statusCol = document.createElement('td');
 
-                    var td = document.createElement('td');
-                    td.innerHTML = doc.data().courseCode;
-                    tr.appendChild(td);
+                    var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
+                    var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+                    console.log(`${doc.id} => ${doc.data()}`);
+                    
+                    
 
-                    td = document.createElement('td');
-                    td.innerHTML = doc.data().role;
-                    tr.appendChild(td);
 
-                    td = document.createElement('td');
-                    td.innerHTML = doc.data().responsibilities;
-                    tr.appendChild(td);
+                    jobListingRef.get().then(function(doc) {
+                        if (doc.exists) {
+                            console.log("jobListing data:", doc.data());
+                            roleCol.innerHTML = doc.data().role;
+                            courseCodeCol.innerHTML = doc.data().courseCode;
+                         
+                            
+                            
 
-                    td = document.createElement('td');
-                    td.innerHTML = doc.data().skillsRequirement;
-                    tr.appendChild(td);
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                    }).catch(function(error) {
+                        console.log("Error getting document:", error);
+                    });
 
-                    td = document.createElement('td');
-                    td.innerHTML = doc.data().experienceRequirement;
-                    tr.appendChild(td);
+                    applicantRef.get().then(function(doc) {
+                        if (doc.exists) {
+                            console.log("applicant data:", doc.data());
+                            applicantCol.innerHTML = doc.data().name;
 
-                    td = document.createElement('td');
-                    td.innerHTML = doc.data().marksRequirement;
-                    tr.appendChild(td);
+                            
 
+
+                            
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                    }).catch(function(error) {
+                        console.log("Error getting document:", error);
+                    });
+
+                    var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
+                    sessionTimesCol.innerHTML = classTimes;
+                  
+                    tr.appendChild(applicantCol);
+                    tr.appendChild(roleCol);
+                    tr.appendChild(courseCodeCol);
+                    tr.appendChild(sessionTimesCol);
+                    tr.appendChild(statusCol);
                     
                     td = document.createElement('td');
                     var button = document.createElement('button');
-                    console.log(typeof doc.id);
-                    var theLink = 'onClick("' + 'jobListingDetail.html?' + doc.id + '")';
-                    console.log(typeof theLink);
+        
+                    var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
                     button.setAttribute("onclick",theLink);
                     button.setAttribute("class","btn btn-dark");
                     button.innerHTML = "View Details";
@@ -71,4 +99,40 @@ function onLoad() {
 
         div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
     
+}
+
+
+function onClick(something) {
+    //window.alert(something);
+    window.location.href=something;
+}
+
+function classTimesConverter(inputDate) {
+    var days = ['Monday', 'Tuesday','Wednesday','Thursday','Friday'];
+    var fromHours = Math.floor((inputDate % 100000000) / 10000);
+    var toHours = (inputDate % 10000);
+    var day = days[Math.floor(inputDate / 100000000) - 1];
+
+    
+    console.log(fromHours, toHours, day);
+
+    if (fromHours == 900) {
+        return day + " " + "0" + fromHours + " - " + toHours;
+      
+    } else {
+        return day + " "  + fromHours + " - " + toHours;
+       
     }
+}
+
+function prepareClassTimes (inputClassTimes) {
+    var classTimesConverted = [];
+    for (var i = 0; i <inputClassTimes.length; i ++) {
+        classTimesConverted[i] = classTimesConverter(inputClassTimes[i]);
+    }
+    console.log(classTimesConverted);
+    var sessionTimesCol = classTimesConverted.join("<br>") ;
+    return sessionTimesCol;
+}
+
+
