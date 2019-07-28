@@ -2,17 +2,28 @@ html, body {
     height: 100%;
     width: 100%;
   }
+Main {
+Min-height: 800px;
+}
   #navDropdown{
     padding: 8px;
     height: auto;
     width: auto;
-  }
-  main{
-    min-height: 800px
   }
   #navDropdownText{
     padding: 8px;
     height: 34.6667px;
     width: auto;
     filter: hue-rotate(0deg) sepia(0%);
+  }
+  #pageHeading{
+      margin: -40px 60px;
+      height: 79px;
+      width: 747px;
+  }
+  #pageHeadingDescription{
+    margin: -40px 60px;
+    width: 700px;
+    height: 56px;
+    font-size: 14px;
   }
