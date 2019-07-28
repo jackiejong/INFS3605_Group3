@@ -33,6 +33,7 @@ function onLoad() {
 
                     var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
                     var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+                    
                     console.log(`${doc.id} => ${doc.data()}`);
                     
                     
@@ -74,6 +75,7 @@ function onLoad() {
 
                     var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
                     sessionTimesCol.innerHTML = classTimes;
+                    statusCol.innerHTML = doc.data().status;
                   
                     tr.appendChild(applicantCol);
                     tr.appendChild(roleCol);

@@ -1,28 +1,46 @@
 var db = firebase.firestore();
-function onLoad() {
-    var queryString = decodeURIComponent(window.location.search);
-    queryString = queryString.substring(1);
-    console.log("Document ID ", queryString);
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+console.log("Document ID ", queryString);
+var docRef = db.collection("jobApplication").doc(queryString);
+var subject = "?subject=Interview%20for%20";
+var body = "&body=Hi%20";
+var LiC = "";
 
+
+function onLoad() {
+    
     var applicantName = document.getElementById("applicantName");
     var applicationName = document.getElementById('applicationName');
     var applicantExperience = document.getElementById('applicantExperience');
     var applicantSkills = document.getElementById('applicantSkills');
     var applicantAvailabilties = document.getElementById('applicantAvailabilities');
-
-    var docRef = db.collection("jobApplication").doc(queryString);
-    
+    var applicantStatus = document.getElementById('applicantStatus');
+    var buttonsDiv = document.getElementById("buttons");
 
     docRef.get().then(function(doc) {
         if (doc.exists) {
             var jobListingRef = db.collection("jobListing").doc(doc.data().jobListing);
             var applicantRef = db.collection("applicant").doc(doc.data().applicant);
-            applicantAvailabilties.value = prepareClassTimes(doc.data().applicantAvailabilities);
+            var lecturerRef = db.collection("lecturer").doc(doc.data().lecturer);
+            
+            
+            applicantAvailabilties.innerHTML = prepareClassTimes(doc.data().applicantAvailabilities,"<br>");
+            applicantStatus.innerHTML = "Status: " + doc.data().status;
+
+            createButtons(doc.data().status, buttonsDiv);
+          
             applicantRef.get().then(function(doc) {
                 if (doc.exists) {
                     applicantName.innerHTML = doc.data().name;
                     applicantExperience.value = doc.data().experience;
                     applicantSkills.value = doc.data().skills;
+
+
+                    subject = "mailto:" + doc.data().email + subject;
+                    var name = doc.data().name.split(' ');
+                    body += name[0];
+                    body += ',%0A%0ACongratulations!%20You%20have%20been%20offered%20an%20interview%20for%20';
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -31,10 +49,20 @@ function onLoad() {
                 console.log("Error getting document:", error);
             });
 
+
             jobListingRef.get().then(function(doc) {
                 if (doc.exists) {
                     applicationName.innerHTML = doc.data().role + " for " + doc.data().courseCode;
+                    subject += doc.data().courseCode;
+                    subject += "%20";
+                    subject += doc.data().role + "%20role";
                     
+
+                    body += doc.data().courseCode;
+                    body += "%20";
+                    body += doc.data().role;
+                    body += "%20role,%20which%20you%20applied%20for%20via%20TOM.%20Below%20are%20the%20times%20I%20will%20be%20available%20for%20an%20interview,%20please%20reply%20back%20with%20your%20preferred%20interview%20slot.%0A%0A";
+                    ctrl = true;
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -42,6 +70,24 @@ function onLoad() {
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });
+
+            
+            lecturerRef.get().then(function(doc) {
+                console.log("LIMA");
+                if (doc.exists) {
+                    body += prepareInterviewTimes(doc.data().myAvailabilities,"%0A");
+                    body += "%0A%0AWarm%20regards,%0A%0A";
+                    body += doc.data().name;
+
+                    var lectRefId = doc.data().id;
+                    LiC += lectRefId.toString();
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+                ctrl = false;
+            });
+            
             
         } else {
             // doc.data() will be undefined in this case
@@ -70,12 +116,141 @@ function classTimesConverter(inputDate) {
     }
 }
 
-function prepareClassTimes (inputClassTimes) {
+function prepareClassTimes (inputClassTimes, joiner) {
     var classTimesConverted = [];
     for (var i = 0; i <inputClassTimes.length; i ++) {
         classTimesConverted[i] = classTimesConverter(inputClassTimes[i]);
     }
     console.log(classTimesConverted);
-    var sessionTimesCol = classTimesConverted.join("\n");
+    classTimesConverted.sort();
+    var sessionTimesCol = classTimesConverted.join(joiner);
+    return sessionTimesCol;
+}
+
+async function createButtons (status, div) {
+    if (status == 'Pending' || status == 'pending') {
+        var acceptOffer = document.createElement('button');
+        acceptOffer.setAttribute('class','btn btn-primary bg-success border-success');
+        acceptOffer.setAttribute('type','button');
+        acceptOffer.innerHTML = 'Offer Interview';
+        acceptOffer.setAttribute('onclick', 'offerInterview()');
+
+        var reject = document.createElement('button');
+        reject.setAttribute('class','btn btn-primary bg-danger border-danger');
+        reject.setAttribute('type', 'button');
+        reject.innerHTML = 'Reject';
+        reject.setAttribute('onclick', 'reject()');
+        
+        div.appendChild(acceptOffer);
+        div.appendChild(reject);
+    } else if (status == 'Interview Pending') {
+        var mailMyInterviewAvailabilities = document.createElement('button');
+        mailMyInterviewAvailabilities.setAttribute('class', 'btn btn-primary border rounded');
+        mailMyInterviewAvailabilities.setAttribute('type','button');
+        mailMyInterviewAvailabilities.innerHTML = 'Mail My Availabilities';
+        mailMyInterviewAvailabilities.setAttribute('onclick', 'sendEmail()');
+
+
+        var br = document.createElement('br');
+
+        var goToMyInterviews = document.createElement('button');
+        goToMyInterviews.setAttribute('class', 'btn btn-primary border rounded');
+        goToMyInterviews.setAttribute('type','button');
+        goToMyInterviews.setAttribute('onclick','window.location.href="myInterviews.html"');
+        goToMyInterviews.innerHTML = "myInterviews";
+
+        div.appendChild(mailMyInterviewAvailabilities);
+        div.appendChild(br);
+        div.appendChild(goToMyInterviews);
+    }
+}
+
+function sendEmail() {
+    console.log("ENAM");
+    console.log(subject + body);
+    window.location.href = subject + body;
+}
+
+
+
+/*
+function prepareMailTo() {
+    
+        docRef.get().then(function(doc) {
+            
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+            return false;
+        });
+}
+*/
+
+function offerInterview() {
+    /*
+    docRef.update({
+        status: 'Interview Pending'
+    }).catch(function(error) {
+        console.error("Error updating document: ", error);
+    });
+*/
+
+    docRef.get().then(function(doc) {
+        db.collection("interview").add({
+            applicant:doc.data().applicant,
+            lecturer:LiC,
+            interviewTime:0,
+            interviewLocation:"",
+            status:'Interview Pending'
+                       
+        }).then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            window.location.reload();
+        }).catch(function(error) {
+            console.error("Error adding document: ", error);
+            window.alert(error, "\nSomething went wrong. Try again!");
+        });
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+        return false;
+    });
+                            
+    
+}
+
+function reject() {
+    docRef.update({
+        status: 'Rejected'
+    }).catch(function(error) {
+        console.error("Error updating document: ", error);
+    }).finally(function() {
+        window.location.assign('allApplications.html');
+    });
+}
+
+
+function interviewTimesConverter (inputInterviewTimes, joiner) {
+    var days = ['Monday', 'Tuesday','Wednesday','Thursday','Friday'];
+    var day = days[Math.floor(inputInterviewTimes / 10000) - 1];
+    var hour = inputInterviewTimes % 10000;
+    
+    console.log(day, hour);
+
+    if (hour == 900) {
+        return day + joiner + "0" + hour;
+      
+    } else {
+        return day + joiner  + hour;
+    }
+
+    
+}
+
+function prepareInterviewTimes (inputInterviewTimes, joiner) {
+    var interviewTimesConverted = [];
+    for (var i = 0; i <inputInterviewTimes.length; i ++) {
+        interviewTimesConverted[i] = interviewTimesConverter(inputInterviewTimes[i], "%20");
+    }
+    console.log(interviewTimesConverted);
+    var sessionTimesCol = interviewTimesConverted.join(joiner);
     return sessionTimesCol;
 }

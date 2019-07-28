@@ -59,7 +59,7 @@ function updateListing(){
         expiryDate: expiryDate.value
 
     }).catch(function(error) {
-        console.error("Error removing document: ", error);
+        console.error("Error updating document: ", error);
     });
 
     window.alert("yas");
