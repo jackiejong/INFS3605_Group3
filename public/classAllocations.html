@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Class Allocation</title>
     <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
-    <link rel="stylesheet" href="assets/css/classAllocations.css">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
@@ -47,8 +47,8 @@
         <section class="clean-block clean-pricing dark" style="height: 800px;">
             <div class="container">
                 <div class="block-heading" style="height: 87px;">
-                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;width: 747px;"><strong>Interviews</strong></h2>
-                    <p class="text-left" style="margin: -40px 60px;width: 700px;height: 56px;font-size: 14px;">View of all scheduled interviews with applicants</p>
+                    <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;width: 747px;"><strong>Class Allocations</strong></h2>
+                    <p class="text-left" style="margin: -40px 60px;width: 700px;height: 56px;font-size: 14px;">Allocate succesful applicants to respective classes</p>
                 </div>
                 <div class="row">
                     <div class="col" style="height: 700px;">
@@ -59,50 +59,10 @@
                             <div class="col"><img class="d-block" src="assets/img/search.png" style="height: 17px;margin: -32px 690px;margin-top: -4px;"><input class="border rounded d-inline-block" type="search" style="margin: 0px 720px;margin-top: 12px;"></div>
                             <div class="heading"
                                 style="height: 43px;">
-                                <h3 class="text-left" style="height: 3px;">All Interviews</h3>
+                                <h3 class="text-left" style="height: 3px;">Class Allocations</h3>
                             </div>
                             <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Session Number</th>
-                                            <th>Session Details</th>
-                                            <th style="width: 298px;">Applicant</th>
-                                            <th style="width: 102px;">Notify</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Applicant 1</td>
-                                            <td>Monday 1pm</td>
-                                            <td><select class="custom-select" name="Applicant"><optgroup label="Applicant"><option value="Applicant 112" selected="">Applicant 1</option><option value="Applicant 2">Applicant 2</option><option value="Applicant 4">Applicant 3</option><option value="Applicant 5">Applicant 5</option></optgroup></select></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 2</td>
-                                            <td>Monday 4pm</td>
-                                            <td><select class="custom-select" name="Applicant"><optgroup label="Applicant"><option value="Applicant 112" selected="">Applicant 1</option><option value="Applicant 2">Applicant 2</option><option value="Applicant 4">Applicant 3</option><option value="Applicant 5">Applicant 5</option></optgroup></select></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 3</td>
-                                            <td>Tuesday 12pm</td>
-                                            <td><select class="custom-select" name="Applicant"><optgroup label="Applicant"><option value="Applicant 112" selected="">Applicant 1</option><option value="Applicant 2">Applicant 2</option><option value="Applicant 4">Applicant 3</option><option value="Applicant 5">Applicant 5</option></optgroup></select></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 4</td>
-                                            <td>Wednesday 5.30pm</td>
-                                            <td><select class="custom-select" name="Applicant"><optgroup label="Applicant"><option value="Applicant 112" selected="">Applicant 1</option><option value="Applicant 2">Applicant 2</option><option value="Applicant 4">Applicant 3</option><option value="Applicant 5">Applicant 5</option></optgroup></select></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 5</td>
-                                            <td>Wednesday 6pm</td>
-                                            <td><select class="custom-select" name="Applicant"><optgroup label="Applicant"><option value="Applicant 112" selected="">Applicant 1</option><option value="Applicant 2">Applicant 2</option><option value="Applicant 4">Applicant 3</option><option value="Applicant 5">Applicant 5</option></optgroup></select></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                    </tbody>
+                                <table class="insertTableHere">
                                 </table>
                             </div>
                         </div>
@@ -141,21 +101,7 @@
  // Initialize Firebase
    firebase.initializeApp(firebaseConfig);
 </script>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------><!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<!--INSERT JAKCY'S JS LINK HEREE ------------------------------------>
-<H1>NOTE: JACKY'S JS FILE STILL NEEDS TO BE INSERTED</H1>
-<script src="../js/INSERT THE RELEVANT JS FILE NAME HERE.js”></script>
+
+<script src='../js/classAllocations.js'></script>
 </body>
 </html>

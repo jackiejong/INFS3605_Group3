@@ -98,6 +98,9 @@ function onLoad() {
         });
 
         var div = document.getElementById('insertTableHere');
+        div.setAttribute('class','clean-pricing-item');
+        div.setAttribute('style','width: 1200px; margin:auto; height:fit-content; overflow:scroll; text-align: center;');
+        
 
         div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
     
