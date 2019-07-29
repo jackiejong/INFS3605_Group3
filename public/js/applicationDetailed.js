@@ -7,6 +7,10 @@ var email = "mailto:";
 var subject = "?subject=Interview%20for%20";
 var body = "&body=Hi%20";
 var LiC = "";
+var applicantNameGlobal;
+var applicantAvailabilitiesGlobal;
+var jobListingGlobal;
+
 
 
 function onLoad() {
@@ -24,8 +28,9 @@ function onLoad() {
             var jobListingRef = db.collection("jobListing").doc(doc.data().jobListing);
             var applicantRef = db.collection("applicant").doc(doc.data().applicant);
             var lecturerRef = db.collection("lecturer").doc(doc.data().lecturer);
-            
-            
+
+            jobListingGlobal = doc.data().jobListing;
+            applicantAvailabilitiesGlobal = doc.data().applicantAvailabilities;
             applicantAvailabilties.innerHTML = prepareClassTimes(doc.data().applicantAvailabilities,"<br>");
             applicantStatus.innerHTML = "Status: " + doc.data().status;
 
@@ -34,6 +39,7 @@ function onLoad() {
             applicantRef.get().then(function(doc) {
                 if (doc.exists) {
                     applicantName.innerHTML = doc.data().name;
+                    applicantNameGlobal = doc.data().name;
                     applicantExperience.value = doc.data().experience;
                     applicantSkills.value = doc.data().skills;
 
@@ -76,6 +82,7 @@ function onLoad() {
             lecturerRef.get().then(function(doc) {
                 console.log("LIMA");
                 if (doc.exists) {
+                    
                     body += prepareInterviewTimes(doc.data().myAvailabilities,"%0A");
                     body += "%0A%0AWarm%20regards,%0A%0A";
                     body += doc.data().name;
@@ -210,13 +217,32 @@ function sendEmail() {
 }
 
 function accept() {
+
     docRef.update({
         status: 'Accepted - Allocate Class'
     }).then(function() {
-        window.location.reload();
+
+        db.collection("accepted").doc(queryString).set({
+            applicantName:applicantNameGlobal,
+            applicantAvailabilities:applicantAvailabilitiesGlobal,
+            jobListing:jobListingGlobal,
+            jobApplication:queryString
+        })
+        .then(function() {
+            console.log("Document successfully written!"); 
+            window.location.reload();       
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+        
     }).catch(function(error) {
         console.error("Error updating document: ", error);
     });
+
+    
+
+
 }
 
 
