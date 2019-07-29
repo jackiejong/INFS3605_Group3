@@ -56,20 +56,6 @@ function deleteListing(){
 
 }
 
-function updateListing(){
-
-    db.collection("jobListing").doc(queryString).update({
-
-        courseName: courseName.value
-
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
-
-    window.alert("yas");
-
-}
-
 function timeStampConverter(unix_timestamp) {
     console.log(unix_timestamp);
     // Create a new JavaScript Date object based on the timestamp

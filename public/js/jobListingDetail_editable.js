@@ -58,13 +58,15 @@ function updateListing(){
         experienceRequirement:experienceRequirement.value,
         expiryDate: expiryDate.value
 
+    }).then(function() {
+        window.alert("yas");
+        var currentPage = 'jobListingDetail_static.html?' + queryString ;
+         window.location.assign(currentPage);
     }).catch(function(error) {
         console.error("Error updating document: ", error);
     });
 
-    window.alert("yas");
-    var currentPage = 'jobListingDetail_static.html?' + queryString ;
-    window.location.assign(currentPage);
+    
 
 
 
