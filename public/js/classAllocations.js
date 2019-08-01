@@ -1,5 +1,13 @@
 var db = firebase.firestore();
+
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+console.log("Document ID ", queryString);
+console.log(typeof queryString);
+
+
 var divDropdown = document.getElementById('insertDropdownHere');
+var divButtonDropdown = document.getElementById('insertButtonDropdownHere');
 var divTable = document.getElementById('insertTableHere');
 var dictionary = {};
 
@@ -9,16 +17,28 @@ function onLoad() {
     // Select
     createDict();
     var select = document.createElement('select');
+    select.setAttribute('id', 'courseFilter');
+    select.setAttribute('class', 'form-control');
     var option = document.createElement('option');
     option.value = 0;
     option.selected = true;
+    option.disabled = null;
+    option.innerHTML = "Filter By Course"
     select.appendChild(option);
+
+    var submitFilterButton = document.createElement('button');
+    submitFilterButton.innerHTML = "Go";
+    submitFilterButton.setAttribute('class', 'btn btn-secondary');
+    submitFilterButton.setAttribute('onclick','submitFilter()');
+
+    
     
     // Table
     var arrayHeading = ['Course Code','Role','Class Times', 'Tutor'];
     var table = document.createElement('table');
     table.setAttribute('id', 'empTable'); 
     table.setAttribute('class', 'table table-striped table-hover');
+    table.setAttribute('style','margin:auto;')
     
 
     var rowHeading = table.insertRow(-1);
@@ -41,33 +61,61 @@ function onLoad() {
                     
 
                     var option = document.createElement('option');
+                    
                     option.value = doc.data().courseCode;
                     option.innerHTML = doc.data().courseCode;
                     select.appendChild(option);
+                    
+                    if (queryString == "" || queryString == "0") {
+                        for (var i = 0; i < doc.data().classTimes.length; i ++) {
+                            console.log("========================EACH ROW====================");
+                            console.log("STEP ", i);
+                            var tr = table.insertRow(-1);   
+                            var selectTutor = document.createElement('select');
 
-                                     
-                    for (var i = 0; i < doc.data().classTimes.length; i ++) {
-                        console.log("========================EACH ROW====================");
-                        console.log("STEP ", i);
-                        var tr = table.insertRow(-1);   
-                        var selectTutor = document.createElement('select');
+                            var courseCodeCol = document.createElement('td');
+                            var roleCol = document.createElement('td');
+                            var classTimeCol = document.createElement('td');
+                            var tutorAllocationCol = document.createElement('td');
 
-                        var courseCodeCol = document.createElement('td');
-                        var roleCol = document.createElement('td');
-                        var classTimeCol = document.createElement('td');
-                        var tutorAllocationCol = document.createElement('td');
+                            courseCodeCol.innerHTML = doc.data().courseCode;
+                            roleCol.innerHTML = doc.data().role;
+                            classTimeCol.innerHTML = classTimesConverter(doc.data().classTimes[i]);
+                    
+                            appendOptionsToSelect(doc.id,selectTutor,doc.data().classTimes[i]);
+                            tutorAllocationCol.appendChild(selectTutor);
 
-                        courseCodeCol.innerHTML = doc.data().courseCode;
-                        roleCol.innerHTML = doc.data().role;
-                        classTimeCol.innerHTML = classTimesConverter(doc.data().classTimes[i]);
-                  
-                        appendOptionsToSelect(doc.id,selectTutor,doc.data().classTimes[i]);
-                        tutorAllocationCol.appendChild(selectTutor);
+                            tr.appendChild(courseCodeCol);
+                            tr.appendChild(roleCol);
+                            tr.appendChild(classTimeCol);
+                            tr.appendChild(tutorAllocationCol);
+                        }
+                    } else {
+                        for (var i = 0; i < doc.data().classTimes.length; i ++) {
+                            if(doc.data().courseCode == queryString) {
+                                console.log("========================EACH ROW====================");
+                                console.log("STEP ", i);
+                                var tr = table.insertRow(-1);   
+                                var selectTutor = document.createElement('select');
 
-                        tr.appendChild(courseCodeCol);
-                        tr.appendChild(roleCol);
-                        tr.appendChild(classTimeCol);
-                        tr.appendChild(tutorAllocationCol);
+                                var courseCodeCol = document.createElement('td');
+                                var roleCol = document.createElement('td');
+                                var classTimeCol = document.createElement('td');
+                                var tutorAllocationCol = document.createElement('td');
+
+                                courseCodeCol.innerHTML = doc.data().courseCode;
+                                roleCol.innerHTML = doc.data().role;
+                                classTimeCol.innerHTML = classTimesConverter(doc.data().classTimes[i]);
+                        
+                                appendOptionsToSelect(doc.id,selectTutor,doc.data().classTimes[i]);
+                                tutorAllocationCol.appendChild(selectTutor);
+
+                                tr.appendChild(courseCodeCol);
+                                tr.appendChild(roleCol);
+                                tr.appendChild(classTimeCol);
+                                tr.appendChild(tutorAllocationCol);
+                            }
+                        }
                     }
                              
                 });
@@ -76,6 +124,7 @@ function onLoad() {
             }).finally(function() {
                 console.log("Last Step");
                 divDropdown.appendChild(select);
+                divButtonDropdown.appendChild(submitFilterButton);
                 divTable.appendChild(table);
                 console.log(dictionary);
                 
@@ -167,3 +216,8 @@ function classTimesConverter(inputDate) {
     }
 }
 
+function submitFilter() {
+    var selectValue = document.getElementById('courseFilter').value;
+    var theLink = 'classAllocations.html?' + selectValue;
+    window.location.assign(theLink);
+}
