@@ -38,7 +38,7 @@ function login(){
         }
         
         window.location.reload();
-        console.log(error);
+        
         
     });
 

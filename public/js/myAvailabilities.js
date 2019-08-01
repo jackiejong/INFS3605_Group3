@@ -71,6 +71,9 @@ function onSubmit() {
 
             console.log(setWithMerge);
             console.log(myAvailabilities);
+        } else {
+            window.alert('No user signed in');
+            window.location.assign('index.html');
         }
       });
 

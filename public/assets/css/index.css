@@ -20,4 +20,10 @@ html, body {
     max-width: 330px;
     padding: 15px;
     margin: auto;
+    
+}
+
+.page-footer.dark .footer-copyright {
+  background-color: #222425;
+  border-color: #222425;
 }

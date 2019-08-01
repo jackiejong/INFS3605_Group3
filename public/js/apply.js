@@ -1,4 +1,6 @@
 var chosenCourse = "";
+var lecturerName;
+var db = firebase.firestore();
 
 // To Logout
 function logout() {
@@ -12,14 +14,35 @@ function logout() {
 
 
 
-
+function onLoad() {
+    window.alert("WOIIIIIIII");
+    /*
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            db.collection('lecturer').doc(user.uid).get().then(function(doc) {
+              if (doc.exists) {
+                  lecturerName = doc.data().name;
+                  console.log(lecturerName);
+              } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+              }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        } else {
+          window.alert('No user signed in');
+          window.location.assign('index.html');
+    }
+    });
+    */
+}
 
 // Process Taking in Data from User and Transfer it to Database
 // Create a Job Listing Function
 function onSubmit() {
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+  
       var db = firebase.firestore();
   
       // Initialize all variables from the form
@@ -101,10 +124,7 @@ function onSubmit() {
         console.error("Error adding document: ", error);
         window.alert(error, "\nSomething went wrong. Try again!");
       });
-    } else {
-        window.alert('No user signed in');
-    }
-});
+    
     
     
     

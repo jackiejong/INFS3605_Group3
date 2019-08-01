@@ -9,6 +9,7 @@ function onLoad() {
             actuallyCreatingTables(user.uid);
         } else {
             window.alert('No user signed in');
+            window.location.assign('index.html');
         }
     });
     

@@ -49,20 +49,16 @@
     </nav> -->
 
     <main class="page login-page">
-        <section class="clean-block clean-form dark">  
-            <div class="container">
+        <section class="clean-block clean-form dark text-center">  
+            <div class="form-signin">
                 <div class="block-heading">
                     <h2 class="text-info">Log In</h2>
                     <p>Log in to access your account.</p>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control item" type="email" id="inputEmail">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="password" id="inputPassword">
+                    <input class="form-control" type="email" id="inputEmail" placeholder="Email" autofocus required>
+                    <input class="form-control" type="password" id="inputPassword" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <div class="form-check">
@@ -70,13 +66,16 @@
                         <label class="form-check-label" for="checkbox">Remember me</label>
                     </div>
                 </div>
-                    <button class="btn btn-primary btn-block" type="submit" onclick="login()" id="loginButton">Log In</button>
+                    <button class="btn btn-primary" type="submit" onclick="login()" id="loginButton">Log In</button>
                     
-                    <a href="signup.html">Sign Up</a>
-                    <div class="spinner-border" role="status" style="visibility: hidden;" id="spinnerLoading">
-                            <span class="sr-only">Loading...</span>
-                    </div>
                 </div>
+                <div class="spinner-border" role="status" style="visibility: hidden;" id="spinnerLoading">
+                        <span class="sr-only">Loading...</span>
+                </div>
+                <div>
+                    <a href="signup.html">Sign Up</a>
+                </div>
+                
             </div>
         </section>
     </main>

@@ -20,6 +20,7 @@ function onLoad() {
             actuallyCreatingShit(user.uid);
         } else {
             window.alert('No user signed in');
+            window.location.assign('index.html');
         }
     });
     
