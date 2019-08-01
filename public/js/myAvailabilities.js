@@ -76,6 +76,7 @@ function onSubmit() {
 
 
     console.log(myAvailabilities);
+    window.alert('myAvailabilities Submitted');
 }
 
 function onLoad() {

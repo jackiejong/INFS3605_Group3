@@ -54,6 +54,7 @@ function actuallyCreatingCards(userUID) {
         querySnapshot.forEach((doc) => {
 
             if (doc.data().lecturer == userUID) {
+                
                 console.log(`${doc.id} => ${doc.data()}`);
                 var firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'col');
