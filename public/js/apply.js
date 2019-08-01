@@ -26,7 +26,7 @@ function onSubmit() {
     var marksRequirement = document.getElementById("inputMarksRequirement").value;
     var skillsRequirement = document.getElementById("inputSkillsRequirement").value;
     var experienceRequirement = document.getElementById("inputExperienceRequirement").value;
-    var expiryDate = document.getElementById("inputExpiryDate").value;
+    var expiryDate = document.getElementById("inputExpiryDate").value / 1000;
     var noOfClass = document.getElementById("inputNoOfClass").value;
     var classTimes = [];
 

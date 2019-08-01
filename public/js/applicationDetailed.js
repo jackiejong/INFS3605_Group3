@@ -221,21 +221,7 @@ function accept() {
     docRef.update({
         status: 'Accepted - Allocate Class'
     }).then(function() {
-
-        db.collection("accepted").doc(queryString).set({
-            applicantName:applicantNameGlobal,
-            applicantAvailabilities:applicantAvailabilitiesGlobal,
-            jobListing:jobListingGlobal,
-            jobApplication:queryString
-        })
-        .then(function() {
-            console.log("Document successfully written!"); 
-            window.location.reload();       
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
-        
+        window.location.reload();       
     }).catch(function(error) {
         console.error("Error updating document: ", error);
     });

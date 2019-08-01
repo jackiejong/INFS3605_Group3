@@ -1,11 +1,13 @@
 var db = firebase.firestore();
 var divDropdown = document.getElementById('insertDropdownHere');
 var divTable = document.getElementById('insertTableHere');
+var dictionary = {};
 
 
 function onLoad() {
 
     // Select
+    createDict();
     var select = document.createElement('select');
     var option = document.createElement('option');
     option.value = 0;
@@ -58,14 +60,14 @@ function onLoad() {
                         courseCodeCol.innerHTML = doc.data().courseCode;
                         roleCol.innerHTML = doc.data().role;
                         classTimeCol.innerHTML = classTimesConverter(doc.data().classTimes[i]);
-                        
-                        createSelect(doc.data().classTimes[i], doc.id, selectTutor,tutorAllocationCol);
-
+                  
+                        appendOptionsToSelect(doc.id,selectTutor,doc.data().classTimes[i]);
+                        tutorAllocationCol.appendChild(selectTutor);
 
                         tr.appendChild(courseCodeCol);
                         tr.appendChild(roleCol);
                         tr.appendChild(classTimeCol);
-                        //tr.appendChild(tutorAllocationCol);
+                        tr.appendChild(tutorAllocationCol);
                     }
                              
                 });
@@ -75,40 +77,72 @@ function onLoad() {
                 console.log("Last Step");
                 divDropdown.appendChild(select);
                 divTable.appendChild(table);
+                console.log(dictionary);
+                
             });  
         
           } else {
             console.log("no user signed in");
           }
+          
         
     });
+
+    
 }
 
-function createSelect (currClassTime, jobListingID, selectTutor, Col) {
-    
-    db.collection('accepted').get().then((querySnapshot)=> {
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data().jobListing+ " "+ currClassTime);    
-            for (var h = 0; h < doc.data().applicantAvailabilities.length; h ++) {              
-                if (doc.data().applicantAvailabilities[h] == currClassTime && jobListingID == doc.data().jobListing) {
-                    console.log("SAMA");
-                    var optionTutor = document.createElement('option');
-                    optionTutor.value = doc.data().jobApplication;
-                    optionTutor.innerHTML = doc.data().applicantName;
-                    selectTutor.appendChild(optionTutor);
-                    console.log("EACH PERSON HAS " + h + " AVAILABILITIES THAT MATCH");
-                }
-            }
-            
+function createDict () {
+    var i = 1;
+    db.collection('jobApplication').get().then((querySnapshot)=> {
+        querySnapshot.forEach((doc) => {  
+            console.log("-------------------Accepted No " + i + "----------------------");
+
+            if (doc.data().status == "Accepted - Allocate Class") {
+                for (var h = 0; h < doc.data().applicantAvailabilities.length; h ++) {              
+                    var keyDict = doc.id + "?" + doc.data().jobListing + "?" + doc.data().applicantAvailabilities[h] ;
+                    var valueDict = doc.data().applicantName;
+                    dictionary[keyDict] = valueDict;
+                }  
+            }  
+            i ++;
         });
 
     }).catch(function(error) {
         console.log(error);
-    }).then(function() {
-        Col.appendChild(selectTutor);
     });
 }
 
+function appendOptionsToSelect (jobListingID, selectTag, classTime) {
+    var ada = false;
+    for (var key in dictionary) {
+        var keySplits = key.split('?');
+        console.log(keySplits[1] + " == " + keySplits[2], " == ", dictionary[key] );
+        if (keySplits[1] == jobListingID && classTime == keySplits[2]) {
+            var ada = true;
+            var option = document.createElement('option');
+            option.value = classTime;
+            option.innerHTML = dictionary[key];
+            selectTag.appendChild(option);
+        }
+    }
+
+    if (ada == false) {
+        var option = document.createElement('option');
+        option.value = 0;
+        option.innerHTML = "No Candidate";
+        option.selected = true;
+        option.disabled = true;
+        selectTag.appendChild(option);
+    } else {
+        var option = document.createElement('option');
+        option.value = 0;
+        option.innerHTML = "Select Candidate";
+        option.selected = true;
+        option.disabled = true;
+        selectTag.appendChild(option);
+
+    }
+}
 
 
 
