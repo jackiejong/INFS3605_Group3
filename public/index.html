@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
     
     <!--Will need to delete since this is the login page-->
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
@@ -70,8 +70,13 @@
                         <label class="form-check-label" for="checkbox">Remember me</label>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block" type="submit" onclick="login()">Log In</button>
-                <a href="signup.html">Sign Up</a></div>
+                    <button class="btn btn-primary btn-block" type="submit" onclick="login()" id="loginButton">Log In</button>
+                    
+                    <a href="signup.html">Sign Up</a>
+                    <div class="spinner-border" role="status" style="visibility: hidden;" id="spinnerLoading">
+                            <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
