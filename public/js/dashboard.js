@@ -17,6 +17,7 @@ function getCurrentUser() {
         console.log("User UID in string ",userUID);
       } else {
         console.log("no user signed in");
+        window.location.assign('index.html');
       }
     });
 }

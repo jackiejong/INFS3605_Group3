@@ -3,9 +3,14 @@ var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.substring(1);
 console.log("Document ID ", queryString);
 var docRef = db.collection("jobApplication").doc(queryString);
+var email = "mailto:";
 var subject = "?subject=Interview%20for%20";
 var body = "&body=Hi%20";
 var LiC = "";
+var applicantNameGlobal;
+var applicantAvailabilitiesGlobal;
+var jobListingGlobal;
+
 
 
 function onLoad() {
@@ -23,8 +28,9 @@ function onLoad() {
             var jobListingRef = db.collection("jobListing").doc(doc.data().jobListing);
             var applicantRef = db.collection("applicant").doc(doc.data().applicant);
             var lecturerRef = db.collection("lecturer").doc(doc.data().lecturer);
-            
-            
+
+            jobListingGlobal = doc.data().jobListing;
+            applicantAvailabilitiesGlobal = doc.data().applicantAvailabilities;
             applicantAvailabilties.innerHTML = prepareClassTimes(doc.data().applicantAvailabilities,"<br>");
             applicantStatus.innerHTML = "Status: " + doc.data().status;
 
@@ -33,10 +39,11 @@ function onLoad() {
             applicantRef.get().then(function(doc) {
                 if (doc.exists) {
                     applicantName.innerHTML = doc.data().name;
+                    applicantNameGlobal = doc.data().name;
                     applicantExperience.value = doc.data().experience;
                     applicantSkills.value = doc.data().skills;
 
-
+                    email += doc.data().email;
                     subject = "mailto:" + doc.data().email + subject;
                     var name = doc.data().name.split(' ');
                     body += name[0];
@@ -75,12 +82,12 @@ function onLoad() {
             lecturerRef.get().then(function(doc) {
                 console.log("LIMA");
                 if (doc.exists) {
+                    
                     body += prepareInterviewTimes(doc.data().myAvailabilities,"%0A");
                     body += "%0A%0AWarm%20regards,%0A%0A";
                     body += doc.data().name;
 
-                    var lectRefId = doc.data().id;
-                    LiC += lectRefId.toString();
+                    LiC += doc.id;
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -162,7 +169,45 @@ async function createButtons (status, div) {
         div.appendChild(mailMyInterviewAvailabilities);
         div.appendChild(br);
         div.appendChild(goToMyInterviews);
+    } else if (status == 'Interview Completed - Under Review') {
+        var accept = document.createElement('button');
+        accept.setAttribute('class','btn btn-primary bg-success border-success');
+        accept.setAttribute('type','button');
+        accept.innerHTML = 'Accept';
+        accept.setAttribute('onclick', 'accept()');
+
+        var reject = document.createElement('button');
+        reject.setAttribute('class','btn btn-primary bg-danger border-danger');
+        reject.setAttribute('type', 'button');
+        reject.innerHTML = 'Reject';
+        reject.setAttribute('onclick', 'reject()');
+        
+        div.appendChild(accept);
+        div.appendChild(reject);
+    } else if (status == "Accepted - Allocate Class") {
+        var allocateClass = document.createElement('button');
+        allocateClass.setAttribute('class', 'btn btn-secondary');
+        allocateClass.setAttribute('type', 'button');
+        allocateClass.setAttribute('onclick','allocateClass()');
+        allocateClass.innerHTML = "Allocate Class";
+
+        var mailApplicant = document.createElement('button');
+        mailApplicant.setAttribute('class', 'btn btn-secondary');
+        mailApplicant.setAttribute('type','button');
+        mailApplicant.setAttribute('onclick', 'mailApplicant()');
+        mailApplicant.innerHTML = "Mail";
+
+        var br = document.createElement('br');
+        div.appendChild(allocateClass);
+        div.appendChild(br);
+        div.appendChild(mailApplicant);
+
+
     }
+}
+
+function mailApplicant() {
+    window.location.href = email;
 }
 
 function sendEmail() {
@@ -171,49 +216,44 @@ function sendEmail() {
     window.location.href = subject + body;
 }
 
+function accept() {
 
+    docRef.update({
+        status: 'Accepted - Allocate Class'
+    }).then(function() {
+        window.location.reload();       
+    }).catch(function(error) {
+        console.error("Error updating document: ", error);
+    });
 
-/*
-function prepareMailTo() {
     
-        docRef.get().then(function(doc) {
-            
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-            return false;
-        });
+
+
 }
-*/
+
+
+function allocateClass() {
+    window.location.assign('classAllocations.html');
+}
+
+
 
 function offerInterview() {
-    /*
+    
     docRef.update({
         status: 'Interview Pending'
     }).catch(function(error) {
         console.error("Error updating document: ", error);
     });
-*/
 
-    docRef.get().then(function(doc) {
-        db.collection("interview").add({
-            applicant:doc.data().applicant,
-            lecturer:LiC,
-            interviewTime:0,
-            interviewLocation:"",
-            status:'Interview Pending'
-                       
-        }).then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-            window.location.reload();
-        }).catch(function(error) {
-            console.error("Error adding document: ", error);
-            window.alert(error, "\nSomething went wrong. Try again!");
-        });
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-        return false;
+    var setWithMerge = docRef.set({
+        interviewTime:0,
+        interviewLocation:''
+    }, { merge: true }).then(function() {
+        window.location.reload();
     });
-                            
+
+    console.log(setWithMerge);                        
     
 }
 

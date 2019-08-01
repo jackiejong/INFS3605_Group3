@@ -1,4 +1,6 @@
 var chosenCourse = "";
+var lecturerName;
+var db = firebase.firestore();
 
 // To Logout
 function logout() {
@@ -12,89 +14,118 @@ function logout() {
 
 
 
+function onLoad() {
+    window.alert("WOIIIIIIII");
+    /*
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            db.collection('lecturer').doc(user.uid).get().then(function(doc) {
+              if (doc.exists) {
+                  lecturerName = doc.data().name;
+                  console.log(lecturerName);
+              } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+              }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        } else {
+          window.alert('No user signed in');
+          window.location.assign('index.html');
+    }
+    });
+    */
+}
 
 // Process Taking in Data from User and Transfer it to Database
 // Create a Job Listing Function
 function onSubmit() {
-    var db = firebase.firestore();
-    // Initialize all variables from the form
-    var courseCode = document.getElementById("inputCourseCode").value;
-    var courseName = document.getElementById("inputCourseName").value;
-    var courseDescription = document.getElementById("inputCourseDescription").value;
-    var role = document.getElementById("inputRole").value;
-    var responsibilities = document.getElementById("inputResponsibilities").value;
-    var marksRequirement = document.getElementById("inputMarksRequirement").value;
-    var skillsRequirement = document.getElementById("inputSkillsRequirement").value;
-    var experienceRequirement = document.getElementById("inputExperienceRequirement").value;
-    var expiryDate = document.getElementById("inputExpiryDate").value;
-    var noOfClass = document.getElementById("inputNoOfClass").value;
-    var classTimes = [];
 
-    for (var i = 1; i <= noOfClass; i ++) {
-        var dayID = "class" + i + "Day";
-        var fromHourID = "class" + i + "FromHour";
-        var fromMinID = "class" + i + "FromMinutes";
-        var toHourID = "class" + i + "ToHour";
-        var toMinID = "class" + i + "ToMinutes";
-
-        var day = document.getElementById(dayID).value * 100000000;
-        var fromHour = document.getElementById(fromHourID).value * 1000000;
-        var fromMin = document.getElementById(fromMinID).value * 10000;
-        var toHour = document.getElementById(toHourID).value * 100;
-        var toMin = Number(document.getElementById(toMinID).value);
-
-        // Debugging
-        console.log(day);
-        console.log(fromHour);
-        console.log(toHour);
-        console.log(toMin);
-
-        var classTime = day + fromHour + fromMin + toHour + toMin;
-	      classTimes.push(classTime);
-        
+  
+      var db = firebase.firestore();
+  
+      // Initialize all variables from the form
+      var courseCode = document.getElementById("inputCourseCode").value;
+      var courseName = document.getElementById("inputCourseName").value;
+      var courseDescription = document.getElementById("inputCourseDescription").value;
+      var role = document.getElementById("inputRole").value;
+      var responsibilities = document.getElementById("inputResponsibilities").value;
+      var marksRequirement = document.getElementById("inputMarksRequirement").value;
+      var skillsRequirement = document.getElementById("inputSkillsRequirement").value;
+      var experienceRequirement = document.getElementById("inputExperienceRequirement").value;
+      var expiryDate = document.getElementById("inputExpiryDate").value;
+      var noOfClass = document.getElementById("inputNoOfClass").value;
+      var classTimes = [];
+  
+      for (var i = 1; i <= noOfClass; i ++) {
+          var dayID = "class" + i + "Day";
+          var fromHourID = "class" + i + "FromHour";
+          var fromMinID = "class" + i + "FromMinutes";
+          var toHourID = "class" + i + "ToHour";
+          var toMinID = "class" + i + "ToMinutes";
+  
+          var day = document.getElementById(dayID).value * 100000000;
+          var fromHour = document.getElementById(fromHourID).value * 1000000;
+          var fromMin = document.getElementById(fromMinID).value * 10000;
+          var toHour = document.getElementById(toHourID).value * 100;
+          var toMin = Number(document.getElementById(toMinID).value);
+  
+          // Debugging
+          console.log(day);
+          console.log(fromHour);
+          console.log(toHour);
+          console.log(toMin);
+  
+          var classTime = day + fromHour + fromMin + toHour + toMin;
+          classTimes.push(classTime);
+          
+      
+      }
+  
+      expiryDate = new Date(expiryDate);
+      var expiryDateVal = Math.round(expiryDate) / 1000;
+      // Debugging: Whether Inputting works
+      console.log("DEBUG: Create Job Listing");
+      console.log(courseCode);
+      console.log(courseName);
+      console.log(courseDescription);
+      console.log(role);
+      console.log(responsibilities);
+      console.log(marksRequirement);
+      console.log(skillsRequirement);
+      console.log(experienceRequirement);
+      console.log(expiryDateVal);
+      console.log(noOfClass);
+      console.log(classTimes);
+  
+      
+      
+      // Add a new document with a generated id.
+      db.collection("jobListing").add({
+        courseCode:courseCode,
+        courseDescription:courseDescription,
+        courseName:courseName,
+        experienceRequirement:experienceRequirement,
+        expiryDate:expiryDateVal,
+        marksRequirement:marksRequirement,
+        responsibilities:responsibilities,
+        role:role,
+        skillsRequirement:skillsRequirement,
+        noOfClass: noOfClass,
+        classTimes:classTimes,
+        lecturer:user.uid
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        window.location.assign("success.html");
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+        window.alert(error, "\nSomething went wrong. Try again!");
+      });
     
-    }
-
-    expiryDate = new Date(expiryDate);
-    expiryDate = Math.round(expiryDate);
-    // Debugging: Whether Inputting works
-    console.log("DEBUG: Create Job Listing");
-    console.log(courseCode);
-    console.log(courseName);
-    console.log(courseDescription);
-    console.log(role);
-    console.log(responsibilities);
-    console.log(marksRequirement);
-    console.log(skillsRequirement);
-    console.log(experienceRequirement);
-    console.log(expiryDate);
-    console.log(noOfClass);
-    console.log(classTimes);
-
     
-    
-    // Add a new document with a generated id.
-    db.collection("jobListing").add({
-      courseCode:courseCode,
-      courseDescription:courseDescription,
-      courseName:courseName,
-      experienceRequirement:experienceRequirement,
-      expiryDate:expiryDate,
-      marksRequirement:marksRequirement,
-      responsibilities:responsibilities,
-      role:role,
-      skillsRequirement:skillsRequirement,
-      noOfClass: noOfClass,
-      classTimes:classTimes
-    })
-    .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-      window.location.assign("success.html");
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-      window.alert(error, "\nSomething went wrong. Try again!");
-    });
     
     
 }
@@ -344,27 +375,7 @@ function addClassTimes() {
 
 // This Function is not being used right now
 function onLoad() {
-  var db = firebase.firestore();
-  var queryString = decodeURIComponent(window.location.search);
-  var jobListingOverview = document.getElementById("jobListingOverview");
-  queryString = queryString.substring(1);
-  queryString = queryString.split("=");
-  console.log(queryString[1]);
-
-  chosenCourse = queryString[1];
-
-  var docRef = db.collection("course").doc(chosenCourse);
-
-  docRef.get().then(function(doc) {
-    if (doc.exists) {
-        jobListingOverview.innerHTML = doc.data().name;
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-  });
-
-  document.getElementById("application_form_title").innerHTML = chosenCourse;
+    
 }
 
 function logout() {

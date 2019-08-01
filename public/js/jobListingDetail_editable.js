@@ -45,7 +45,10 @@ function onLoad() {
 }
 
 function updateListing(){
+    console.log(expiryDate.value);
+    var expiryDateVal = dateConverter(expiryDate.value);
 
+    
     db.collection("jobListing").doc(queryString).update({
 
         courseName: courseName.value,
@@ -56,18 +59,22 @@ function updateListing(){
         marksRequirement: marksRequirement.value,
         skillsRequirement: skillsRequirement.value,
         experienceRequirement:experienceRequirement.value,
-        expiryDate: expiryDate.value
+        expiryDate: expiryDateVal
 
+    }).then(function() {    
+        var currentPage = 'jobListingDetail_static.html?' + queryString ;
+         window.location.assign(currentPage);
     }).catch(function(error) {
         console.error("Error updating document: ", error);
     });
+    
+}
 
-    window.alert("yas");
-    var currentPage = 'jobListingDetail_static.html?' + queryString ;
-    window.location.assign(currentPage);
+function dateConverter(inputDate) {
+    var date = new Date(inputDate) / 1000;
 
-
-
+    console.log(date);
+    return date;
 }
 
 function timeStampConverter(unix_timestamp) {

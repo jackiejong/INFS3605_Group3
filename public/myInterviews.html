@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col" style="height: 700px;">
-                        <div class="clean-pricing-item" style="width: 1000px;margin: 0px 60px;height: 500px;">
+                        <div class="clean-pricing-item" style="width: 1100px; margin: auto; height: 500px;">
                             <div class="row text-right">
                                 <div class="col" style="margin: 0px 0px;margin-top: -6px;height: 40px;"><select class="border rounded" name="Filter"><option value="Name">Name</option><option value="Interview Time">Interview Time</option><option value="Accepted">Accepted</option><option value="Rejected">Rejected</option><option value="" selected="">Filter</option></select></div>
                             </div>
@@ -60,56 +60,7 @@
                                 <h3 class="text-left" style="height: 3px;">All Interviews</h3>
                             </div>
                             <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Applicant Name</th>
-                                            <th>Scheduled Interview Time</th>
-                                            <th style="width: 106px;">Accepted</th>
-                                            <th style="width: 106px;">Rejected</th>
-                                            <th style="width: 100px;"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Applicant 1</td>
-                                            <td>Monday 1pm</td>
-                                            <td><input type="checkbox"></td>
-                                            <td>
-                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"></label></div>
-                                            </td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 2</td>
-                                            <td>Monday 4pm</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 3</td>
-                                            <td>Tuesday 12pm</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 4</td>
-                                            <td>Wednesday 5.30pm</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Applicant 5</td>
-                                            <td>Wednesday 6pm</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                            <td><button class="btn btn-primary bg-white border rounded" type="button" style="background-color: rgb(87,169,251);color: rgb(124,132,140);">Email</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div id="insertTableHere"></div>
                             </div>
                         </div>
                     </div>
@@ -147,8 +98,8 @@
          // Initialize Firebase
            firebase.initializeApp(firebaseConfig);
         </script>
-   <h1>JS LINK NEEDED</h1>
-        <script src="../js/INSERT THE RELEVANT JS FILE NAME HERE.js”></script>
+
+        <script src="../js/myInterviews.js"></script>
 
 </body>
 

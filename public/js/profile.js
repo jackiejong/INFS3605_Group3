@@ -35,6 +35,7 @@ function getCurrentUser() {
                   });
               } else {
                 console.log("no user signed in");
+                window.location.assign('index.html');
               }
             }
           });
