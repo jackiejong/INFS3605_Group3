@@ -8,6 +8,9 @@ html, body {
     height: auto;
     width: auto;
   }
+  main{
+    min-height: 800px
+  }
   #navDropdownText{
     padding: 8px;
     height: auto;
