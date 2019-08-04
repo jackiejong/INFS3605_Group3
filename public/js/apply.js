@@ -1,27 +1,15 @@
 var chosenCourse = "";
 var lecturerName;
+var lecturerID;
 var db = firebase.firestore();
 
-// To Logout
-function logout() {
-    firebase.auth().signOut().then(function() {
-        console.log('A user successfully logged out');
-        window.location.assign("index.html");
-      }).catch(function(error) {
-        window.alert('Something happened!');
-      });
-}
-
-
-
 function onLoad() {
-    
-    
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             db.collection('lecturer').doc(user.uid).get().then(function(doc) {
               if (doc.exists) {
                   lecturerName = doc.data().name;
+                  lecturerID = doc.id;
                   console.log(lecturerName);
               } else {
                   // doc.data() will be undefined in this case
@@ -35,8 +23,6 @@ function onLoad() {
           window.location.assign('index.html');
     }
     });
-    
-    
 }
 
 // Process Taking in Data from User and Transfer it to Database
@@ -114,7 +100,9 @@ function onSubmit() {
         role:role,
         skillsRequirement:skillsRequirement,
         noOfClass: noOfClass,
-        classTimes:classTimes
+        classTimes:classTimes,
+        lecturer:lecturerID,
+        lecturerName:lecturerName
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -369,14 +357,6 @@ function addClassTimes() {
     // div.appendChild(heading);
 }
 
-
-
-
-
-// This Function is not being used right now
-function onLoad() {
-    
-}
 
 function logout() {
   firebase.auth().signOut().then(function() {

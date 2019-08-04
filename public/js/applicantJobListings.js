@@ -1,22 +1,38 @@
 var db = firebase.firestore();
+var appliedJobs=[];
 
 function onLoad() {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-            actuallyCreatingCards(user.uid);
+            getAppliedJobs(user.uid);
+            //actuallyCreatingCards(user.uid);
         } else {
             window.alert('No user signed in');
             window.location.assign('index.html');
         }
     });
+}
 
-
-
+function getAppliedJobs(userUID) {
+    db.collection('applicant').doc(userUID).get().then(function(doc) {
+        if (doc.exists) {
+            appliedJobs = doc.data().appliedJobs;
+        
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).then(function() {
+        actuallyCreatingCards(userUID);
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 }
 
 function actuallyCreatingCards(userUID) {
+    console.log(appliedJobs);
     var mainTag = document.createElement('main');
     mainTag.setAttribute('class','page pricing-table-page');
 
@@ -29,9 +45,10 @@ function actuallyCreatingCards(userUID) {
 
     var theTitle = document.createElement('h2');
     theTitle.setAttribute('class','text-left text-info');
-    theTitle.setAttribute('style',"margin: -40px 60px;height: 79px;");
+    theTitle.setAttribute('style',"margin: -40px 60px; height: 79px; ");
 
     var strongTitle = document.createElement('strong');
+    strongTitle.setAttribute('style','color: rgb(255,193,7);');
     strongTitle.innerHTML = "All Job Listings";
 
     var titleDesc = document.createElement('p');
@@ -61,7 +78,7 @@ function actuallyCreatingCards(userUID) {
                 firstDiv.setAttribute('style', 'width: 1140px; margin: 0px 25px; height: 260px;');
 
                 var secondDiv = document.createElement('div');
-                secondDiv.setAttribute('class', "clean-pricing-item");
+                secondDiv.setAttribute('class', "clean-pricing-item border-warning");
                 secondDiv.setAttribute('style','width: 1000px;margin: 0px 60px;');
 
                 var thirdDiv = document.createElement('div');
@@ -109,14 +126,28 @@ function actuallyCreatingCards(userUID) {
                 fifthDiv.setAttribute('class','col');
                 fifthDiv.setAttribute('style','width: 1050px;');
 
+                // Edit This 
                 var viewOrEditButton = document.createElement('button');
-                viewOrEditButton.setAttribute('class', 'btn btn-primary');
+                
                 viewOrEditButton.setAttribute('type','button');
-                viewOrEditButton.innerHTML = "View";
+                
+                
+                if(appliedJobs.includes(doc.id)){
+                    var hellooo = appliedJobs.includes(doc.id);
+                    console.log("HELLLOOOOO" , hellooo);
+                    viewOrEditButton.setAttribute('class', 'btn btn-secondary');
+                    viewOrEditButton.innerHTML = "Applied"; 
+                    
+                } else {
+                    viewOrEditButton.setAttribute('class', 'btn btn-warning');
+                    viewOrEditButton.innerHTML = "Apply";
+
+                    var theLink = 'onClick("' + 'applicantApply.html?' + doc.id + '")';
+                    viewOrEditButton.setAttribute("onclick",theLink);
+                }
+                // End of Edit
 
                 
-                var theLink = 'onClick("' + 'jobListingDetail_static.html?' + doc.id + '")';
-                viewOrEditButton.setAttribute("onclick",theLink);
 
                 fifthDiv.appendChild(viewOrEditButton);
                 fourthDiv.appendChild(fifthDiv);
