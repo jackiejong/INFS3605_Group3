@@ -3,6 +3,9 @@ html, body {
     width: 100%;
     overflow:scroll;
   }
+  main{
+    min-height: 800px
+  }
   #navDropdown{
     padding: 8px;
     height: auto;

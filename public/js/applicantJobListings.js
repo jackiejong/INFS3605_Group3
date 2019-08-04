@@ -54,7 +54,6 @@ function actuallyCreatingCards(userUID) {
     db.collection("jobListing").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
 
-            if (doc.data().lecturer == userUID) {
                 
                 console.log(`${doc.id} => ${doc.data()}`);
                 var firstDiv = document.createElement('div');
@@ -89,6 +88,14 @@ function actuallyCreatingCards(userUID) {
                 firstPara.appendChild(strongOne);
                 firstPara.appendChild(dueDate);
 
+                var secondPara = document.createElement('p');
+                secondPara.setAttribute('class','text-right d-block float-right');
+                secondPara.setAttribute('style','font-size: 13px;');
+
+                var strongTwo = document.createElement('em');
+                strongTwo.innerHTML = "Lecturer: ";
+                var lecturerName = document.createElement('em');
+
                 var jobListingDescription = document.createElement('p');
                 jobListingDescription.setAttribute('class','text-left');
                 jobListingDescription.setAttribute('style','eight: 65px;width: 731px;');
@@ -121,7 +128,7 @@ function actuallyCreatingCards(userUID) {
 
                 firstDiv.appendChild(secondDiv);
                 sectionTag.appendChild(firstDiv);
-            }
+            
         });
     });
 

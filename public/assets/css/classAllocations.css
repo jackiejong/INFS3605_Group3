@@ -2,6 +2,9 @@ html, body {
     height: 100%;
     width: 100%;
   }
+Main {
+Min-height: 800px;
+}
   #navDropdown{
     padding: 8px;
     height: auto;
@@ -11,19 +14,16 @@ html, body {
     padding: 8px;
     height: 34.6667px;
     width: auto;
-    color:red;
     filter: hue-rotate(0deg) sepia(0%);
   }
-
-  .form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-    
-}
-
-.page-footer.dark .footer-copyright {
-  background-color: #222425;
-  border-color: #222425;
-}
+  #pageHeading{
+      margin: -40px 60px;
+      height: 79px;
+      width: 747px;
+  }
+  #pageHeadingDescription{
+    margin: -40px 60px;
+    width: 700px;
+    height: 56px;
+    font-size: 14px;
+  }
