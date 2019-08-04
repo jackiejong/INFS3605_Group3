@@ -61,7 +61,7 @@ function actuallyCreatingTables(userUID) {
         var empTable = document.createElement('table');
         empTable.setAttribute('id', 'empTable'); 
         empTable.setAttribute('class', 'table table-striped table-hover');
-        empTable.setAttribute("style","padding-top: 100px");           // SET THE TABLE ID.
+        empTable.setAttribute('style','padding-top: 100px;');           
 
         var tr = empTable.insertRow(-1);
 

@@ -21,3 +21,8 @@ function getCurrentUser() {
       }
     });
 }
+
+function navBarClick(something) {
+  console.log(something);
+  window.location.assign(something);
+}
