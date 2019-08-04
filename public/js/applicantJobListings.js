@@ -5,7 +5,8 @@ function onLoad() {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          // User is signed in.
+          // User is signed in
+        
             getAppliedJobs(user.uid);
             //actuallyCreatingCards(user.uid);
         } else {
