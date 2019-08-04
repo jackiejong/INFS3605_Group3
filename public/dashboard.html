@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard</title>
+    <title>Home</title>
     <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
@@ -12,8 +12,10 @@
 
   <body onload="getCurrentUser()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-      <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
-          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+      <div class="container">
+          <a href="dashboard.html">
+              <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
+         </a>          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
               <span class="sr-only">Toggle navigation</span>
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,15 +44,105 @@
       </div><img src="assets/img/ICON.png" onclick="logout()"></div>
   </nav>
 
-  <main class="page pricing-table-page">
-    <h1>MAIN content here for home page</h1>
-</main>
-<footer class="page-footer dark">
-    <div class="footer-copyright">
-        <p>© 2019 Copyright TOM</p>
-    </div>
-</footer>
-    ---------------------------Footer required------------------------------------------------------    
+  <main class="page testimonials">
+      <section class="clean-block clean-testimonials dark">
+          <div class="container">
+              <div class="block-heading">
+                  <h1 class="text-info">Home</h1>
+              </div>
+              <h2>Applicants to review</h2>
+              <p></p>
+              <div class="row">
+                  <div class="col-lg-4">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>Ben Samuels<br>INFS2605&nbsp;<br></h3>
+                              <h4 class="card-title">Status: Interview pending<br></h4>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">20%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a>
+                              <p class="card-text"></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>Cindy Le<br>INFS1603<br></h3>
+                              <h4 class="card-title">Status: Under review</h4>
+                              <p class="card-text"></p>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 offset-xl-0">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>Johnathan Tran<br>INFS2608<br></h3>
+                              <h4 class="card-title">Status: Allocate class</h4>
+                              <p class="card-text"></p>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                      </div>
+                  </div>
+                  <div class="col"><a class="text-right" href="#">See more &gt;</a></div>
+              </div>
+          </div>
+          <div class="container">
+              <p></p>
+              <p>&nbsp; &nbsp;&nbsp;</p>
+              <h2>Listings expiring soon</h2>
+              <p></p>
+              <div class="row">
+                  <div class="col-lg-4">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>INFS2605<br>Intermediate Business Programming</h3>
+                              <h4 class="card-title">Expiry: 31/08/19<br></h4>
+                              <p class="card-text">No. of applications: 8<br>Tutors accepted: 2/6</p>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a>
+                              <p class="card-text"></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>INFS1603<br>Introduction to Business Databases</h3>
+                              <h4 class="card-title">Expiry: 05/09/19</h4>
+                              <p class="card-text">No. of applications: 6<br>Tutors accepted: 1/7</p>
+                              <p class="card-text"></p>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">15%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 offset-xl-0">
+                      <div class="card clean-testimonial-item border-0 rounded-0">
+                          <div class="card-body">
+                              <h3>INFS2608<br>DB Management &amp; Big Data Infrastructures</h3>
+                              <h4 class="card-title">Expiry: 06/09/19</h4>
+                              <p class="card-text">No. of applications: 3<br>Tutors accepted: 0/5</p>
+                              <p class="card-text"></p>
+                              <div class="progress">
+                                  <div class="progress-bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                      </div>
+                  </div>
+                  <div class="col"><a class="text-right" href="#">See more &gt;</a></div>
+              </div>
+          </div>
+      </section>
+  </main>
+  <footer class="page-footer dark">
+      <div class="footer-copyright">
+          <p>© 2019 Copyright TOM</p>
+      </div>
+  </footer>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/TOM_baselineJS.js"></script>
