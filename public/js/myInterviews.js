@@ -2,84 +2,21 @@ var db = firebase.firestore();
 
 
 function onLoad() {
-    var arrayHeading = ['Applicant', 'Interview Time', 'Interview Location', '',''];
-    var table = document.createElement('table');
-    table.setAttribute('id', 'empTable'); 
-    table.setAttribute('class', 'table table-striped table-hover');
-
-    var rowHeading = table.insertRow(-1);
-    
-    for (var h = 0; h < arrayHeading.length; h ++) {
-        var th = document.createElement('th');
-        th.innerHTML = arrayHeading[h];
-        rowHeading.appendChild(th);
-    }
-
-    db.collection("jobApplication").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-                if (doc.data().status == "Interview Pending") {
-                    var jobAppID = doc.id;
-                    var tr = empTable.insertRow(-1);
-                    var applicantCol = document.createElement('td');
-                    var interviewTimeCol = document.createElement('td');
-                    var interviewLocationCol = document.createElement('td');
-                    var makeDecisionButtonCol = document.createElement('td');
-                    var saveButtonCol = document.createElement('td');
-
-                    if(doc.data().interviewTime == 0) {
-                        createDropDown(doc.id,interviewTimeCol);
-                    } else {
-                        createDropDown(doc.id,interviewTimeCol);
-                    }
-
-                    if (doc.data().interviewLocation == "") {
-                        createTextField(doc.id, interviewLocationCol, false);
-                    } else {
-                        createTextField(doc.id, interviewLocationCol, true);
-                    }
-
-                    createMakeDecisionButton(doc.id, makeDecisionButtonCol);
-                    createSaveButton(doc.id, saveButtonCol);
-                   
-
-                    var lecturerRef = db.collection('jobListing').doc(doc.data().lecturer);
-                    var applicantRef = db.collection('applicant').doc(doc.data().applicant);
-                    
-                    console.log(`${doc.id} => ${doc.data()}`);
-                    
-                
-                    applicantRef.get().then(function(doc) {
-                        if (doc.exists) {
-                            console.log("applicant data:", doc.data());
-                            var a = document.createElement('a');
-                            a.innerHTML = doc.data().name;
-                            a.setAttribute('href', "applicationDetailed.html?" +jobAppID);
-                            applicantCol.appendChild(a);
-                                        
-                        } else {
-                            // doc.data() will be undefined in this case
-                            console.log("No such document!");
-                        }
-                    }).catch(function(error) {
-                        console.log("Error getting document:", error);
-                    });
-
-                    tr.appendChild(applicantCol);
-                    tr.appendChild(interviewTimeCol);
-                    tr.appendChild(interviewLocationCol);
-                    tr.appendChild(makeDecisionButtonCol);
-                    tr.appendChild(saveButtonCol);
-                }
-
-        });
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+            actuallyCreatingTables(user.uid);
+        } else {
+            window.alert('No user signed in');
+            window.location.assign('index.html');
+        }
     });
-        var div = document.getElementById('insertTableHere');
-        div.appendChild(table);
 }
 
 function createDropDown(jobAppID,div) {
     console.log(jobAppID);
     var select = document.createElement('select');
+    select.setAttribute('class', 'form-control');
     select.setAttribute('id', jobAppID + "Time");
     var theJobAppRef = db.collection("jobApplication").doc(jobAppID);
 
@@ -141,6 +78,7 @@ function createTextField(jobAppID, div, check) {
 
     var theJobAppRef = db.collection("jobApplication").doc(jobAppID);
     var field = document.createElement('input');
+    field.setAttribute('class','form-control');
     field.setAttribute('id', jobAppID + 'Location');
     field.type = 'text';
     field.required = true;
@@ -239,4 +177,82 @@ function interviewTimesConverter (inputInterviewTimes, joiner) {
     }
 
     
+}
+
+function actuallyCreatingTables(userUID) {
+    var arrayHeading = ['Applicant', 'Interview Time', 'Interview Location', '',''];
+    var table = document.createElement('table');
+    table.setAttribute('id', 'empTable'); 
+    table.setAttribute('class', 'table table-striped table-hover');
+
+    var rowHeading = table.insertRow(-1);
+    
+    for (var h = 0; h < arrayHeading.length; h ++) {
+        var th = document.createElement('th');
+        th.innerHTML = arrayHeading[h];
+        rowHeading.appendChild(th);
+    }
+
+    db.collection("jobApplication").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+                if (doc.data().status == "Interview Pending" && doc.data().lecturer == userUID) {
+                    var jobAppID = doc.id;
+                    var tr = empTable.insertRow(-1);
+                    var applicantCol = document.createElement('td');
+                    applicantCol.setAttribute('style','vertical-align:middle;');
+                    var interviewTimeCol = document.createElement('td');
+                    var interviewLocationCol = document.createElement('td');
+                    var makeDecisionButtonCol = document.createElement('td');
+                    var saveButtonCol = document.createElement('td');
+
+                    if(doc.data().interviewTime == 0) {
+                        createDropDown(doc.id,interviewTimeCol);
+                    } else {
+                        createDropDown(doc.id,interviewTimeCol);
+                    }
+
+                    if (doc.data().interviewLocation == "") {
+                        createTextField(doc.id, interviewLocationCol, false);
+                    } else {
+                        createTextField(doc.id, interviewLocationCol, true);
+                    }
+
+                    createMakeDecisionButton(doc.id, makeDecisionButtonCol);
+                    createSaveButton(doc.id, saveButtonCol);
+                   
+
+                    var lecturerRef = db.collection('jobListing').doc(doc.data().lecturer);
+                    var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+                    
+                    console.log(`${doc.id} => ${doc.data()}`);
+                    
+                
+                    applicantRef.get().then(function(doc) {
+                        if (doc.exists) {
+                            console.log("applicant data:", doc.data());
+                            var a = document.createElement('a');
+                            a.innerHTML = doc.data().name;
+                            a.setAttribute('href', "applicationDetailed.html?" +jobAppID);
+                            applicantCol.appendChild(a);
+                                        
+                        } else {
+                            // doc.data() will be undefined in this case
+                            console.log("No such document!");
+                        }
+                    }).catch(function(error) {
+                        console.log("Error getting document:", error);
+                    });
+
+                    tr.appendChild(applicantCol);
+                    tr.appendChild(interviewTimeCol);
+                    tr.appendChild(interviewLocationCol);
+                    tr.appendChild(saveButtonCol);
+                    tr.appendChild(makeDecisionButtonCol);
+                    
+                }
+
+        });
+    });
+        var div = document.getElementById('insertTableHere');
+        div.appendChild(table);
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Applicant - Sign In</title>
+    <link rel="stylesheet" href="assets/css/applicantSignin.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class='body'>
+    
+    <!--Will need to delete since this is the login page-->
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+            
+    <div class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Applicant Sign In</h1>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox mb-3">
+                <label class="rmbMe">
+                      <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-secondary button" type="submit" onclick="onSubmit()">Sign in</button>
+    </div>
+
+    
+    <footer class="page-footer dark">
+            <div class="footer-copyright py-3">
+                <p style="color: white">© 2019 Copyright TOM</p>
+            </div>
+    </footer>
+
+    <!-- Adding Firebase functionalities-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+     <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+            authDomain: "infs3605group3.firebaseapp.com",
+            databaseURL: "https://infs3605group3.firebaseio.com",
+            projectId: "infs3605group3",
+            storageBucket: "infs3605group3.appspot.com",
+            messagingSenderId: "757094635140",
+            appId: "1:757094635140:web:23089838804a1db6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="../js/applicantSignin.js"></script>
+
+    <!--Finishing adding Firebase functionality-->
+</body>
+
+</html>

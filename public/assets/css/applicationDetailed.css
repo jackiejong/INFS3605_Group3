@@ -7,10 +7,12 @@ html, body {
     height: auto;
     width: auto;
   }
+  main{
+    min-height: 800px
+  }
   #navDropdownText{
     padding: 8px;
     height: 34.6667px;
     width: auto;
-    color:red;
     filter: hue-rotate(0deg) sepia(0%);
   }
