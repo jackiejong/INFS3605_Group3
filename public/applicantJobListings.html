@@ -11,31 +11,36 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-            <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
-                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantApplications.html">Applications</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
+                <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantAppStatus.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
+          
+                    </li>
+                    </li>
                     </ul>
-                </div>
-                <img src="assets/img/ICON.png" onclick="logout()">
-            </div>
-        </nav>
+                </div><img src="assets/img/ICON.png" onclick="logout()"></div>
+            </nav>
     
     <div id='insertCardHere' style="padding-top: 70px;"></div>
 
     
-    <footer class="page-footer dark" style="height: 48px;"></footer>
+    <footer class="page-footer dark">
+            <div class="footer-copyright">
+                <p>© 2019 Copyright TOM</p>
+            </div>
+        </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

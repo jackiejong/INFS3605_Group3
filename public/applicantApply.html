@@ -6,59 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Pricing - All Job Listings Page</title>
     <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
-    <link rel="stylesheet" href="assets/css/tutorSide_apply.css">
+    <link rel="stylesheet" href="assets/css/applicantApply.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantApplications.html">Applications</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
-  
-            </li>
-            </li>
-            </ul>
-        </div><img src="assets/img/ICON.png" onclick="logout()"></div>
-    </nav>
+<body onload='onLoad()'>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantAppStatus.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
+          
+                    </li>
+                    </li>
+                    </ul>
+                </div><img src="assets/img/ICON.png" onclick="logout()"></div>
+            </nav>
 
     <main class="page pricing-table-page">
-        <section class="clean-block clean-pricing dark" style="height: 1538px;">
+        <section class="clean-block clean-pricing dark" style="height: 1938px;">
             <div class="container">
                 <div class="block-heading" style="height: 87px;">
                     <h1 class="text-left" style="margin-right: 0px;margin-bottom: 5px;margin-left: 56px;margin-top: -49px;color: rgb(255,193,7);font-size: 42px;"><strong>Application</strong></h1>
                     <p class="text-left" style="margin-left: 56px;">Submit a new application</p>
                 </div>
                 <div class="row">
-                    <div class="col" style="height: 260px;">
+                    <div class="col" style="height: 360px;">
                         <div class="border-warning clean-pricing-item">
                             <div class="heading" style="height: 43px;">
-                                <h3 class="text-left" style="height: 3px;">INFSXXXX Application Form</h3>
+                                <h3 class="text-left" style="height: 3px;" id="applicationTitle"></h3>
                             </div>
-                            <p class="text-left" style="height: 391px;"><em>Listing Details&nbsp;</em></p>
+                            <div class="col" style="margin-bottom: 50px;">
+                                    <p class="text-left"><strong>
+                                        Course Description
+                                    </strong></p> 
+                                    <p class="text-left" id="courseDescription"></p> 
+                            </div>
+                            <div class="col" style="margin-bottom: 50px;">
+                                    <p class="text-left"><strong>
+                                        Responsibilities
+                                    </strong></p> 
+                                    <p class="text-left" id="responsibilities"></p> 
+                            </div>
+                            <div class="col" style="margin-bottom: 50px;">
+                                    <p class="text-left"><strong>
+                                        Experience Requirement
+                                    </strong></p> 
+                                    <p class="text-left" id="experienceRequirement"></p> 
+                            </div>
+                            <div class="col" style="margin-bottom: 50px;">
+                                    <p class="text-left"><strong>
+                                        Skills Requirement
+                                    </strong></p> 
+                                    <p class="text-left" id="skillsRequirement"></p> 
+                            </div>
+                            <div class="col" style="margin-bottom: 50px;">
+                                    <p class="text-left"><strong>
+                                        Marks Requirement
+                                    </strong></p> 
+                                    <p class="text-left"id="marksRequirement"></p> 
+                            </div>
                             <p class="text-left"><em>Please fill in all details to submit an application for this role</em></p>
-                            <div class="features"></div>
-                            <div class="price"></div>
+                            
                             <div class="col">
-                                <p class="d-inline-block"><strong>Student Name</strong></p><input class="border rounded d-block" type="text"></div>
+                                <p class="d-inline-block">
+                                    <strong>Applicant Name</strong>
+                                </p>
+                                <input class="border rounded d-block" type="text" id="applicantName" readonly>
+                            </div>
                             <div class="col">
-                                <p class="d-inline-block"><strong>Email Address</strong><br></p><input class="border rounded d-block" type="text"></div>
+                                <p class="d-inline-block">
+                                    <strong>Email Address</strong><br>
+                                </p>
+                                <input class="border rounded d-block" type="text" id="applicantEmail" readonly>
+                            </div>
                             <div class="col">
-                                <p class="d-inline-block"><strong>Prior Experience</strong></p><input class="border rounded d-block" type="text" style="width: 700px;height: 90px;"></div>
-                            <div class="col" style="height: 370px;">
-                                <p class="d-inline-block"><strong>Checklist </strong>(As per Lecturer's requirements)</p>
+                                <p class="d-inline-block">
+                                    <strong>Prior Experience</strong>
+                                </p>
+                                <input class="border rounded d-block" type="text" style="width: 700px;height: 90px;" id="applicantExperience">
+                            </div>
+                            <div class="col">
+                                <p class="d-inline-block">
+                                    <strong>Skills</strong>
+                                </p>
+                                <input class="border rounded d-block" type="text" style="width: 700px;height: 90px;" id="applicantSkills">
+                            </div>
+
+                            <div class="col" style="height: auto;">
+                                <p class="d-inline-block">
+                                    <strong>Checklist </strong>(As per Lecturer's requirements)</p>
                                 <p class="text-left d-inline-block" style="margin: -0px 0px 0px;"></p>
                                 <div class="row" style="height: 55px;">
                                     <div class="col">
@@ -72,14 +120,10 @@
                                     </div>
                                 </div>
                                 <p class="text-left d-block" style="margin: -0px 0px 0px;height: 46px;margin-top: 27px;"><strong>Session Time Availabilities </strong>(Select times you are available to teach)</p>
-                                <div style="height: 36px;">
-                                    <div class="form-check" style="height: 40px;"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Session 1:&nbsp;Monday 11am - 12pm</label></div>
-                                    <div class="form-check" style="height: 37px;"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Session 2: Tuesday 4pm - 5pm</label></div>
-                                    <div class="form-check" style="height: 37px;"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Session 3:&nbsp;Thursday 9am - 10am</label></div>
-                                    <div class="form-check" style="height: 37px;"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Session 4: Friday 2pm - 3pm</label></div>
-                                </div>
+                                <div id="insertCheckBoxHere"></div>
+                                
                             </div>
-                            <div class="col" style="width: 1050px;"><button class="btn btn-primary text-left" type="button" style="margin: 0px 615px;margin-right: 558px;margin-left: 0px;">Submit</button></div>
+                            <div class="col" style="width: 1050px;"><button class="btn btn-primary text-left" type="button" style="margin: 0px 615px;margin-right: 558px;margin-left: 0px; margin-top:10px;" onclick="onSubmit()">Submit</button></div>
                         </div>
                     </div>
                 </div>
@@ -92,6 +136,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+        
+    <!-- TODO: Add SDKs for Firebase products that you want to use 
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+        apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+        authDomain: "infs3605group3.firebaseapp.com",
+        databaseURL: "https://infs3605group3.firebaseio.com",
+        projectId: "infs3605group3",
+        storageBucket: "infs3605group3.appspot.com",
+        messagingSenderId: "757094635140",
+        appId: "1:757094635140:web:23089838804a1db6"
+        };
+    // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="../js/applicantApply.js"></script>
 </body>
 
 </html>
