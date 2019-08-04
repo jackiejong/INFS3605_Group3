@@ -15,16 +15,11 @@
 </head>
 
 <body onload="onLoad()">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar"> 
+        <div class="container" style="width: 2000px;">
+            <a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
@@ -32,9 +27,9 @@
                     <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
                     <li class="nav-item" role="presentation" style="height: auto;width: auto;">
-                        <li class="nav-item dropdown" role="presentation" style="padding: 3px;height: 34.6667px;">
+                        <li class="nav-item dropdown" role="presentation" style="padding-top: 5px; padding-right: 200px;">
                             <!--My details dropdown-->
-                            <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px; color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                            <a class="nav-item" role="presentation" data-toggle="dropdown" aria-expanded="false" href="#" style="font-family: Montserrat, sans-serif; font-weight:bold; color:#7f7f7f;font-size: 12.8px;">myDetails</a>
                             <div class="dropdown-menu" role="menu">
                                 <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
                                 <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
@@ -42,25 +37,34 @@
                             </div>
             </li>
             </li>
+            <li>
+                <div style="padding-right: 50px;">                
+                    <img src="assets/img/ICON.png" width="30px" height="30px">
+                </div>
+            </li>
             </ul>
-        </div><img src="assets/img/ICON.png"></div>
+        </div>
+
+    </div>
     </nav>
     <main>
-        <div id='insertTableHere' style="height:fit-content; overflow:scroll; margin-top:100px;"></div>
+        <div class="block-heading" style="height: 87px;  margin:auto; margin-top:200px;">
+                <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;width: 747px;"><strong>All Applications</strong></h2>
+                <p class="text-left" style="margin: -40px 60px;width: 700px;height: 56px;font-size: 14px;">View of all applications</p>
+            </div>
+            <div id='insertTableHere'></div>
+            <div id='insertTableHere' style="height:fit-content; overflow:scroll; margin-top:100px;"></div>
 
     </main>
   
-    <div class="block-heading" style="height: 87px;  margin:auto; margin-top:200px;">
-        <h2 class="text-left text-info" style="margin: -40px 60px;height: 79px;width: 747px;"><strong>All Applications</strong></h2>
-        <p class="text-left" style="margin: -40px 60px;width: 700px;height: 56px;font-size: 14px;">View of all applications</p>
-    </div>
-    <div id='insertTableHere'></div>
+
 
     <footer class="page-footer dark">
         <div class="footer-copyright">
             <p>© 2019 Copyright TOM</p>
         </div>
     </footer>
+    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/TOM_baselineJS.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
