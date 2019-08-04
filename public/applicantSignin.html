@@ -4,41 +4,57 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Applicant - Sign In</title>
+    <title>Login - Applicant</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
     <link rel="stylesheet" href="assets/css/applicantSignin.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body class='body'>
     
-    <!--Will need to delete since this is the login page-->
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+        <div class="container">
+            <a href="dashboard.html">
+                <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
+           </a>          <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+        </div><img src="assets/img/ICON.png" onclick="logout()"></div>
     </nav>
-            
+  <main style="min-height: 500px;">
     <div class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Applicant Sign In</h1>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox mb-3">
-                <label class="rmbMe">
-                      <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-secondary button" type="submit" onclick="onSubmit()">Sign in</button>
-    </div>
+        <div class="block-heading">
+            <h2 class="text-info">Log In - Applicant</h2>
+            <p>Log in to access your account.</p>
+        </div>        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3" >
+            <label class="rmbMe">
+                  <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+
+        <button class="btn btn-primary button" type="submit" onclick="onSubmit()">Sign in</button>
+        <div>
+            <a href="signup.html">Sign Up</a>
+        </div>
+        <div>
+            <a href="login_LiC.html"> I am a Lecturer </a>
+        </div>
+</div>
+  </main>          
+
 
     
-        <footer class="page-footer dark">
-                <div class="footer-copyright">
-                    <p>© 2019 Copyright TOM</p>
-                </div>
-            </footer>
+    
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
+    </footer>
 
     <!-- Adding Firebase functionalities-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
