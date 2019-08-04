@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
 
-  <body onload="getCurrentUser()">
+  <body onload="onLoad()">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
       <div class="container">
           <a href="dashboard.html">
@@ -56,35 +56,49 @@
                   <div class="col-lg-4">
                       <div class="card clean-testimonial-item border-0 rounded-0">
                           <div class="card-body">
-                              <h3>Ben Samuels<br>INFS2605&nbsp;<br></h3>
-                              <h4 class="card-title">Status: Interview pending<br></h4>
+                              <h3 id="applicantAndRole1"></h3>
+                              <h4 class="card-title" id="applicantStatus1"></h4>
                               <div class="progress">
-                                  <div class="progress-bar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">20%</div>
-                              </div><a class="card-link text-right" href="#">View details &gt;</a>
-                              <p class="card-text"></p>
+                                  <div class="progress-bar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;" id="applicantProgressBar1"></div>
+                              </div>
+                              <div>
+                                    <a class="card-link text-right" href="#">View details &gt;</a>
+                              </div>
+                              
+                              
                           </div>
                       </div>
                   </div>
                   <div class="col-lg-4">
                       <div class="card clean-testimonial-item border-0 rounded-0">
-                          <div class="card-body">
-                              <h3>Cindy Le<br>INFS1603<br></h3>
-                              <h4 class="card-title">Status: Under review</h4>
-                              <p class="card-text"></p>
-                              <div class="progress">
-                                  <div class="progress-bar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
-                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                            <div class="card-body">
+                                <h3 id="applicantAndRole2"><br><br></h3>
+                                <h4 class="card-title" id="applicantStatus2"></h4>
+                                <p class="card-text"></p>
+                                <div class="progress">
+                                    <div class="progress-bar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" id="applicantProgressBar2"></div>
+                                </div>
+                                <div>
+                                    <a class="card-link text-right" href="#">View details &gt;</a>
+                                </div>
+                            </div>
                       </div>
                   </div>
                   <div class="col-lg-4 offset-xl-0">
                       <div class="card clean-testimonial-item border-0 rounded-0">
                           <div class="card-body">
-                              <h3>Johnathan Tran<br>INFS2608<br></h3>
-                              <h4 class="card-title">Status: Allocate class</h4>
-                              <p class="card-text"></p>
-                              <div class="progress">
-                                  <div class="progress-bar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
-                              </div><a class="card-link text-right" href="#">View details &gt;</a></div>
+                                <h3 id="applicantAndRole3"></h3>
+                                <h4 class="card-title" id="applicantStatus3"></h4>
+                                <p class="card-text"></p>
+                                <div class="progress">
+                                    <div class="progress-bar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" id="applicantProgressBar3"></div>
+                                </div>
+                              
+                              
+                                <div>
+                                        <a class="card-link text-right" href="#">View details &gt;</a>
+                                </div>
+                            </div>
                       </div>
                   </div>
                   <div class="col"><a class="text-right" href="#">See more &gt;</a></div>
