@@ -15,8 +15,8 @@ function logout() {
 
 
 function onLoad() {
-    window.alert("WOIIIIIIII");
-    /*
+    
+    
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             db.collection('lecturer').doc(user.uid).get().then(function(doc) {
@@ -35,7 +35,8 @@ function onLoad() {
           window.location.assign('index.html');
     }
     });
-    */
+    
+    
 }
 
 // Process Taking in Data from User and Transfer it to Database
@@ -113,8 +114,7 @@ function onSubmit() {
         role:role,
         skillsRequirement:skillsRequirement,
         noOfClass: noOfClass,
-        classTimes:classTimes,
-        lecturer:user.uid
+        classTimes:classTimes
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
