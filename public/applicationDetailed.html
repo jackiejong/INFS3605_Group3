@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Product - Brand</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/applicationDetailed.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body onload="onLoad()">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation">
+                        <li id="navDropdown" class="nav-item dropdown">
+                            <!--My details dropdown-->
+                            <a id="navDropdownText"class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
+                            </div>
+            </li>
+            </li>
+            </ul>
+        </div><img src="assets/img/ICON.png"></div>
+    </nav>
+    <main class="page product-page">
+        <section class="clean-block clean-product dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Applicant Detail</h2>
+                </div>
+                <div class="block-content">
+                    <div class="product-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info">
+                                    <h3 id="applicantName"></h3>
+                                    <div class="price">
+                                        <h3 id="applicationName"></h3>
+                                        <p id="applicantStatus"></p>
+                                    </div>
+                                    
+                                    <div id="buttons">
+                                        <button class="btn btn-primary" type="button" hidden></button>
+                                        
+                                    </div>
+                                    <p id="store"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p><strong>Prior experience</strong><input id="applicantExperience" class="form-control-plaintext" type="text"  readonly></p>
+                                <p><strong>Skills</strong><input id="applicantSkills" class="form-control-plaintext" type="text"  readonly></p>
+                                <p><strong>Availabilities</strong><div id="applicantAvailabilities"></div></p>
+                                <p><strong>Attachments</strong></p><a href="#">Resume</a><a href="#">&nbsp; Cover Letter</a><a href="#">&nbsp; Academic Transcript</a></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <ul class="nav nav-tabs" id="myTab"></ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
+                                    <div class="table-responsive table-bordered">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="stat">Display</td>
+                                                    <td>5.2"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="stat">Camera</td>
+                                                    <td>12MP</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="stat">RAM</td>
+                                                    <td>4GB</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="stat">OS</td>
+                                                    <td>iOS</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab-1"></div>
+                                <div class="tab-pane" role="tabpanel" id="tab-2">
+                                    <p>Tab content.</p>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab-3">
+                                    <p>Tab content.</p>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab-4">
+                                    <p>Tab content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clean-related-items"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use 
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+            authDomain: "infs3605group3.firebaseapp.com",
+            databaseURL: "https://infs3605group3.firebaseio.com",
+            projectId: "infs3605group3",
+            storageBucket: "infs3605group3.appspot.com",
+            messagingSenderId: "757094635140",
+            appId: "1:757094635140:web:23089838804a1db6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="../js/applicationDetailed.js"></script>
+</body>
+
+</html>

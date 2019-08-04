@@ -1,28 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="../css/signup.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create New Account</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
 
+<body>
 
-  </head>
-  <body>
-      <div class="form-signin">
-            <h1 class="h1 mb-3 font-weight-normal" style="margin-bottom: 25px;" id ="user_para">Sign Up</h1>
-            <input type="text" id=inputFirstName placeholder="First Name" class="form-control" required>
-            <input type="text" id=inputLastName placeholder="Last Name" class="form-control" required> 
-            <input type="date" id="inputDOB" placeholder="Date of Birth" class="form-control" required>
-            <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" required>
-            <input type="password" id="inputPassword" placeholder="Password" class="form-control" required>
-            <button class="btn btn-dark" onclick="signup()">Sign Up</button><br>
-            <a href="index.html">Sign In</a>
-      </div>
+    
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button></div></nav>
+                    <!-- Hey I will comment it out now - Jack
+        Will need to delete nav since this is signup page
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                            <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                                <li class="nav-item dropdown" style="padding: 8px;height: 34.6667px;">
+                                    My details dropdown
+                                    <a class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 8px;height: 34.6667px;width: auto;font-size: 12.8px;font-family: Montserrat, sans-serif;color: rgba(0,0,0,0.7);filter: hue-rotate(0deg) sepia(0%);">myDetails</a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                        <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                        <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
+                                    </div>
+                    </li>
+                    </li>
+                    </ul>
+                </div><img src="assets/img/ICON.png"></div>
+            </nav>
+            END OF NAVIGATION BAR CODE
+        -->
 
+    <main class="page registration-page">
+        <section class="clean-block clean-form dark">
+            <div class="container" style="width:auto">
+                <div class="block-heading">
+                    <h2 class="text-info">Registration</h2>
+                    <p id="user_para">Sign up to have access to TOM.</p>
+                </div>
+                <div style="max-width: 500px;">
+                    <div class="form-group"><label for="name">First Name</label>
+                        <input required id="inputFirstName" class="form-control item" type="text">
+                    </div>
+                    <div class="form-group"><label for="name">Last Name</label>
+                        <input required id="inputLastName" class="form-control item" type="text">
+                    </div>
+                    <div class="form-group"><label for="name">Date of Birth</label>
+                        <input type="date" id="inputDOB" class="form-control" required>
+                    </div>
+                    <div class="form-group"><label for="name">Email</label>
+                        <input id="inputEmail" class="form-control" required>
+                    </div>
 
-
+                    <div class="form-group"><label for="name">Password</label>
+                        <input id="inputPassword" class="form-control item" type="password"></div>
+                    
+                    <button class="btn btn-primary btn-block" type="submit" onclick="signup()">Sign Up</button>
+                    <a href="index.html">Sign In</a>
+                    </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+   
+   
+   
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
@@ -49,5 +121,7 @@
    firebase.initializeApp(firebaseConfig);
   </script>
         <script src="../js/signup.js"></script>
-  </body>
+
+</body>
+
 </html>

@@ -33,7 +33,7 @@ function signup() {
           var userUID = user.uid.toString();
           console.log('User successfully signed up');
 
-          db.collection("applicant").doc(userUID).set({
+          db.collection("lecturer").doc(userUID).set({
             name: fullName,
             dob: userDOB
           })

@@ -1,110 +1,187 @@
+<!-- 
+    THIS IS CREATE A JOB LISTING PAGE
+    SORRY FOR THE IRRELEVANT NAME
+    - JACK
+-->
+
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Application Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="../css/apply.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">TOM</a>
-      <!--
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto" >
-              <li class="nav-item active">
-                  <a class="nav-link" href="dashboard.html">Home<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="jobListings.html">All Job Listings<span class="sr-only">(current)</span></a>
-              </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="profile.html">My Profile<span class="sr-only">(current)</span></a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Create new Listing</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/apply.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body>
+
+    <!-- Links here need to be fixed up later-->
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html">Class allocations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                    <li class="nav-item" role="presentation" style="height: auto;width: auto;">
+                        <li id="navDropdown" class="nav-item dropdown">
+                            <!--My details dropdown-->
+                            <a id="navDropdownText" class="dropdown-toggle text-left text-dark flex-grow-0" data-toggle="dropdown" aria-expanded="false" href="#">myDetails</a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                                <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a>
+                            </div>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" onclick="logout()">Log Out<span class="sr-only">(current)</span></a>
             </li>
-          </ul>
-        </div>
+            </ul>
+        </div><img src="assets/img/ICON.png"></div>
     </nav>
 
+    <main class="createJobListingForm">
+        <section class="clean-block clean-pricing dark" style="overflow:scroll;"> <!--height here stopping footer from coming up-->
+            <div class="container">
+                <div class="block-heading">
+                    <h2 id="newListingHeading" class="text-left text-info"><strong><span id="newSpan">NEW</span></strong>&nbsp;<strong>Job Listing&nbsp;</strong></h2>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div id="newListingContainer" class="clean-pricing-item">
+                            <div class="heading" style="height: 43px;">
+                                <h3 class="text-left" style="height: 3px;">Job Listing Application Form</h3>
+                            </div>
+                            <p class="text-left">Please fill in all details to submit a new job listing</p>
+                                <!--Course name-->                            
+                            <div class="col">
+                                <p class="d-inline-block">Course Name &nbsp;&nbsp;</p>
+                                <input id="inputCourseName" class="border rounded d-block" placeholder="eg. Business Analysis" type="text">
+                            </div>
+                            <!--Course code-->
+                            <div class="col">
+                                <p class="d-inline-block">Course Code &nbsp;&nbsp;</p>
+                                <input id="inputCourseCode" class="border rounded d-block" placeholder="eg. INFS1602, INFS1603" type="text"></div>
+                            <!--Course Description-->
+                            <div class="col">
+                                <p class="d-inline-block">Course Description &nbsp;&nbsp;</p>
+                                <input id="inputCourseDescription" class="border rounded d-block" type="text"></div>
+                            <!--Role-->    
+                            <div class="col">
+                                <p class="d-inline-block">Role &nbsp;&nbsp;</p>
+                                <input id="inputRole" class="border rounded d-block" type="text" ></div>
+                                   
+                            <!--Responsibilities-->
+                            <div class="col" style="height: 177px;">
+                                <p class="d-inline-block">Key Responsibilities &nbsp; &nbsp;</p>
+                                <input id="inputResponsibilities" class="border rounded d-block" type="text"></div>
+                            
+                            <!--Marks Requirement-->
+                            <div class="col">
+                                <p class="d-inline-block">Minimum Mark Required (put 0 if no minimum mark required) &nbsp;&nbsp;</p>
+                                <input id="inputMarksRequirement" class="border rounded d-block" placeholder="eg.'85' " type="number"></div>
+                            
+                            <!--Skills Requirement-->
+                            <div class="col">
+                                    <p class="d-inline-block">Please list key skills you are looking for from candidates &nbsp; &nbsp;</p>
+                                    <input id="inputSkillsRequirement" class="border rounded d-block" placeholder="eg. SQL, SAS, Java" type="text"></div>
 
+                            <!-- Experience Requirement-->
+                            <div class="col" style="height: 177px;">
+                                    <p class="d-inline-block">Please list any experience (Academic or Professional) required/desired from candidates &nbsp; &nbsp;</p>
+                                    <input id="inputExperienceRequirement" class="border rounded d-block" placeholder="eg. Previous teaching experience required/desirable" type="text">
+                            </div>
+
+                            <!--Expiry Date-->
+                            <div class="col">
+                            <p class="d-inline-block">Expiry Date &nbsp; &nbsp;</p>
+                            <input type="date" id="inputExpiryDate" class="form-control">
+                            </div>
+                        
+                           
+                            <!--Number of Classes-->
+                            <div class="col">
+                                <p class="d-inline-block">Number of Classes &nbsp; &nbsp;</p>
+                                <input type="number" id="inputNoOfClass" class="form-control" style="width:auto">
+                                <button class="btn btn-dark" type="button" style="margin: auto;" onclick="addClassTimes()" id="addClassTimesButton">Confirm</button>
+                            </div>
+
+
+                            <!--Class Times Allocation-->
+                            <div id="classTimesSelection">
+                            </div>
+
+                            <!--Submit button-->
+                            <div id="submitBtn" class="col">
+                            <button id= "createNewListingBtn" class="btn btn-primary" type="button" onclick="onSubmit()" style="visibility: hidden">
+                                Submit
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </section> <!-- End of form section-->
+    </main>
+
+   <!--Black bar at the bottom--> <footer class="page-footer dark">
+    </footer>
     
     
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 
-    <div class="createJobListingForm">
-        <h1 id=createJobListingTitle style="margin-bottom: 40px">Create New Job Listing</h1>
-      <label>Course Code</label>
-      <input type="text" id="inputCourseCode" placeholder="eg. INFS1602, INFS1603" class="form-control">
-      <label>Course Name</label>
-      <input type="text" id="inputCourseName" placeholder="eg. Business Analysis" class="form-control">  
-      <label>Course Description</label>
-      <input type="text" id="inputCourseDescription" placeholder="eg. This is a level 2 Course on Design Thinking" class="form-control">
-      <label>Role</label>
-      <input type="text" id="inputRole" placeholder="eg. Pass Leader" class="form-control"> 
-      <label>Responsibilities</label>
-      <textarea class="form-control" id="inputResponsibilities" rows="3" placeholder="eg. This is a level 2 course on Business Analysis & Design Thinking"></textarea>
-      <label>Marks Requirement</label>
-      <input type="number" id="inputMarksRequirement" placeholder="eg. 85" class="form-control">  
-      <label>Skills Requirement</label>
-      <textarea class="form-control" id="inputSkillsRequirement" rows="3" placeholder="eg. SQL, SAS, Java"></textarea>
-      <label>Experience Requirement</label>
-      <textarea class="form-control" id="inputExperienceRequirement" rows="3" placeholder="eg. 1 Semester of Teaching Experience"></textarea>
-      <label>Expiry Date</label>
-      <input type="date" id="inputExpiryDate" class="form-control">
-      <button class="btn btn-dark" type="submit" onclick="onSubmit()">Apply</button>
-    </div>
-
-  <div class="jobListingDescription">
-    <p id="jobListingOverview"></p>
-    <p id="jobListingRequirement"></p>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+          <!-- The core Firebase JS SDK is always required and must be listed first -->
+          <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
       
-      <!-- TODO: Add SDKs for Firebase products that you want to use 
-        https://firebase.google.com/docs/web/setup#config-web-app -->
-     <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
-     <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
-     <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
-     <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
-     <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
-     <script>
-        var firebaseConfig = {
-          apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
-          authDomain: "infs3605group3.firebaseapp.com",
-          databaseURL: "https://infs3605group3.firebaseio.com",
-          projectId: "infs3605group3",
-          storageBucket: "infs3605group3.appspot.com",
-          messagingSenderId: "757094635140",
-          appId: "1:757094635140:web:23089838804a1db6"
-        };
-      // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-     </script>
+          <!-- TODO: Add SDKs for Firebase products that you want to use 
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+         <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+         <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+         <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+         <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+         <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+         <script>
+            var firebaseConfig = {
+              apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+              authDomain: "infs3605group3.firebaseapp.com",
+              databaseURL: "https://infs3605group3.firebaseio.com",
+              projectId: "infs3605group3",
+              storageBucket: "infs3605group3.appspot.com",
+              messagingSenderId: "757094635140",
+              appId: "1:757094635140:web:23089838804a1db6"
+            };
+          // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+         </script>
+    
+         <script src="../js/apply.js"></script>
+    
 
-     <script src="../js/apply.js"></script>
-
-     
-  </body>
+</body>
 </html>
