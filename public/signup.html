@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
 
     
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-                <div class="container"><a class="navbar-brand logo" href="dashboard.html">TOM</a>
+                <div class="container"><a class="navbar-brand logo" href="index.html">TOM</a>
                     <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="navbar-toggler-icon"></span>
@@ -46,10 +46,18 @@
                     </div>
 
                     <div class="form-group"><label for="name">Password</label>
-                        <input id="inputPassword" class="form-control item" type="password"></div>
+                        <input id="inputPassword" class="form-control item" type="password">
+                    </div>
+                    <div>
+                            <button class="btn btn-primary btn-block" type="submit" onclick="signup()" id="signupButton">Sign Up</button>
+                    </div>
+                    <div class="text-center" style="padding-top:20px; padding-bottom:10px;">
+                        <a href="login_LiC.html">Sign In</a>
+                    </div>
+                    <div class="spinner-border text-center" role="status" style="visibility: hidden;" id="spinnerLoading">
+                            <span class="sr-only">Loading...</span>
+                    </div>
                     
-                    <button class="btn btn-primary btn-block" type="submit" onclick="signup()">Sign Up</button>
-                    <a href="index.html">Sign In</a>
             </div>
         </section>
     </main>
