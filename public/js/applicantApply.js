@@ -112,8 +112,12 @@ function classTimesConverter(inputDate) {
     console.log(fromHours, toHours, day);
 
     if (fromHours == 900) {
-        return day + " " + "0" + fromHours + " - " + toHours;
-      
+        if (toHours == 900) {
+            return day + " " + "0" + fromHours + " - 0" + toHours;
+        } else {
+            return day + " " + "0" + fromHours + " - " + toHours;
+        }
+        
     } else {
         return day + " "  + fromHours + " - " + toHours;
        
@@ -147,8 +151,10 @@ function onSubmit() {
         console.error("Error writing document: ", error);
     });
 
-    var setWithMerge = db.collection('applicant').doc(applicantID).set({
+    db.collection('applicant').doc(applicantID).set({
         appliedJobs:appliedJobs
-    }, { merge: true });
+    }, { merge: true }).then(function() {
+        window.location.assign('applicantJobListings.html');
+    });
 
 }

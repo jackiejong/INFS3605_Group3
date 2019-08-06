@@ -2,7 +2,6 @@
 function signup() {
 
     var db = firebase.firestore();
-
     var spinnerLoading = document.getElementById("spinnerLoading");
     spinnerLoading.setAttribute('style','visibility: visible;');
     
@@ -36,13 +35,17 @@ function signup() {
           var userUID = user.uid.toString();
           console.log('User successfully signed up');
 
-          db.collection("lecturer").doc(userUID).set({
+          db.collection("applicant").doc(userUID).set({
             name: fullName,
-            dob: userDOB
+            dob: userDOB,
+            email:userEmail,
+            appliedJobs:[""],
+            skills:"",
+            experience:""
           })
           .then(function() {
             console.log("Document successfully written!");
-            window.location.assign('dashboard.html');
+            window.location.assign('applicantDashboard.html');
           })
           .catch(function(error) {
             console.error("Error writing document: ", error);

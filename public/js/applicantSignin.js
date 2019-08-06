@@ -2,6 +2,9 @@ var inputEmail = document.getElementById('inputEmail');
 var inputPassword = document.getElementById('inputPassword');
 
 function onSubmit() {
+
+    var spinnerLoading = document.getElementById("spinnerLoading");
+  spinnerLoading.setAttribute('style','visibility: visible;');
     userEmail = inputEmail.value;
     userPass = inputPassword.value;
 
@@ -33,3 +36,21 @@ function onSubmit() {
       }
     });
 }
+
+
+function onLoad() {
+    var passField = document.getElementById("inputPassword");
+    var spinnerLoading = document.getElementById("spinnerLoading");
+    spinnerLoading.setAttribute('style','visibility: hidden;');
+  
+    passField.addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("loginButton").click();
+        
+      }
+    });
+  }

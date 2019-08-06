@@ -123,7 +123,11 @@ function classTimesConverter(inputDate) {
     console.log(fromHours, toHours, day);
 
     if (fromHours == 900) {
-        return day + " " + "0" + fromHours + " - " + toHours;
+        if (toHours == 900) {
+            return day + " " + "0" + fromHours + " - 0" + toHours;
+        } else {
+            return day + " " + "0" + fromHours + " - " + toHours;
+        }  
       
     } else {
         return day + " "  + fromHours + " - " + toHours;
