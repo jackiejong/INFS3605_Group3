@@ -105,14 +105,39 @@
                             </div>
                             <div class="col" style="height: 154px;">
                                 <p class="d-inline-block"><strong>Documents </strong><br></p>
-                                <div class="row">
+                                <div class="row" id="transcriptDiv">
                                     <div class="col" style="height: 45px;">
-                                        <p class="d-inline">Academic Transcript&nbsp; &nbsp; &nbsp;</p><input type="text" ><button class="btn btn-primary border-white" type="button" style="font-size: 14px; background-color: rgb(88,92,95);margin-left: 15px; height: 32px;">Upload</button></div>
+                                        <p class="d-inline">Academic Transcript&nbsp; &nbsp; &nbsp;</p>
+                                        <a type="text" id="transcriptName"></a>
+                                        <button class="btn btn-primary border-white" type="button" style="font-size: 14px; background-color: rgb(88,92,95);margin-left: 15px; height: 32px;" id="uploadTranscript" onclick="uploadTranscript()">Upload</button>
+                                    </div>
                                 </div>
-                                <div class="row">
+
+                                <div class="row" id="uploadTranscriptDiv" hidden>
+                                        <div class="col" style="height: 45px;">
+                                            <p class="d-inline">Academic Transcript</p>
+                                            <input type="file" style= "margin-left:64px;" id="inputTranscript">
+                                        </div>
+                                </div>
+
+                                <div class="row" id="coverLetterDiv">
                                     <div class="col" style="height: 45px;">
-                                        <p class="d-inline">Cover Letter &nbsp; &nbsp; &nbsp;</p><input type="text" style= "margin-left:64px;"><button class="btn btn-primary border-white" type="button" style="font-size:14px; background-color: rgb(88,92,95);margin-left: 15px;height: 32px;">Upload</button></div>
+                                        <p class="d-inline">Cover Letter &nbsp; &nbsp; &nbsp;</p>
+                                        <a type="text" id="coverLetterName"></a>
+                                        <button class="btn btn-primary border-white" type="button" style="font-size:14px; background-color: rgb(88,92,95);margin-left: 15px;height: 32px;" id="uploadCoverLetter" onclick="uploadCoverLetter()">Upload</button>
+                                    </div>
                                 </div>
+
+                                <div class="row" id="uploadCoverLetterDiv" hidden>
+                                        <div class="col" style="height: 45px;">
+                                            <p class="d-inline">Cover Letter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                            <input type="file" style= "margin-left:64px;" id="inputCoverLetter">
+                                        </div>
+                                </div>
+
+
+
+
                             </div>
                             <div class="col" style="height: auto;">
                                 <p class="d-inline-block">

@@ -9,6 +9,15 @@ var applicantName = document.getElementById('applicantName');
 var applicantEmail = document.getElementById('applicantEmail');
 var applicantExperience = document.getElementById('applicantExperience');
 var applicantSkills = document.getElementById('applicantSkills');
+
+var coverLetterName = document.getElementById('coverLetterName');
+var transcriptName = document.getElementById('transcriptName');
+var coverLetterUpload = document.getElementById('uploadCoverLetter');
+var transcriptUpload = document.getElementById('uploadTranscript');
+
+var inputTranscript = document.getElementById('inputTranscript');
+var inputCoverLetter = document.getElementById('inputCoverLetter');
+
 var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.substring(1);
 var jobListingRef = db.collection('jobListing').doc(queryString);
@@ -73,8 +82,39 @@ function dataPopulationManager(userUID) {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
+                // Create a reference to the file we want to download
+            var transcriptRef = firebase.storage().ref(userUID + '/transcript.pdf');
+            
+
+            // Get the download URL
+            transcriptRef.getDownloadURL().then(function(url) {
+                transcriptName.innerHTML = 'Transcript.pdf';
+                transcriptName.setAttribute('href',url);
+                transcriptName.setAttribute('target','_blank');
+            }).catch(function(error) {
+                switch (error.code) {
+                    case 'storage/object-not-found':
+                    transcriptName.innerHTML = "No files uploaded";
+                    break;
+                }
+            });
 
 
+            var cvRef = firebase.storage().ref(userUID + '/coverLetter.pdf');
+            
+
+            // Get the download URL
+            cvRef.getDownloadURL().then(function(url) {
+                coverLetterName.innerHTML = 'Cover Letter.pdf';
+                coverLetterName.setAttribute('href',url);
+                coverLetterName.setAttribute('target','_blank');
+            }).catch(function(error) {
+                switch (error.code) {
+                    case 'storage/object-not-found':
+                    coverLetterName.innerHTML = "No files uploaded";
+                    break;
+                }
+            });
 }
 
 function createCheckBox () {
@@ -125,6 +165,7 @@ function classTimesConverter(inputDate) {
 }
 
 function onSubmit() {
+
     var applicantAvailabilities =[];
     appliedJobs.push(queryString);
     
@@ -157,4 +198,30 @@ function onSubmit() {
         window.location.assign('applicantJobListings.html');
     });
 
+    if(inputCoverLetter.files[0] != null) {
+        
+        var coverLetterStorageRef = firebase.storage().ref(applicantID + "/coverLetter.pdf");
+        coverLetterStorageRef.put(inputCoverLetter.files[0]);
+    }
+
+    if (inputTranscript.files[0] != null) {
+        var transcriptStorageRef = firebase.storage().ref(applicantID + "/transcript.pdf");
+        transcriptStorageRef.put(inputTranscript.files[0]);
+    }
+}
+
+function uploadCoverLetter() {
+    var cvDiv = document.getElementById('coverLetterDiv');
+    var uploadCVDiv = document.getElementById('uploadCoverLetterDiv');
+
+    cvDiv.hidden = true;
+    uploadCVDiv.hidden = false;
+}
+
+function uploadTranscript() {
+    var transcriptDiv = document.getElementById('transcriptDiv');
+    var uploadTranscriptDiv = document.getElementById('uploadTranscriptDiv');
+
+    transcriptDiv.hidden = true;
+    uploadTranscriptDiv.hidden = false;
 }

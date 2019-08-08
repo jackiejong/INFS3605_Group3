@@ -13,6 +13,7 @@ var jobListingGlobal;
 
 
 
+
 function onLoad() {
     
     var applicantName = document.getElementById("applicantName");
@@ -22,12 +23,39 @@ function onLoad() {
     var applicantAvailabilties = document.getElementById('applicantAvailabilities');
     var applicantStatus = document.getElementById('applicantStatus');
     var buttonsDiv = document.getElementById("buttons");
+    var coverLetterLink = document.getElementById('coverLetterLink');
+    var transcriptLink = document.getElementById('transcriptLink');
 
     docRef.get().then(function(doc) {
         if (doc.exists) {
             var jobListingRef = db.collection("jobListing").doc(doc.data().jobListing);
             var applicantRef = db.collection("applicant").doc(doc.data().applicant);
             var lecturerRef = db.collection("lecturer").doc(doc.data().lecturer);
+
+            var coverLetterRef = firebase.storage().ref(doc.data().applicant + "/coverLetter.pdf");
+            var transcriptRef = firebase.storage().ref(doc.data().applicant + "/transcript.pdf");
+
+            coverLetterRef.getDownloadURL().then(function(url) {
+                // `url` is the download URL for 'images/stars.jpg'
+              
+                    coverLetterLink.setAttribute('href',url);
+                    coverLetterLink.setAttribute('target','_blank');
+                    console.log("DONWLOAD URL " + url);
+              }).catch(function(error) {
+                  console.log("WHATTT THE FUCK HAPPENS");
+                // Handle any errors
+              });
+
+              transcriptRef.getDownloadURL().then(function(url) {
+                // `url` is the download URL for 'images/stars.jpg'
+              
+                    transcriptLink.setAttribute('href',url);
+                    transcriptLink.setAttribute('target','_blank');
+                    console.log("DONWLOAD URL " + url);
+              }).catch(function(error) {
+                  console.log("WHATTT THE FUCK HAPPENS");
+                // Handle any errors
+              });
 
             jobListingGlobal = doc.data().jobListing;
             applicantAvailabilitiesGlobal = doc.data().applicantAvailabilities;

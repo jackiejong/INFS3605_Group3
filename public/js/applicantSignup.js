@@ -1,3 +1,6 @@
+var transcriptUpload = document.getElementById('uploadTranscriptInput');
+var coverLetterUpload = document.getElementById('uploadCVInput');
+
 
 function signup() {
 
@@ -12,6 +15,8 @@ function signup() {
     userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
+
+   
 
     firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
         // Handle Errors here.
@@ -44,11 +49,25 @@ function signup() {
             experience:""
           })
           .then(function() {
+            
+
+            var coverLetterStorageRef = firebase.storage().ref(userUID + "/coverLetter.pdf");
+            coverLetterStorageRef.put(coverLetterUpload.files[0]);
+
+            
+
+            var transcriptStorageRef = firebase.storage().ref(userUID + "/transcript.pdf");
+            transcriptStorageRef.put(transcriptUpload.files[0]);
+
             console.log("Document successfully written!");
-            window.location.assign('applicantDashboard.html');
+
+            
+            
           })
           .catch(function(error) {
             console.error("Error writing document: ", error);
+          }).finally(function(){
+            window.location.assign('applicantDashboard.html');
           });
 
 
@@ -74,5 +93,15 @@ function onLoad() {
       document.getElementById("signupButton").click();
       
     }
+  });
+
+  transcriptUpload.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    console.log("Transcript Name " + file.name);  
+  });
+
+  coverLetterUpload.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    console.log("Cover Letter Name " + file.name);
   });
 }

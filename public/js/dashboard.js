@@ -12,7 +12,7 @@ function generateJobListingExpiry() {
       for (var i = 0; i < expiryArray.length; i ++) {
           for (key in jobListingExpiryDummy) {
               if (jobListingExpiryDummy[key] == expiryArray[i]) {
-                console.log("=============================OOOOH YEAH===================");
+                  console.log("=============================OOOOH YEAH===================");
                   jobListingArray.push(key);
                   delete jobListingExpiryDummy[key];
                   console.log(expiryArray);
@@ -131,36 +131,72 @@ function populateData(userUID) {
 }
 
 function populateTheOtherData(userUID) {
-      console.log("OOOOOOOO");
-      var counter = 0;
-      var counterTwo = 1;
+      
+      
+    
       db.collection("jobListing").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          console.log("Hi");
-          if (doc.data().lecturer == userUID && counterTwo <= 3) {
-              if (counter < jobListingArray.length && jobListingArray[counter] == doc.id) {
-                  var listingTitleID = 'listingTitle' + counterTwo;
-                  var expiryDateID = 'expiryDate' + counterTwo;
-                  var noOfApplicationID = 'noOfApplication' + counterTwo;
-                  var progressBarID = 'listingProgressBar' + counterTwo;
-                  var viewDetailsID = 'listingViewDetail' + counterTwo;
+          console.log("===================Hi===================");
+         
+          console.log(`${doc.id} => ${doc.data()}`);
+
+          if (doc.data().lecturer == userUID) {
+              if (jobListingArray[0] == doc.id) {
+
+                  var listingTitleID = 'listingTitle1';
+                  var expiryDateID = 'expiryDate1';
+                  var noOfApplicationID = 'noOfApplication1';
+                  var progressBarID = 'listingProgressBar1';
+                  var viewDetailsID = 'listingViewDetail1';
 
 
                   var listingTitle = document.getElementById(listingTitleID);
                   var expiryDate = document.getElementById(expiryDateID);
-                  var noOfApplication = document.getElementById(noOfApplicationID);
-                  var progressBar = document.getElementById(progressBarID);
+                  
                   var viewDetails = document.getElementById(viewDetailsID);
                   
                   listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
                   expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
                   viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
-                  counter ++;
-                  counterTwo ++;
+                     
+              } else if (jobListingArray[1] == doc.id) {
+                var listingTitleID = 'listingTitle2';
+                  var expiryDateID = 'expiryDate2';
+                  var noOfApplicationID = 'noOfApplication2';
+                  var progressBarID = 'listingProgressBar2';
+                  var viewDetailsID = 'listingViewDetail2';
+
+
+                  var listingTitle = document.getElementById(listingTitleID);
+                  var expiryDate = document.getElementById(expiryDateID);
+             
+                  var viewDetails = document.getElementById(viewDetailsID);
+                  
+                  listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
+                  expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
+                  viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
+
+              } else if(jobListingArray[2] == doc.id) {
+                var listingTitleID = 'listingTitle3';
+                var expiryDateID = 'expiryDate3';
+                var noOfApplicationID = 'noOfApplication3';
+                var progressBarID = 'listingProgressBar3';
+                var viewDetailsID = 'listingViewDetail3';
+
+
+                var listingTitle = document.getElementById(listingTitleID);
+                var expiryDate = document.getElementById(expiryDateID);
+             
+                var viewDetails = document.getElementById(viewDetailsID);
+                
+                listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
+                expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
+                viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
               }
           }  
         });
       });
+      
 }
 
 
