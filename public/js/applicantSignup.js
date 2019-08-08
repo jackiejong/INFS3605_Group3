@@ -1,8 +1,10 @@
+var transcriptUpload = document.getElementById('uploadTranscriptInput');
+var coverLetterUpload = document.getElementById('uploadCVInput');
+
 
 function signup() {
 
     var db = firebase.firestore();
-
     var spinnerLoading = document.getElementById("spinnerLoading");
     spinnerLoading.setAttribute('style','visibility: visible;');
     
@@ -13,6 +15,8 @@ function signup() {
     userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
+
+   
 
     firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
         // Handle Errors here.
@@ -36,16 +40,34 @@ function signup() {
           var userUID = user.uid.toString();
           console.log('User successfully signed up');
 
-          db.collection("lecturer").doc(userUID).set({
+          db.collection("applicant").doc(userUID).set({
             name: fullName,
-            dob: userDOB
+            dob: userDOB,
+            email:userEmail,
+            appliedJobs:[""],
+            skills:"",
+            experience:""
           })
           .then(function() {
+            
+
+            var coverLetterStorageRef = firebase.storage().ref(userUID + "/coverLetter.pdf");
+            coverLetterStorageRef.put(coverLetterUpload.files[0]);
+
+            
+
+            var transcriptStorageRef = firebase.storage().ref(userUID + "/transcript.pdf");
+            transcriptStorageRef.put(transcriptUpload.files[0]);
+
             console.log("Document successfully written!");
-            window.location.assign('dashboard.html');
+
+            
+            
           })
           .catch(function(error) {
             console.error("Error writing document: ", error);
+          }).finally(function(){
+            window.location.assign('applicantDashboard.html');
           });
 
 
@@ -71,5 +93,15 @@ function onLoad() {
       document.getElementById("signupButton").click();
       
     }
+  });
+
+  transcriptUpload.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    console.log("Transcript Name " + file.name);  
+  });
+
+  coverLetterUpload.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    console.log("Cover Letter Name " + file.name);
   });
 }

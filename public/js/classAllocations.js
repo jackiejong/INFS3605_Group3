@@ -11,6 +11,7 @@ var divButtonDropdown = document.getElementById('insertButtonDropdownHere');
 var divTable = document.getElementById('insertTableHere');
 var dictionary = {};
 var classAllocationDict = {};
+var courseCodeArr = [];
 
 
 function onLoad() {
@@ -123,7 +124,11 @@ function classTimesConverter(inputDate) {
     console.log(fromHours, toHours, day);
 
     if (fromHours == 900) {
-        return day + " " + "0" + fromHours + " - " + toHours;
+        if (toHours == 900) {
+            return day + " " + "0" + fromHours + " - 0" + toHours;
+        } else {
+            return day + " " + "0" + fromHours + " - " + toHours;
+        }  
       
     } else {
         return day + " "  + fromHours + " - " + toHours;
@@ -186,11 +191,15 @@ function actuallyCreatingShit(userUID) {
                 querySnapshot.forEach((doc) => {
                     if (doc.data().lecturer == userUID) {
 
+                        if (!courseCodeArr.includes(doc.data().courseCode))  {
                             var option = document.createElement('option');
                             
                             option.value = doc.data().courseCode;
                             option.innerHTML = doc.data().courseCode;
                             select.appendChild(option);
+                            courseCodeArr.push(doc.data().courseCode);
+                            console.log("ARRAY COURSE CODE ", courseCodeArr);
+                        }
                             
                             if (queryString == "" || queryString == "0") {
                                 for (var i = 0; i < doc.data().classTimes.length; i ++) {
