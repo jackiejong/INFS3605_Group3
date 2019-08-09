@@ -1,3 +1,4 @@
+var db = firebase.firestore();
 function onLoad() {
   var passField = document.getElementById("inputPassword");
   var spinnerLoading = document.getElementById("spinnerLoading");
@@ -24,6 +25,8 @@ function login(){
     console.log(userEmail);
     console.log(userPass);
 
+    
+
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -45,11 +48,30 @@ function login(){
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
           var user = firebase.auth().currentUser;
-          console.log("user successfully signed in")
-          window.location.assign('dashboard.html')
+
+          db.collection('lecturer').doc(user.uid).get().then(function(doc) {
+                console.log(doc.id + " =============== " + doc.data().name);
+          }).catch(function(error) {
+              window.alert("No user found");
+              logout();
+          }).then(function() {
+              console.log("user successfully signed in");
+              window.location.assign('dashboard.html');
+          });
       } else {
         console.log("no user signed in");
       }
     });
   }
+
+
+  function logout() {
+    firebase.auth().signOut().then(function() {
+        console.log('A user successfully logged out');
+        window.location.reload();
+      }).catch(function(error) {
+        window.alert('Something happened!');
+      });  
+}
+
 
