@@ -38,7 +38,7 @@ function signup() {
 
           db.collection("lecturer").doc(userUID).set({
             name: fullName,
-            dob: userDOB
+            dob: 0
           })
           .then(function() {
             console.log("Document successfully written!");

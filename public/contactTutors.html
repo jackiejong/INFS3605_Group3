@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body onload="onLoad()">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style = "height: 82px;">
                 <div class="container">
                     <a href="dashboard.html">
@@ -59,47 +59,10 @@
                     <h2 class="text-info">Contact Tutors</h2>
                 </div>
             </div>
-            <div class="container text-right">
-                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Filter</button>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#"></a><a class="dropdown-item" role="presentation" href="#">Name - Alphabetical</a><a class="dropdown-item" role="presentation" href="#">Course</a></div>
-                </div><i class="fa fa-search"></i><input type="search"></div>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Applicant</th>
-                            <th>Course</th>
-                            <th>Email?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Sandy Chung</td>
-                            <td>INFS2605</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>Alex Lee</td>
-                            <td>INFS1603</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>John Tran</td>
-                            <td>INFS1603</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>Steven Turner</td>
-                            <td>INFS3605</td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><button class="btn btn-primary" type="button">Email</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+            
+            <div id="insertInitialSelectionHere"></div>
+            <div id="insertTableHere">
+               
             </div>
         </section>
     </main>
@@ -113,6 +76,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+      
+ <!-- TODO: Add SDKs for Firebase products that you want to use 
+   https://firebase.google.com/docs/web/setup#config-web-app -->
+<script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+<script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+<script>
+   var firebaseConfig = {
+     apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+     authDomain: "infs3605group3.firebaseapp.com",
+     databaseURL: "https://infs3605group3.firebaseio.com",
+     projectId: "infs3605group3",
+     storageBucket: "infs3605group3.appspot.com",
+     messagingSenderId: "757094635140",
+     appId: "1:757094635140:web:23089838804a1db6"
+   };
+ // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src='../js/contactTutors.js'></script>
 </body>
 
 </html>
