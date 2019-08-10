@@ -5,7 +5,7 @@ var inputPassword = document.getElementById('inputPassword');
 function onSubmit() {
 
     var spinnerLoading = document.getElementById("spinnerLoading");
-  spinnerLoading.setAttribute('style','visibility: visible;');
+    spinnerLoading.setAttribute('style','visibility: visible;');
     userEmail = inputEmail.value;
     userPass = inputPassword.value;
 
@@ -16,15 +16,11 @@ function onSubmit() {
     
         if (errorCode === 'auth/wrong-password') {
             console.log('Wrong password');
-            window.alert('Wrong password.');
-            
+            window.alert('Wrong password.');        
         } else {
             window.alert(errorMessage);
         }
-        
-        window.location.reload();
-        
-        
+        window.location.reload();  
     });
 
     firebase.auth().onAuthStateChanged(function(user) {

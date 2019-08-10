@@ -9,8 +9,8 @@ function signup() {
     var userFirstName = document.getElementById("inputFirstName").value;
     var userLastName = document.getElementById("inputLastName").value;
     var fullName = userFirstName + " " + userLastName;
-    var userDOB = document.getElementById("inputDOB").value;
-    userDOB = Date.parse(userDOB) / 1000;
+    //var userDOB = document.getElementById("inputDOB").value;
+    //userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
 

@@ -11,8 +11,8 @@ function signup() {
     var userFirstName = document.getElementById("inputFirstName").value;
     var userLastName = document.getElementById("inputLastName").value;
     var fullName = userFirstName + " " + userLastName;
-    var userDOB = document.getElementById("inputDOB").value;
-    userDOB = Date.parse(userDOB) / 1000;
+    //var userDOB = document.getElementById("inputDOB").value;
+    //userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
 
@@ -52,12 +52,16 @@ function signup() {
 
             
               var coverLetterStorageRef = firebase.storage().ref(userUID + "/coverLetter.pdf");
-              coverLetterStorageRef.put(coverLetterUpload.files[0]);
+              if (coverLetterUpload.files[0] != null) {
+                coverLetterStorageRef.put(coverLetterUpload.files[0]);
+              }
 
               var transcriptStorageRef = firebase.storage().ref(userUID + "/transcript.pdf");
-              transcriptStorageRef.put(transcriptUpload.files[0]);
+              if (transcriptUpload.files[0] != null) {
+                transcriptStorageRef.put(transcriptUpload.files[0]);
+              }
 
-            console.log("Document successfully written!");
+              console.log("Document successfully written!");
             
           })
           .catch(function(error) {
