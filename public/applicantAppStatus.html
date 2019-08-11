@@ -13,26 +13,38 @@
 
 <body onload="onLoad()">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-                <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
-                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse"
-                        id="navcol-1">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantAppStatus.html">Applications</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
-          
-                    </li>
-                    </li>
-                    </ul>
-                </div><img src="assets/img/ICON.png" onclick="logout()"></div>
-            </nav>
-
+                <div class="container">
+                    <a class="navbar-brand logo" href="#">
+                        <strong>TOM</strong></a>
+                        <button class="navbar-toggler" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon"></span></button>
+                    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                            <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <a href="applicantDashboard.html">
+                            <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
+                        </a>
+                            <div
+                                class="collapse navbar-collapse" id="navcol-1" style="width: 800px;">
+                                <ul class="nav navbar-nav text-uppercase mr-auto">
+                                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantJobListings.html">All Listings</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantClassAllocation.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantAppStatus.html" style="font-family: Montserrat, sans-serif;">myApplications</a></li>
+                                    <li class="nav-item dropdown show" style="padding: 0px 0px 0px 0px;">
+                                        <a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Account</a>
+                                        <div class="dropdown-menu" role="menu" style="font-size: 12.8px;">
+                                            <a class="dropdown-item text-capitalize" role="presentation" href="applicantProfile.html">My account</a>
+                                            <a class="dropdown-item text-capitalize" role="presentation" onclick="logout()">log out</a></div>
+                                    </li>
+                                </ul><img src="assets/img/ICON.png"></div>
+                </div>
+                </nav>
+                </div>
+            </nav>        
     <main class="page pricing-table-page">
         <section class="clean-block clean-pricing dark" style="height: 833px;">
             <div class="container">
@@ -52,11 +64,14 @@
             </div>
         </section>
     </main>
+
     <footer class="page-footer dark">
-            <div class="footer-copyright">
-                <p>© 2019 Copyright TOM</p>
-            </div>
-        </footer>    
+            <footer class="page-footer dark">
+                <div class="footer-copyright"><a href=“aboutUs_app.html” style="font-size: 12.8px;">About us</a>
+                    <p>© 2019 Copyright TOM</p>
+                </div>
+            </footer>
+        </footer>   
     
         <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

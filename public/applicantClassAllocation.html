@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Classes Calendar</title>
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="assets/css/calendarCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+</head>
+
+<body>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container">
+                    <a class="navbar-brand logo" href="#">
+                        <strong>TOM</strong></a>
+                        <button class="navbar-toggler" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon"></span></button>
+                    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                            <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <a href="applicantDashboard.html">
+                            <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
+                        </a>
+                            <div
+                                class="collapse navbar-collapse" id="navcol-1" style="width: 800px;">
+                                <ul class="nav navbar-nav text-uppercase mr-auto">
+                                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantJobListings.html">All Listings</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantClassAllocation.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantAppStatus.html" style="font-family: Montserrat, sans-serif;">myApplications</a></li>
+                                    <li class="nav-item dropdown show" style="padding: 0px 0px 0px 0px;">
+                                        <a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Account</a>
+                                        <div class="dropdown-menu" role="menu" style="font-size: 12.8px;">
+                                            <a class="dropdown-item text-capitalize" role="presentation" href="applicantProfile.html">My account</a>
+                                            <a class="dropdown-item text-capitalize" role="presentation" onclick="logout()">log out</a></div>
+                                    </li>
+                                </ul><img src="assets/img/ICON.png"></div>
+                </div>
+                </nav>
+                </div>
+            </nav>
+        
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-pricing dark" style="height: auto;">
+            <div class="container">
+                <div class="block-heading" style="height: 87px;">
+                    <h1 class="text-left" style="margin-right: 0px;margin-bottom: 5px;margin-left: 72px;margin-top: -56px;color: rgb(255,193,7);font-size: 42px;"><strong>Class Allocations</strong></h1>
+                    <p class="text-left" style="margin-left: 80px;">View your allocated class times<br><br></p>
+                    <p class="text-left" style="margin-left: 80px;">
+                </div>
+            </div>
+            <div class="container"></div>
+            <div id='wrap'>
+
+                <div id='calendar'></div>
+                
+                <div style='clear:both'></div>
+            <div class="container"></div>
+            <div style="padding-top: 10px; padding-left: 100px">
+
+            <strong>             
+                <button class="btn btn-warning" type="button" style="color: white">Refresh</button>
+            </strong>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer dark">
+            <footer class="page-footer dark">
+                <div class="footer-copyright"><a href=“aboutUs_app.html” style="font-size: 12.8px;">About us</a>
+                    <p>© 2019 Copyright TOM</p>
+                </div>
+            </footer>
+        </footer>  
+         <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/calendarJS.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+            
+            /*  className colors
+            
+            className: default(transparent), important(red), chill(pink), success(green), info(blue)
+            
+            */		
+            
+              
+            /* initialize the external events
+            -----------------------------------------------------------------*/
+        
+            $('#external-events div.external-event').each(function() {
+            
+                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                // it doesn't need to have a start or end
+                var eventObject = {
+                    title: $.trim($(this).text()) // use the element's text as the event title
+                };
+                
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject);
+                
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true,      // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+                
+            });
+        
+        
+            /* initialize the calendar
+            -----------------------------------------------------------------*/
+            
+            var calendar =  $('#calendar').fullCalendar({
+                header: {
+                    left: 'title',
+                    center: 'agendaDay,agendaWeek,month',
+                    right: 'prev,next today'
+                },
+                editable: true,
+                firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+                selectable: true,
+                defaultView: 'month',
+                
+                axisFormat: 'h:mm',
+                columnFormat: {
+                    month: 'ddd',    // Mon
+                    week: 'ddd d', // Mon 7
+                    day: 'dddd M/d',  // Monday 9/7
+                    agendaDay: 'dddd d'
+                },
+                titleFormat: {
+                    month: 'MMMM yyyy', // September 2009
+                    week: "MMMM yyyy", // September 2009
+                    day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
+                },
+                allDaySlot: false,
+                selectHelper: true,
+                select: function(start, end, allDay) {
+                    var title = prompt('Event Title:');
+                    if (title) {
+                        calendar.fullCalendar('renderEvent',
+                            {
+                                title: title,
+                                start: start,
+                                end: end,
+                                allDay: allDay
+                            },
+                            true // make the event "stick"
+                        );
+                    }
+                    calendar.fullCalendar('unselect');
+                },
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+                drop: function(date, allDay) { // this function is called when something is dropped
+                
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data('eventObject');
+                    
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+                    var copiedEventObject = $.extend({}, originalEventObject);
+                    
+                    // assign it the date that was reported
+                    copiedEventObject.start = date ;
+                    copiedEventObject.allDay = allDay;
+                    
+                    // render the event on the calendar
+                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+                    
+                    // is the "remove after drop" checkbox checked?
+                    if ($('#drop-remove').is(':checked')) {
+                        // if so, remove the element from the "Draggable Events" list
+                        $(this).remove();
+                    }
+                    
+                },
+                
+                events: [
+
+                    {
+                        id: 999,
+                        title: 'INFS1609 Stream B',
+                        start: new Date(y, m, d+7, 16, 00),
+                        allDay: false,
+                        className: 'info'
+                    },
+                    {
+                        id: 999,
+                        title: 'INFS1609 Stream B',
+                        start: new Date(y, m, d+14, 16, 00),
+                        allDay: false,
+                        className: 'info'
+                    },                    {
+                        id: 999,
+                        title: 'INFS1609 Stream B',
+                        start: new Date(y, m, d+21, 16, 00),
+                        allDay: false,
+                        className: 'info'
+                    },
+
+                ],			
+            });
+            
+            
+        });
+    
+    </script>
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+      
+ <!-- TODO: Add SDKs for Firebase products that you want to use 
+   https://firebase.google.com/docs/web/setup#config-web-app -->
+<script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+<script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+<script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+<script>
+   var firebaseConfig = {
+     apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+     authDomain: "infs3605group3.firebaseapp.com",
+     databaseURL: "https://infs3605group3.firebaseio.com",
+     projectId: "infs3605group3",
+     storageBucket: "infs3605group3.appspot.com",
+     messagingSenderId: "757094635140",
+     appId: "1:757094635140:web:23089838804a1db6"
+   };
+ // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+</script>
+<script src="../js/profile.js/"></script>
+
+</body>
+
+</html>
