@@ -25,9 +25,13 @@ var classTimes = [];
 var insertCheckBoxHere = document.getElementById('insertCheckBoxHere');
 
 var applicantID;
+var applicantCourseCode;
+var applicantRole;
+var applicantEmailThis;
 var appName;
 var lecturerID;
 var appliedJobs = [];
+var lecturerNameThis;
 
 
 function onLoad() {
@@ -54,6 +58,9 @@ function dataPopulationManager(userUID) {
             marksRequirement.innerHTML = doc.data().marksRequirement;
             classTimes = doc.data().classTimes;
             lecturerID = doc.data().lecturer;
+            applicantCourseCode = doc.data().courseCode;
+            applicantRole = doc.data().role;
+            lecturerNameThis = doc.data().lecturerName;
             
             console.log("YAS");
         } else {
@@ -74,6 +81,7 @@ function dataPopulationManager(userUID) {
             applicantName.value = doc.data().name;
             applicantEmail.value = doc.data().email;
             appliedJobs = appliedJobs;
+            applicantEmailThis = doc.data().email;
             console.log("YAS");
         } else {
             // doc.data() will be undefined in this case
@@ -183,7 +191,11 @@ function onSubmit() {
         applicantName:appName,
         jobListing:queryString,
         lecturer:lecturerID,
-        status:'Pending'
+        status:'Pending',
+        courseCode: applicantCourseCode,
+        role: applicantRole,
+        applicantEmail:applicantEmailThis,
+        lecturerName:lecturerNameThis
     }).then(function() {
         console.log("Document successfully written!");
         //window.location.assign('applicantJobListings.html');

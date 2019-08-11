@@ -10,8 +10,12 @@ var divDropdown = document.getElementById('insertDropdownHere');
 var divButtonDropdown = document.getElementById('insertButtonDropdownHere');
 var divTable = document.getElementById('insertTableHere');
 var dictionary = {};
+var dictionary2 = {};
 var classAllocationDict = {};
 var courseCodeArr = [];
+var divButtons = document.createElement('div');
+divButtons.setAttribute('class','text-center');
+
 
 
 function onLoad() {
@@ -38,6 +42,7 @@ function createDict () {
                     var keyDict = doc.id + "?" + doc.data().jobListing + "?" + doc.data().applicantAvailabilities[h] ;
                     var valueDict = doc.data().applicantName;
                     dictionary[keyDict] = valueDict;
+                    dictionary2[keyDict] = doc.data().role +"?" + doc.data().courseCode + "?" + doc.data().lecturerName + "?" + doc.data().applicantEmail;                    
                 }  
             }  
             i ++;
@@ -154,13 +159,14 @@ function actuallyCreatingShit(userUID) {
     option.value = 0;
     option.selected = true;
     option.disabled = null;
-    option.innerHTML = "Filter By Course"
+    option.innerHTML = "Filter By Job Listing"
     select.appendChild(option);
 
     var submitFilterButton = document.createElement('button');
     submitFilterButton.innerHTML = "Go";
     submitFilterButton.setAttribute('class', 'btn btn-secondary');
     submitFilterButton.setAttribute('onclick','submitFilter()');
+
 
     
     
@@ -192,10 +198,24 @@ function actuallyCreatingShit(userUID) {
                     if (doc.data().lecturer == userUID) {
 
                         if (!courseCodeArr.includes(doc.data().courseCode))  {
+
+                            var divSingleButton = document.createElement('div');
+                            divSingleButton.setAttribute('style','padding:20px;');
+                            var button = document.createElement('button');
+                            button.setAttribute('class','btn btn-primary');
+                            var theLink = 'classAllocations.html?' + doc.id;
+                            button.setAttribute('onclick','submitInitialCourseSelection("' + theLink + '")');
+                            button.innerHTML = doc.data().courseCode + " " + doc.data().role;
+                            divSingleButton.appendChild(button);
+                            divButtons.appendChild(divSingleButton);
+
+
+
+
                             var option = document.createElement('option');
                             
-                            option.value = doc.data().courseCode;
-                            option.innerHTML = doc.data().courseCode;
+                            option.value = doc.id;
+                            option.innerHTML = doc.data().courseCode + " " + doc.data().role;
                             select.appendChild(option);
                             courseCodeArr.push(doc.data().courseCode);
                             console.log("ARRAY COURSE CODE ", courseCodeArr);
@@ -246,7 +266,7 @@ function actuallyCreatingShit(userUID) {
                                 }
                             } else {
                                 for (var i = 0; i < doc.data().classTimes.length; i ++) {
-                                    if(doc.data().courseCode == queryString) {
+                                    if(doc.id == queryString) {
                                         console.log("========================EACH ROW====================");
                                         console.log("STEP ", i);
                                         var tr = table.insertRow(-1);   
@@ -295,12 +315,26 @@ function actuallyCreatingShit(userUID) {
             }).catch(function(error) {
                 console.log(error);
             }).finally(function() {
-                console.log("Last Step");
-                divDropdown.appendChild(select);
-                divButtonDropdown.appendChild(submitFilterButton);
-                divTable.appendChild(table);
-                console.log(dictionary);
-                console.log(classAllocationDict);
+                var h3 = document.getElementById('classAllocationsTitle');
+                if (queryString == "" || queryString == "0") {
+                    console.log("Last Step");
+                    //divDropdown.appendChild(select);
+                    //divButtonDropdown.appendChild(submitFilterButton);
+                    h3.innerHTML = "Please Select a Job Listing";
+                    divTable.appendChild(divButtons);
+                    
+                    console.log(dictionary);
+                    console.log(classAllocationDict);
+                } else {
+                    console.log("Last Step");
+                    divDropdown.appendChild(select);
+                    divButtonDropdown.appendChild(submitFilterButton);
+                    divTable.appendChild(table);
+                    h3.innerHTML = "Class Allocations";
+                    createMailButton(divTable);
+                    console.log(dictionary);
+                    console.log(classAllocationDict);
+                }
                 
             });  
         
@@ -313,27 +347,121 @@ function actuallyCreatingShit(userUID) {
 
 }
 
+function createMailButton(div) {
+    var buttonDiv = document.createElement('div');
+    buttonDiv.setAttribute('class','text-center');
+    buttonDiv.setAttribute('style','padding:20px;');
+
+    var button = document.createElement('button');
+    button.setAttribute('class','btn btn-secondary');
+    button.setAttribute('onclick','prepareEmail()');
+
+    button.innerHTML = "Mail Applicants";
+
+    var spinnerDiv = document.createElement('div');
+    spinnerDiv.setAttribute('class','spinner-border text-center');
+    spinnerDiv.setAttribute('role','status');
+    spinnerDiv.id = "spinnerLoading";
+
+    var span = document.createElement('span');
+    span.setAttribute('class','sr-only');
+    span.innerHTML = "Loading...";
+
+    spinnerDiv.appendChild(span);
+    spinnerDiv.hidden = true;
+    buttonDiv.appendChild(button);
+
+    div.appendChild(buttonDiv);
+    div.appendChild(spinnerDiv);
+}
+
+function prepareEmail() {
+    var spinner = document.getElementById('spinnerLoading');
+    spinner.hidden = false;
+    var arrayOfEmails = [];
+    var roleEmail;
+    var courseCodeEmail;
+    var classAllocationEmail = [];
+    var lecturerNameEmail;
+    var counter = 0;
+
+    db.collection("classAllocation").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            var theID = doc.id;
+            var IDSplits = theID.split('?');
+            if (IDSplits[0] == queryString) {
+                counter ++;
+                arrayOfEmails.push(doc.data().applicantEmail);
+                roleEmail = doc.data().role;
+                courseCodeEmail = doc.data().courseCode;
+                classAllocationEmail.push(doc.data().applicantName + " | " + doc.data().applicantEmail + " | " +classTimesConverter(doc.data().classTime));
+                lecturerNameEmail = doc.data().lecturerName;
+
+            }
+        
+        });
+    }).then(function() {
+        var bcc = "mailto:?bcc=" + arrayOfEmails.join(',');
+        var body = "&body=Hi%20Applicants,%0D%0A%0D%0AYou%20have%20been%20allocated%20to%20tutor/lead/teach%20the%20following%20classes%20in%20the%20upcoming%20teaching%20period%20for%20" + 
+                    roleEmail + "%20for%20" + courseCodeEmail +
+                    ".%20Below%20you%20will%20find%20details%20on%20which%20class%20you%20have%20been%20allocated%20to.%0D%0A%0D%0A%0D%0A" + 
+                    classAllocationEmail.join('%0D%0A') + 
+                    "%0D%0A%0D%0A%0D%0APlease%20complete%20the%20following%20as%20soon%20as%20possible:%0D%0A%0D%0A-%20Reply%20back%20to%20this%20email%20to%20confirm%20you%20have%20seen%20your%20allocation%0D%0A%0D%0A" + 
+                    "-%20Let%20me%20know%20ASAP%20if%20this%20allocation%20will%20not%20work%20for%20you%20and%20why%0D%0A%0D%0A-%20Keep%20on%20the%20lookout%20for%20future%20emails%20regarding%20onboarding,%20training," +
+                    "%20etc%0D%0A%0D%0A%0D%0ACongratulations%20and%20I%20look%20forward%20to%20working%20with%20you.%0D%0A%0D%0A%0D%0A" + 
+                    lecturerNameEmail;
+        if (counter != 0) {
+            window.location.assign(bcc + body);
+        } else {
+            window.alert('No tutor is allocated to any class!');
+        }
+        setTimeout(function(){
+            window.location.reload();
+        }, 500);
+    });
+    
+
+    
+  
+}
+
 function saveSingleButton(theValue) {
     var theValueSplits = theValue.split('?');
     var theSelectID =  theValueSplits[1] + "?" + theValueSplits[2];
     var theSelect = document.getElementById(theSelectID);
 
+    var resultDict = dictionary2[theSelect.value];
+    var resultDictSplits = resultDict.split('?');
+    var newRole = resultDictSplits[0];
+    var newCourseCode = resultDictSplits[1];
+    var newLecturerName = resultDictSplits[2];
+    var newApplicantEmail = resultDictSplits[3];
+
+
     db.collection("classAllocation").doc(theSelectID).set({
         jobApplication: theValueSplits[0],
         jobListing: theValueSplits[1],
         classTime: theValueSplits[2],
-        applicantName: dictionary[theSelect.value]
-
-      })
-      .then(function() {
+        applicantName: dictionary[theSelect.value],
+        role: newRole,
+        courseCode: newCourseCode,
+        lecturerName:newLecturerName,
+        applicantEmail:newApplicantEmail
+      }).then(function() {
         console.log("Document successfully written!");
+        window.alert('Class Allocated!');
         window.location.reload();
       })
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
       
-console.log(theSelect);
+    console.log(theSelect);
     console.log(theSelect.value);
 }
 
+
+
+function submitInitialCourseSelection(link) {
+    window.location.assign(link); 
+}

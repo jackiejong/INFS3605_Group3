@@ -11,8 +11,8 @@ function signup() {
     var userFirstName = document.getElementById("inputFirstName").value;
     var userLastName = document.getElementById("inputLastName").value;
     var fullName = userFirstName + " " + userLastName;
-    var userDOB = document.getElementById("inputDOB").value;
-    userDOB = Date.parse(userDOB) / 1000;
+    //var userDOB = document.getElementById("inputDOB").value;
+    //userDOB = Date.parse(userDOB) / 1000;
     var userEmail = document.getElementById("inputEmail").value;
     var userPass = document.getElementById("inputPassword").value;
 
@@ -42,32 +42,36 @@ function signup() {
 
           db.collection("applicant").doc(userUID).set({
             name: fullName,
-            dob: userDOB,
+            dob: 0,
             email:userEmail,
             appliedJobs:[""],
             skills:"",
             experience:""
           })
           .then(function() {
-            
-
-            var coverLetterStorageRef = firebase.storage().ref(userUID + "/coverLetter.pdf");
-            coverLetterStorageRef.put(coverLetterUpload.files[0]);
 
             
+              var coverLetterStorageRef = firebase.storage().ref(userUID + "/coverLetter.pdf");
+              if (coverLetterUpload.files[0] != null) {
+                coverLetterStorageRef.put(coverLetterUpload.files[0]);
+              }
 
-            var transcriptStorageRef = firebase.storage().ref(userUID + "/transcript.pdf");
-            transcriptStorageRef.put(transcriptUpload.files[0]);
+              var transcriptStorageRef = firebase.storage().ref(userUID + "/transcript.pdf");
+              if (transcriptUpload.files[0] != null) {
+                transcriptStorageRef.put(transcriptUpload.files[0]);
+              }
 
-            console.log("Document successfully written!");
-
-            
+              console.log("Document successfully written!");
             
           })
           .catch(function(error) {
             console.error("Error writing document: ", error);
           }).finally(function(){
-            window.location.assign('applicantDashboard.html');
+
+            setTimeout(function(){
+              window.location.assign('applicantDashboard.html');
+            }, 500);
+            
           });
 
 
@@ -93,15 +97,5 @@ function onLoad() {
       document.getElementById("signupButton").click();
       
     }
-  });
-
-  transcriptUpload.addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    console.log("Transcript Name " + file.name);  
-  });
-
-  coverLetterUpload.addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    console.log("Cover Letter Name " + file.name);
   });
 }

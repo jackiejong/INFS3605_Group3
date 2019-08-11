@@ -1,10 +1,11 @@
 var inputEmail = document.getElementById('inputEmail');
+var db = firebase.firestore();
 var inputPassword = document.getElementById('inputPassword');
 
 function onSubmit() {
 
     var spinnerLoading = document.getElementById("spinnerLoading");
-  spinnerLoading.setAttribute('style','visibility: visible;');
+    spinnerLoading.setAttribute('style','visibility: visible;');
     userEmail = inputEmail.value;
     userPass = inputPassword.value;
 
@@ -15,22 +16,28 @@ function onSubmit() {
     
         if (errorCode === 'auth/wrong-password') {
             console.log('Wrong password');
-            window.alert('Wrong password.');
-            
+            window.alert('Wrong password.');        
         } else {
             window.alert(errorMessage);
         }
-        
-        window.location.reload();
-        
-        
+        window.location.reload();  
     });
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
           var user = firebase.auth().currentUser;
-          console.log("user successfully signed in")
-          window.location.assign('applicantDashboard.html')
+
+
+          db.collection('applicant').doc(user.uid).get().then(function(doc) {
+              console.log(doc.id + " =============== " + doc.data().name);
+          }).catch(function(error) {
+              window.alert("No user found");
+              logout();
+          }).then(function() {
+              console.log("user successfully signed in");
+              window.location.assign('applicantDashboard.html');
+          });
+          
       } else {
         console.log("no user signed in");
       }
@@ -54,3 +61,14 @@ function onLoad() {
       }
     });
   }
+
+  function logout() {
+    firebase.auth().signOut().then(function() {
+        console.log('A user successfully logged out');
+        window.location.reload();
+      }).catch(function(error) {
+        window.alert('Something happened!');
+      });  
+}
+
+
