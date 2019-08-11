@@ -4,6 +4,7 @@ var jobListingExpiry = {};
 var jobListingExpiryDummy = {};
 var expiryArray = [];
 var jobListingArray = [];
+var appliedJobs = [];
 
 
 
@@ -17,38 +18,33 @@ function generateJobListingExpiry() {
                   delete jobListingExpiryDummy[key];
                   console.log(expiryArray);
                   console.log("REAL", jobListingArray);
-                  console.log("DUMMY", jobListingExpiryDummy);
-                  
-                  
+                  console.log("DUMMY", jobListingExpiryDummy);           
               }
           }
       }
 } 
-
-
-
-
 
 function onLoad() {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-            actuallyCreatingTables(user.uid);
-            
-            
-            
-            
-              
+            getAppliedJob(user.uid);
         } else {
             window.alert('No user signed in');
             window.location.assign('index.html');
         }
     });
-    
-
 }
-
+function getAppliedJob(userUID) {
+    db.collection('applicant').doc(userUID).get().then(function(doc) {
+        appliedJobs = doc.data().appliedJobs;
+    }).then(function() {
+        actuallyCreatingTables(userUID);  
+    }).catch(function(error) {
+        console.log(error);
+    })
+}
 function populateDict() {
         db.collection("jobListing").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
@@ -69,11 +65,6 @@ function populateDict() {
 }
 
 
-
-
-
-
-
 function logout() {
     firebase.auth().signOut().then(function() {
         console.log('A user successfully logged out');
@@ -85,72 +76,68 @@ function logout() {
 
 
 function populateTheOtherData() {
-      
-      
     
   db.collection("jobListing").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       console.log("===================Hi===================");
      
       console.log(`${doc.id} => ${doc.data()}`);
+      if (!appliedJobs.includes(doc.id)) {
+            if (jobListingArray[0] == doc.id) {
 
-      
-          if (jobListingArray[0] == doc.id) {
-
-              var listingTitleID = 'listingTitle1';
-              var expiryDateID = 'expiryDate1';
-              var noOfApplicationID = 'noOfApplication1';
-              var progressBarID = 'listingProgressBar1';
-              var viewDetailsID = 'listingViewDetail1';
-
-
-              var listingTitle = document.getElementById(listingTitleID);
-              var expiryDate = document.getElementById(expiryDateID);
-              
-              var viewDetails = document.getElementById(viewDetailsID);
-              
-              listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
-              expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-              viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
-                 
-          } else if (jobListingArray[1] == doc.id) {
-            var listingTitleID = 'listingTitle2';
-              var expiryDateID = 'expiryDate2';
-              var noOfApplicationID = 'noOfApplication2';
-              var progressBarID = 'listingProgressBar2';
-              var viewDetailsID = 'listingViewDetail2';
+                var listingTitleID = 'listingTitle1';
+                var expiryDateID = 'expiryDate1';
+                var noOfApplicationID = 'noOfApplication1';
+                var progressBarID = 'listingProgressBar1';
+                var viewDetailsID = 'listingViewDetail1';
 
 
-              var listingTitle = document.getElementById(listingTitleID);
-              var expiryDate = document.getElementById(expiryDateID);
-         
-              var viewDetails = document.getElementById(viewDetailsID);
-              
-              listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
-              expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-              viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
+                var listingTitle = document.getElementById(listingTitleID);
+                var expiryDate = document.getElementById(expiryDateID);
+                
+                var viewDetails = document.getElementById(viewDetailsID);
+                
+                listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
+                expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
+                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+                    
+            } else if (jobListingArray[1] == doc.id) {
+                var listingTitleID = 'listingTitle2';
+                var expiryDateID = 'expiryDate2';
+                var noOfApplicationID = 'noOfApplication2';
+                var progressBarID = 'listingProgressBar2';
+                var viewDetailsID = 'listingViewDetail2';
 
-          } else if(jobListingArray[2] == doc.id) {
-            var listingTitleID = 'listingTitle3';
-            var expiryDateID = 'expiryDate3';
-            var noOfApplicationID = 'noOfApplication3';
-            var progressBarID = 'listingProgressBar3';
-            var viewDetailsID = 'listingViewDetail3';
 
-
-            var listingTitle = document.getElementById(listingTitleID);
-            var expiryDate = document.getElementById(expiryDateID);
-         
-            var viewDetails = document.getElementById(viewDetailsID);
+                var listingTitle = document.getElementById(listingTitleID);
+                var expiryDate = document.getElementById(expiryDateID);
             
-            listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
-            expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-            viewDetails.setAttribute('href','jobListingDetail_static.html?' + doc.id);
-          }
-      
+                var viewDetails = document.getElementById(viewDetailsID);
+                
+                listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
+                expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
+                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+
+            } else if(jobListingArray[2] == doc.id) {
+                var listingTitleID = 'listingTitle3';
+                var expiryDateID = 'expiryDate3';
+                var noOfApplicationID = 'noOfApplication3';
+                var progressBarID = 'listingProgressBar3';
+                var viewDetailsID = 'listingViewDetail3';
+
+
+                var listingTitle = document.getElementById(listingTitleID);
+                var expiryDate = document.getElementById(expiryDateID);
+            
+                var viewDetails = document.getElementById(viewDetailsID);
+                
+                listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
+                expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
+                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+            }
+      }
     });
   });
-  
 }
 
 
@@ -269,21 +256,6 @@ function actuallyCreatingTables(userUID) {
                       console.log("Error getting document:", error);
                   });
 
-                  /*
-                  applicantRef.get().then(function(doc) {
-                      if (doc.exists) {
-                          console.log("applicant data:", doc.data());
-               
-                      } else {
-                          // doc.data() will be undefined in this case
-                          console.log("No such document!");
-                      }
-                  }).catch(function(error) {
-                      console.log("Error getting document:", error);
-                  });
-
-                  */ 
-
                   var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
                   sessionTimesCol.innerHTML = classTimes;
                   var progressBar = generateProgressBar(doc.data().status);
@@ -295,19 +267,6 @@ function actuallyCreatingTables(userUID) {
                   tr.appendChild(courseCodeCol);
                   tr.appendChild(sessionTimesCol);
                   tr.appendChild(statusCol);
-
-                  /*
-                  td = document.createElement('td');
-                  td.setAttribute('class','text-center');
-                  td.setAttribute('style','vertical-align:middle;');
-                  var button = document.createElement('button');
-              
-                  // Add Mail to
-                  button.setAttribute("class","btn btn-warning");
-                  button.innerHTML = "Mail LiC";
-                  td.appendChild(button);
-                  tr.appendChild(td);
-                  */
               }
           });
       }).then(function() {
@@ -315,15 +274,12 @@ function actuallyCreatingTables(userUID) {
       });
 
       var div = document.getElementById('insertTableHere');
-      div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
+      div.appendChild(empTable);
 }
 
 function generateProgressBar(status) {
   var divUpper = document.createElement('div');
   divUpper.setAttribute('class','progress');
-  
-
-  //<div class="progress-bar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">20%</div>
   var div = document.createElement('div');
   
 

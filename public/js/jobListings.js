@@ -59,7 +59,7 @@ function actuallyCreatingCards(userUID) {
                 console.log(`${doc.id} => ${doc.data()}`);
                 var firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'col');
-                firstDiv.setAttribute('style', 'width: 1140px; margin: 0px 25px; height: 260px;');
+                firstDiv.setAttribute('style', 'width: 1140px; margin: 0px 25px; height: auto; margin-top:50px;');
 
                 var secondDiv = document.createElement('div');
                 secondDiv.setAttribute('class', "clean-pricing-item");

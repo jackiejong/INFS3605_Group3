@@ -37,12 +37,15 @@ function actuallyCreatingCards(userUID) {
     var mainTag = document.createElement('main');
     mainTag.setAttribute('class','page pricing-table-page');
 
+    
+
     var sectionTag = document.createElement('section');
     sectionTag.setAttribute('class', 'clean-block clean-pricing dark');
+    //sectionTag.setAttribute('style','padding-top:100px;');
 
     var zerothDiv = document.createElement('div');
     zerothDiv.setAttribute('class','block-heading');
-    zerothDiv.setAttribute('style','eight: 87px;');
+    zerothDiv.setAttribute('style','height: 87px;');
 
     var theTitle = document.createElement('h2');
     theTitle.setAttribute('class','text-left text-info');
@@ -76,7 +79,7 @@ function actuallyCreatingCards(userUID) {
                 console.log(`${doc.id} => ${doc.data()}`);
                 var firstDiv = document.createElement('div');
                 firstDiv.setAttribute('class', 'col');
-                firstDiv.setAttribute('style', 'width: 1140px; margin: 0px 25px; height: 260px;');
+                firstDiv.setAttribute('style', 'width: 1140px; margin: 0px 25px; height: auto; margin-top:50px;');
 
                 var secondDiv = document.createElement('div');
                 secondDiv.setAttribute('class', "clean-pricing-item border-warning");
