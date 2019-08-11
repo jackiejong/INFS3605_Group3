@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
-  <body onload="getCurrentUser()">
+  <body onload="onLoad()">
       <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
           <div class="container">
               <a href="dashboard.html">
@@ -58,7 +58,7 @@
                                     <h3 class="text-left" style="height: 51px;">General Account Settings</h3>
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table text-left">
                                         <thead>
                                             <tr>
                                                 <th class="text-left border-white" style="width: 184px;">Name</th>
@@ -70,10 +70,7 @@
                                                 <td class="text-left border-white"><strong>Email Address</strong></td>
                                                 <td class="border-white" id=lecturerEmail></td>
                                             </tr>
-                                            <tr>
-                                                <td class="text-left border-white"><strong>Password</strong></td>
-                                                <td class="border-white"><input class="border rounded" type="text" name="********" value="********" style="margin-left: -23px;"></td>
-                                            </tr>
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -101,19 +98,19 @@
                                             <tr>
                                                 <td class="text-white border-white" style="height: 50px;"><img src="assets/img/contact.png" style="height: 34px;"></td>
                                                 <td class="border-white">
-                                                  <a href="#">Contact Us</a>
+                                                  <a href="mailto:akhil.bonu@outlook.com?subject=TOM%20-%20Contact%20Us">Contact Us</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-white border-white"><img src="assets/img/rubbish-bin.png" style="height: 34px;"></td>
                                                 <td class="border-white">
-                                                  <a href="#">Delete Account</a>
+                                                  <a href="#" onclick="deleteAcc()">Delete Account</a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-white border-white"><img src="assets/img/warning-sign.png" style="height: 34px;"></td>
                                                 <td class="border-white" href="#">
-                                                  <a href="#">Report a Problem</a>
+                                                  <a href="mailto:akhil.bonu@outlook.com?subject=TOM%20-%20Report%20a%20Problem">Report a Problem</a>
                                                 </td>
                                             </tr>
                                         </tbody>

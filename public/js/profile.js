@@ -1,44 +1,32 @@
 var db = firebase.firestore();
-function getCurrentUser() {
-        
-        var profileName = document.getElementById("profile_name");
-        var profileDOB = document.getElementById("profile_dob");
+var lecturerName = document.getElementById("lecturerName");
+var lecturerEmail = document.getElementById("lecturerEmail");
+
+
+function onLoad() {
+    
+        //var profileDOB = document.getElementById("profile_dob");
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.  
-              var user = firebase.auth().currentUser;
-          
-              if(user != null){
-                  // Debug
-                  // var email_id = user.email;
-                  // document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-                  console.log(user.uid);
-                  var userUID = user.uid.toString();
-                  console.log("User UID in string ",userUID);
-                  
-                  var docRef = db.collection("lecturer").doc(userUID);
-
-                  docRef.get().then(function(doc) {
-                      if (doc.exists) {
-                          console.log("Document data:", doc.data());
-                          var result = timeStampConverter(doc.data().dob);     
-                          console.log("DOB ", typeof doc.data().dob);
-                          console.log("DOB converted ", result );
-                          profileName.innerHTML = doc.data().name;
-                          profileDOB.innerHTML = result;
-                      } else {
-                          // doc.data() will be undefined in this case
-                          console.log("No such document!");
-                      }
-                  }).catch(function(error) {
-                      console.log("Error getting document:", error);
-                  });
-              } else {
+                var docRef = db.collection('lecturer').doc(user.uid);
+                lecturerEmail.innerHTML = user.email;
+                docRef.get().then(function(doc) {
+                    if (doc.exists) {
+                        lecturerName.innerHTML = doc.data().name;
+                    } else {
+                        // doc.data() will be undefined in this case
+                        console.log("No such document!");
+                    }
+                }).catch(function(error) {
+                    console.log("Error getting document:", error);
+                });
+            } else {
                 console.log("no user signed in");
                 window.location.assign('index.html');
-              }
             }
-          });
+        });
+         
 }
 
 function timeStampConverter(unix_timestamp) {
@@ -71,4 +59,21 @@ function logout() {
       }).catch(function(error) {
         window.alert('Something happened!');
       });  
+}
+
+
+function deleteAcc() {
+    var user = firebase.auth().currentUser;
+    window.alert("Not gonna delete until Presentation day!!");
+    /*
+    user.delete().then(function() {
+        // User deleted.
+        window.alert("User Deleted! :(");
+
+    }).catch(function(error) {
+    // An error happened.
+    }).then(function() {
+        window.location.assign('index.html');
+    });
+    */
 }
