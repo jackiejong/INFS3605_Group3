@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
   <body onload="getCurrentUser()">
       <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
@@ -41,10 +45,89 @@
           </div><img src="assets/img/ICON.png" onclick="logout()"></div>
       </nav>
 
-    <h1 id="profile_name"></h1>
-    <h5 id="profile_dob"></h5>
-
-    
+    <main class="page product-page" >
+        <section class="clean-block clean-product dark" style="height: 600px;">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-left text-info" style="margin-left: 58px;margin-top: -45px;"><strong>Profile</strong></h2>
+                    <p class="text-left" style="margin-right: 630px;margin-top: -24px;margin-bottom: 17px;">Details about lecturer's profile page</p>
+                    <div class="row">
+                        <div class="col d-inline-block" style="width: 500px;">
+                            <div class="border-primary d-inline-block clean-pricing-item" style="width: 587px;margin: 0px 60px;height: 349px;">
+                                <div class="heading" style="height: 43px;">
+                                    <h3 class="text-left" style="height: 51px;">General Account Settings</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left border-white" style="width: 184px;">Name</th>
+                                                <th class="text-left border-white" style="width: 238px;color: rgb(0,0,0);" id="lecturerName"></th>                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left border-white"><strong>Email Address</strong></td>
+                                                <td class="border-white" id=lecturerEmail></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left border-white"><strong>Password</strong></td>
+                                                <td class="border-white"><input class="border rounded" type="text" name="********" value="********" style="margin-left: -23px;"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="features"></div>
+                                <div class="price"></div>
+                            </div>
+                        </div>
+                        <div class="col" style="width: 55px;">
+                            <div class="border-primary d-block clean-pricing-item" style="width: 358px;margin: 0px 60px;height: 349px;margin-top: 0px;margin-right: 0px;margin-left: 102px;">
+                                <div class="heading" style="height: 43px;">
+                                    <h3 class="text-left" style="height: 3px;">Help with Page</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-white border-white" style="width: 75px;"><img src="assets/img/info.png" style="height: 34px;"></td>
+                                                <td class="border-white" href="#">
+                                                  <a href="#">Help Document</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white" style="height: 50px;"><img src="assets/img/contact.png" style="height: 34px;"></td>
+                                                <td class="border-white">
+                                                  <a href="#">Contact Us</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white"><img src="assets/img/rubbish-bin.png" style="height: 34px;"></td>
+                                                <td class="border-white">
+                                                  <a href="#">Delete Account</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white"><img src="assets/img/warning-sign.png" style="height: 34px;"></td>
+                                                <td class="border-white" href="#">
+                                                  <a href="#">Report a Problem</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="features"></div>
+                                <div class="price"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>s
 
 
     <footer class="page-footer dark">
@@ -52,7 +135,11 @@
             <p>© 2019 Copyright TOM</p>
         </div>
     </footer>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
