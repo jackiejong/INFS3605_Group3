@@ -1,8 +1,16 @@
 var db = firebase.firestore();
 
+var courseCodeArray = [];
+var statsArray = [];
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var querySplits = queryString.split('&');
+var theCourseValue = querySplits[0].split('=')[1];
+var theStatusValue = querySplits[1].split('=')[1];
+console.log("Document ID ", queryString, theCourseValue, theStatusValue);
+console.log(typeof queryString);
+
 function onLoad() {
-
-
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
@@ -12,7 +20,6 @@ function onLoad() {
             window.location.assign('index.html');
         }
     });
-    
 }
 
 
@@ -27,7 +34,6 @@ function classTimesConverter(inputDate) {
     var toHours = (inputDate % 10000);
     var day = days[Math.floor(inputDate / 100000000) - 1];
 
-    
     console.log(fromHours, toHours, day);
 
     if (fromHours == 900) {
@@ -35,12 +41,9 @@ function classTimesConverter(inputDate) {
             return day + " " + "0" + fromHours + " - 0" + toHours;
         } else {
             return day + " " + "0" + fromHours + " - " + toHours;
-        }
-        
-      
+        }  
     } else {
-        return day + " "  + fromHours + " - " + toHours;
-       
+        return day + " "  + fromHours + " - " + toHours; 
     }
 }
 
@@ -71,90 +74,326 @@ function actuallyCreatingTables(userUID) {
         var tr = empTable.insertRow(-1);
 
         for (var h = 0; h < arrHead.length; h++) {
-            var th = document.createElement('th');          // TABLE HEADER.
+            var th = document.createElement('th');
+            // TABLE HEADER.
             th.innerHTML = arrHead[h];
             tr.appendChild(th);
         }
+
+        // Create FILTER
+        var select = document.createElement('select');
+        select.setAttribute('id', 'courseFilter');
+        select.setAttribute('class', 'form-control');
         
+        var option = document.createElement('option');
+        option.value = 0;
+        option.selected = true;
+        option.disabled = true;
+        option.innerHTML = "Filter By Course";
+        select.appendChild(option);
+
+        var submitFilterButton = document.createElement('button');
+        submitFilterButton.innerHTML = "Go";
+        submitFilterButton.setAttribute('class', 'btn btn-secondary');
+        submitFilterButton.setAttribute('onclick','submitFilter()');
+
+
+
+        // Create Status Filter
+        var selectStat = document.createElement('select');
+        selectStat.setAttribute('id', 'statusFilter');
+        selectStat.setAttribute('class', 'form-control');
+        
+        var option1 = document.createElement('option');
+        option1.value = 0;
+        option1.selected = true;
+        option1.disabled = true;
+        option1.innerHTML = "Filter By Status";
+        selectStat.appendChild(option1);
+  
         db.collection("jobApplication").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 if(doc.data().lecturer == userUID) {
-                    var tr = empTable.insertRow(-1);
-                    var applicantCol = document.createElement('td');
-                    var roleCol = document.createElement('td');
-                    var courseCodeCol = document.createElement('td');
-                    var sessionTimesCol = document.createElement('td');
-                    var statusCol = document.createElement('td');
-
-                    var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
-                    var applicantRef = db.collection('applicant').doc(doc.data().applicant);
-
-                    console.log(`${doc.id} => ${doc.data()}`);
 
 
+                    if (!courseCodeArray.includes(doc.data().courseCode)) {
+                        var option = document.createElement('option');
+                        option.value = doc.data().courseCode;
+                        option.innerHTML = doc.data().courseCode;
+                        select.appendChild(option);
+                        courseCodeArray.push(doc.data().courseCode);
+                    }
+
+                    if (!statsArray.includes(doc.data().status)) {
+                        var option = document.createElement('option');
+                        option.value = doc.data().status;
+                        option.innerHTML = doc.data().status;
+                        selectStat.appendChild(option);
+                        statsArray.push(doc.data().status); 
+                    }
 
 
-                    jobListingRef.get().then(function(doc) {
-                        if (doc.exists) {
-                            console.log("jobListing data:", doc.data());
-                            roleCol.innerHTML = doc.data().role;
-                            courseCodeCol.innerHTML = doc.data().courseCode;
-                            
-                            
-                            
 
-                        } else {
-                            // doc.data() will be undefined in this case
-                            console.log("No such document!");
-                        }
-                    }).catch(function(error) {
-                        console.log("Error getting document:", error);
-                    });
+                    if ((theCourseValue == 0 || theCourseValue == null) && (theStatusValue == 0 || theStatusValue == null)) {
+                        var tr = empTable.insertRow(-1);
+                        var applicantCol = document.createElement('td');
+                        var roleCol = document.createElement('td');
+                        var courseCodeCol = document.createElement('td');
+                        var sessionTimesCol = document.createElement('td');
+                        var statusCol = document.createElement('td');
 
-                    applicantRef.get().then(function(doc) {
-                        if (doc.exists) {
-                            console.log("applicant data:", doc.data());
-                            applicantCol.innerHTML = doc.data().name;
+                        var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
+                        var applicantRef = db.collection('applicant').doc(doc.data().applicant);
 
-                            
+                        
 
+                        console.log(`${doc.id} => ${doc.data()}`);
+                        jobListingRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("jobListing data:", doc.data());
+                                roleCol.innerHTML = doc.data().role;
+                                courseCodeCol.innerHTML = doc.data().courseCode;
 
-                            
-                        } else {
-                            // doc.data() will be undefined in this case
-                            console.log("No such document!");
-                        }
-                    }).catch(function(error) {
-                        console.log("Error getting document:", error);
-                    });
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
 
-                    var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
-                    sessionTimesCol.innerHTML = classTimes;
-                    statusCol.innerHTML = doc.data().status;
+                        applicantRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("applicant data:", doc.data());
+                                applicantCol.innerHTML = doc.data().name;
+    
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
 
-                    tr.appendChild(applicantCol);
-                    tr.appendChild(roleCol);
-                    tr.appendChild(courseCodeCol);
-                    tr.appendChild(sessionTimesCol);
-                    tr.appendChild(statusCol);
+                        var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
+                        sessionTimesCol.innerHTML = classTimes;
+                        statusCol.innerHTML = doc.data().status;
 
-                    td = document.createElement('td');
-                    var button = document.createElement('button');
+                        tr.appendChild(applicantCol);
+                        tr.appendChild(roleCol);
+                        tr.appendChild(courseCodeCol);
+                        tr.appendChild(sessionTimesCol);
+                        tr.appendChild(statusCol);
 
-                    var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
-                    button.setAttribute("onclick",theLink);
-                    button.setAttribute("class","btn btn-dark");
-                    button.innerHTML = "View Details";
-                    td.appendChild(button);
-                    tr.appendChild(td);
+                        td = document.createElement('td');
+                        var button = document.createElement('button');
+
+                        var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
+                        button.setAttribute("onclick",theLink);
+                        button.setAttribute("class","btn btn-dark");
+                        button.innerHTML = "View Details";
+                        td.appendChild(button);
+                        tr.appendChild(td);
+                    } else if (doc.data().courseCode == theCourseValue && theStatusValue == 0) {
+                        var tr = empTable.insertRow(-1);
+                        var applicantCol = document.createElement('td');
+                        var roleCol = document.createElement('td');
+                        var courseCodeCol = document.createElement('td');
+                        var sessionTimesCol = document.createElement('td');
+                        var statusCol = document.createElement('td');
+
+                        var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
+                        var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+
+                        
+
+                        console.log(`${doc.id} => ${doc.data()}`);
+                        jobListingRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("jobListing data:", doc.data());
+                                roleCol.innerHTML = doc.data().role;
+                                courseCodeCol.innerHTML = doc.data().courseCode;
+
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        applicantRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("applicant data:", doc.data());
+                                applicantCol.innerHTML = doc.data().name;
+    
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
+                        sessionTimesCol.innerHTML = classTimes;
+                        statusCol.innerHTML = doc.data().status;
+
+                        tr.appendChild(applicantCol);
+                        tr.appendChild(roleCol);
+                        tr.appendChild(courseCodeCol);
+                        tr.appendChild(sessionTimesCol);
+                        tr.appendChild(statusCol);
+
+                        td = document.createElement('td');
+                        var button = document.createElement('button');
+
+                        var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
+                        button.setAttribute("onclick",theLink);
+                        button.setAttribute("class","btn btn-dark");
+                        button.innerHTML = "View Details";
+                        td.appendChild(button);
+                        tr.appendChild(td);
+                    } else if (doc.data().status == theStatusValue && theCourseValue == 0) {
+                        var tr = empTable.insertRow(-1);
+                        var applicantCol = document.createElement('td');
+                        var roleCol = document.createElement('td');
+                        var courseCodeCol = document.createElement('td');
+                        var sessionTimesCol = document.createElement('td');
+                        var statusCol = document.createElement('td');
+
+                        var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
+                        var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+
+                        
+
+                        console.log(`${doc.id} => ${doc.data()}`);
+                        jobListingRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("jobListing data:", doc.data());
+                                roleCol.innerHTML = doc.data().role;
+                                courseCodeCol.innerHTML = doc.data().courseCode;
+
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        applicantRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("applicant data:", doc.data());
+                                applicantCol.innerHTML = doc.data().name;
+    
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
+                        sessionTimesCol.innerHTML = classTimes;
+                        statusCol.innerHTML = doc.data().status;
+
+                        tr.appendChild(applicantCol);
+                        tr.appendChild(roleCol);
+                        tr.appendChild(courseCodeCol);
+                        tr.appendChild(sessionTimesCol);
+                        tr.appendChild(statusCol);
+
+                        td = document.createElement('td');
+                        var button = document.createElement('button');
+
+                        var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
+                        button.setAttribute("onclick",theLink);
+                        button.setAttribute("class","btn btn-dark");
+                        button.innerHTML = "View Details";
+                        td.appendChild(button);
+                        tr.appendChild(td);
+                    } else if ( doc.data().status == theStatusValue && doc.data().courseCode == theCourseValue) {
+                        var tr = empTable.insertRow(-1);
+                        var applicantCol = document.createElement('td');
+                        var roleCol = document.createElement('td');
+                        var courseCodeCol = document.createElement('td');
+                        var sessionTimesCol = document.createElement('td');
+                        var statusCol = document.createElement('td');
+
+                        var jobListingRef = db.collection('jobListing').doc(doc.data().jobListing);
+                        var applicantRef = db.collection('applicant').doc(doc.data().applicant);
+
+                        
+
+                        console.log(`${doc.id} => ${doc.data()}`);
+                        jobListingRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("jobListing data:", doc.data());
+                                roleCol.innerHTML = doc.data().role;
+                                courseCodeCol.innerHTML = doc.data().courseCode;
+
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        applicantRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                console.log("applicant data:", doc.data());
+                                applicantCol.innerHTML = doc.data().name;
+    
+                            } else {
+                                // doc.data() will be undefined in this case
+                                console.log("No such document!");
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting document:", error);
+                        });
+
+                        var classTimes = prepareClassTimes(doc.data().applicantAvailabilities);
+                        sessionTimesCol.innerHTML = classTimes;
+                        statusCol.innerHTML = doc.data().status;
+
+                        tr.appendChild(applicantCol);
+                        tr.appendChild(roleCol);
+                        tr.appendChild(courseCodeCol);
+                        tr.appendChild(sessionTimesCol);
+                        tr.appendChild(statusCol);
+
+                        td = document.createElement('td');
+                        var button = document.createElement('button');
+
+                        var theLink = 'onClick("' + 'applicationDetailed.html?' + doc.id + '")';
+                        button.setAttribute("onclick",theLink);
+                        button.setAttribute("class","btn btn-dark");
+                        button.innerHTML = "View Details";
+                        td.appendChild(button);
+                        tr.appendChild(td);
+                    }
                 }
             });
+        }).then(function() {
+            var filterStatDiv = document.getElementById('insertStatusDropdownHere');
+            filterStatDiv.appendChild(selectStat);
+            var filterDiv = document.getElementById('insertDropdownHere');
+            filterDiv.appendChild(select);
+            var filterButtonDiv = document.getElementById('insertButtonDropdownHere');
+            filterButtonDiv.appendChild(submitFilterButton);
         });
 
         var div = document.getElementById('insertTableHere');
-        div.setAttribute('class','clean-pricing-item');
-        div.setAttribute('style','width: 1200px; margin:auto; height:fit-content; overflow:scroll; text-align: center;');
-        
-
         div.appendChild(empTable);    // ADD THE TABLE TO YOUR WEB PAGE.
+}
+
+function submitFilter() {
+    var courseValue = document.getElementById('courseFilter').value;
+    var statusValue = document.getElementById('statusFilter').value;
+    console.log("Course  = " + courseValue + "\nStatus = " + statusValue);
+    var theLink = "allApplications.html?course=" + courseValue + "&status=" + statusValue;
+    window.location.assign(theLink);
 }

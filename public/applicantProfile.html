@@ -12,50 +12,35 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
   <body onload="onLoad()">
-      <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-          <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <a href="dashboard.html">
-                  <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
-          </a>
-              <div class="collapse navbar-collapse"
-                  id="navcol-1" style="width: 800px;">
-                  <ul class="nav navbar-nav mr-auto">
-                      <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
-                      <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
-                      <li class="nav-item dropdown" style="padding: 0px 0px 0px 0px;"><a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Details</a>
-                                  <div
-                                  class="dropdown-menu" role="menu">
-                                  <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
-                                  <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
-                                  <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a></div>
-              </li>
-              <li class="nav-item dropdown show" style="padding: 0px 0px 10px 25px;">
-                      <a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Account</a>
-                      <div class="dropdown-menu" role="menu" style="font-size: 12.8px;">
-                          <a class="dropdown-item text-capitalize" role="presentation" href="applicantProfile.html">My account</a>
-                          <a class="dropdown-item text-capitalize" role="presentation" onclick="logout()">log out</a></div>
-                  </li>
-              </ul><img src="assets/img/ICON.png"></div>
-
-          </div>
-      </nav>
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantAppStatus.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
+                        </li>
+                        </li>
+                    </ul>
+                </div><img src="assets/img/ICON.png" onclick="logout()"></div>
+            </nav>
 
     <main class="page product-page" >
         <section class="clean-block clean-product dark" style="height: 600px;">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-left text-info" style="margin-left: 58px;margin-top: -45px;"><strong>Profile</strong></h2>
-                    <p class="text-left" style="margin-right: 630px;margin-top: -24px;margin-bottom: 17px;">Details about lecturer's profile page</p>
+                        <h1 class="text-left" style="margin-right: 0px;margin-bottom: 5px;margin-left: 56px;margin-top: -56px;color: rgb(255,193,7);font-size: 42px;"><strong>Profile</strong></h1>
+                    <p class="text-left" style="margin-right: 630px;margin-top: -10px;margin-bottom: 17px;">Details about lecturer's profile page</p>
                     <div class="row">
                         <div class="col d-inline-block" style="width: 500px;">
-                            <div class="border-primary d-inline-block clean-pricing-item" style="width: 587px;margin: 0px 60px;height: 349px;">
+                            <div class="border-warning d-inline-block clean-pricing-item" style="width: 587px;margin: 0px 60px;height: 349px;">
                                 <div class="heading" style="height: 43px;">
                                     <h3 class="text-left" style="height: 51px;">General Account Settings</h3>
                                 </div>
@@ -72,6 +57,14 @@
                                                 <td class="text-left border-white"><strong>Email Address</strong></td>
                                                 <td class="border-white" id=lecturerEmail></td>
                                             </tr>
+                                            <tr>
+                                                    <td class="text-left border-white"><strong>Transcript</strong></td>
+                                                    <td class="border-white"><a id="transcriptName"></a></td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-left border-white"><strong>Cover Letter</strong></td>
+                                                    <td class="border-white"><a id="coverLetterName"></a></td>
+                                            </tr>
                                         
                                         </tbody>
                                     </table>
@@ -81,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col" style="width: 55px;">
-                            <div class="border-primary d-block clean-pricing-item" style="width: 358px;margin: 0px 60px;height: 349px;margin-top: 0px;margin-right: 0px;margin-left: 102px;">
+                            <div class="border-warning d-block clean-pricing-item" style="width: 358px;margin: 0px 60px;height: 349px;margin-top: 0px;margin-right: 0px;margin-left: 102px;">
                                 <div class="heading" style="height: 43px;">
                                     <h3 class="text-left" style="height: 3px;">Help with Page</h3>
                                 </div>
@@ -130,11 +123,9 @@
 
 
     <footer class="page-footer dark">
-        <footer class="page-footer dark">
-            <div class="footer-copyright"><a href=“aboutUs_LiC.html” style="font-size: 12.8px;">About us</a>
-                <p>© 2019 Copyright TOM</p>
-            </div>
-        </footer>
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/TOM_baselineJS.js"></script>
@@ -165,7 +156,7 @@
       // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
      </script>
-     <script src="../js/profile.js"></script>
+     <script src="../js/applicantProfile.js"></script>
 
      
      

@@ -1,6 +1,8 @@
 var db = firebase.firestore();
 var lecturerName = document.getElementById("lecturerName");
 var lecturerEmail = document.getElementById("lecturerEmail");
+var transcriptName = document.getElementById('transcriptName');
+var coverLetterUpload = document.getElementById('uploadCoverLetter');
 
 
 function onLoad() {
@@ -9,7 +11,7 @@ function onLoad() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.  
-                var docRef = db.collection('lecturer').doc(user.uid);
+                var docRef = db.collection('applicant').doc(user.uid);
                 lecturerEmail.innerHTML = user.email;
                 docRef.get().then(function(doc) {
                     if (doc.exists) {
@@ -20,6 +22,39 @@ function onLoad() {
                     }
                 }).catch(function(error) {
                     console.log("Error getting document:", error);
+                }).then(function() {
+                    var transcriptRef = firebase.storage().ref(user.uid + '/transcript.pdf');
+        
+                    // Get the download URL
+                    transcriptRef.getDownloadURL().then(function(url) {
+                        transcriptName.innerHTML = 'Transcript.pdf';
+                        transcriptName.setAttribute('href',url);
+                        transcriptName.setAttribute('target','_blank');
+                    }).catch(function(error) {
+                        switch (error.code) {
+                            case 'storage/object-not-found':
+                            transcriptName.innerHTML = "No files uploaded";
+                            break;
+                        }
+                    });
+
+                    var cvRef = firebase.storage().ref(user.uid + '/coverLetter.pdf');
+            
+
+                    // Get the download URL
+                    cvRef.getDownloadURL().then(function(url) {
+                        coverLetterName.innerHTML = 'Cover Letter.pdf';
+                        coverLetterName.setAttribute('href',url);
+                        coverLetterName.setAttribute('target','_blank');
+                    }).catch(function(error) {
+                        switch (error.code) {
+                            case 'storage/object-not-found':
+                            coverLetterName.innerHTML = "No files uploaded";
+                            break;
+                        }
+                    });
+
+
                 });
             } else {
                 console.log("no user signed in");

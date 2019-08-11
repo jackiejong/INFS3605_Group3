@@ -126,7 +126,7 @@ function mailApplicants() {
         window.alert('Please select a Tutor to email');
     } else {
         console.log(theLink);
-        window.location.assign(theLink + "&body=" + body);
+        window.location.assign(theLink);
     }
 }
 
