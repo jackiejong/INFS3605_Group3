@@ -4,50 +4,70 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Success</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
   <body style="text-align: center">
     <!-- Might need to delete (TBC)-->
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a href="dashboard.html">
-                <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
-        </a>
-            <div class="collapse navbar-collapse"
-                id="navcol-1" style="width: 800px;">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
-                    <li class="nav-item dropdown" style="padding: 0px 0px 0px 0px;"><a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Details</a>
-                                <div
-                                class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
-                                <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
-                                <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a></div>
-            </li>
-            <li class="nav-item dropdown show" style="padding: 0px 0px 10px 25px;">
-                    <a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Account</a>
-                    <div class="dropdown-menu" role="menu" style="font-size: 12.8px;">
-                        <a class="dropdown-item text-capitalize" role="presentation" href="applicantProfile.html">My account</a>
-                        <a class="dropdown-item text-capitalize" role="presentation" onclick="logout()">log out</a></div>
-                </li>
-            </ul><img src="assets/img/ICON.png"></div>
+      <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="dashboard.html">
+              <img src="assets/img/TOM%20logo.PNG" style="width: 60px;height: 32px;">
+      </a>
+          <div class="collapse navbar-collapse"
+              id="navcol-1" style="width: 800px;">
+              <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="allApplications.html">Applications</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="classAllocations.html" style="font-family: Montserrat, sans-serif;">Class allocations</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="apply.html">new listing</a></li>
+                  <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="contactTutors.html">Contact</a></li>
+                  <li class="nav-item dropdown" style="padding: 0px 0px 0px 0px;"><a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Details</a>
+                              <div
+                              class="dropdown-menu" role="menu">
+                              <a class="dropdown-item" role="presentation" href="jobListings.html">myListings</a>
+                              <a class="dropdown-item" role="presentation" href="myAvailabilities.html">myAvailabilities</a>
+                              <a class="dropdown-item" role="presentation" href="myInterviews.html">myInterviews</a></div>
+          </li>
+          <li class="nav-item dropdown show" style="padding: 0px 0px 10px 25px;">
+                  <a class="dropdown-toggle nav-link text-capitalize text-black-50" data-toggle="dropdown" href="#" style="color: rgb(158,158,158);font-size: 12.8px;">My Account</a>
+                  <div class="dropdown-menu" role="menu" style="font-size: 12.8px;">
+                      <a class="dropdown-item text-capitalize" role="presentation" href="profile.html">My account</a>
+                      <a class="dropdown-item text-capitalize" role="presentation" onclick="logout()">log out</a></div>
+              </li>
+          </ul><img src="assets/img/ICON.png"></div>
 
-        </div>
-    </nav>
+      </div>
+  </nav>
 
-    <div style="padding-top: 100px;">
-      <h1>Success</h1>
-    <button class="btn btn-dark" onclick="window.location.href = 'dashboard.html';">Dashboard</button>
-    </div>
+        <main class="page pricing-table-page" style="padding-top: 100px;">
+          <section class="clean-block clean-pricing dark" style="height: 1538px;">
+              <div class="container" >
+                  <div class="block-heading" style="height: -48px;"></div>
+                  <div class="row">
+                      <div class="col" style="height: 296px;">
+                          <div class="clean-pricing-item" style="width: 625px;margin: 0px 60px;height: 362px;margin-top: -69px;margin-left: 250px;"><img src="assets/img/checked.png" style="height: 146px;">
+                              <p class="text-center" style="margin-top: 40px;">Congratulations! You have created a new job listing. <br>Please promptly update interview availabilities.</p>
+                              <div class="row" style="height: -11px;margin-top: -16px;">
+                                  <div class="col-xl-6" style="margin-top: 20px;">
+                                    <button class="btn btn-primary" type="button" style="margin-left: 54px;" onclick="window.location.href='dashboard.html';">Return to Home&nbsp;</button>
+                                  </div>
+                                  <div class="col-xl-5" style="margin-top: 20px;">
+                                    <button class="btn btn-primary" type="button" style="margin-left: -10px;" onclick="window.location.href='myAvailabilities.html';">Update Availabilities</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+      </main>
     
     
     <footer class="page-footer dark">
@@ -57,6 +77,12 @@
             </div>
         </footer>
     </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>

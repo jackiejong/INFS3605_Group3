@@ -7,6 +7,7 @@ console.log(typeof queryString);
 var dictJobListingCode = [];
 var dictJobListingRole = {};
 var jobListingDictionary = {};
+var statusArray = [];
 
 
 function onLoad() {
@@ -51,7 +52,7 @@ function actuallyCreatingShit(userUID) {
 
     db.collection('jobApplication').get().then((querySnapshot)=> {
         querySnapshot.forEach((doc) => {  
-            if (queryString == doc.data().courseCode) {
+            if (queryString == doc.data().courseCode || queryString == doc.data().status) {
                 console.log(doc.id + " === " + doc.data);
                 var row = empTable.insertRow(-1);
                 var nameCol = document.createElement('td');
@@ -140,10 +141,22 @@ function createCheckbox(col, docID) {
 
 function createInitialSelection() {
     var div = document.getElementById('insertInitialSelectionHere');
-    div.setAttribute('class','text-center');
+    var row = document.createElement('div');
+    row.setAttribute('class','row');
+    var col1 = document.createElement('div');
+    col1.setAttribute('class','col');
+    var col2 = document.createElement('div');
+    col2.setAttribute('class','col');
+
+    var courseCol = document.createElement('div');
+    courseCol.setAttribute('class','text-center');
+
+    var statCol = document.createElement('div');
+    statCol.setAttribute('class','text-center');
+    
     var h3 = document.createElement('h5');
     h3.innerHTML = "Please Select a Course";
-    div.appendChild(h3);
+    courseCol.appendChild(h3);
 
     for (var i = 0; i < dictJobListingCode.length; i ++) {
         var divSingleButton = document.createElement('div');
@@ -153,8 +166,36 @@ function createInitialSelection() {
         button.innerHTML = dictJobListingCode[i];
         button.setAttribute('onclick', 'submitInitialSelection("' + dictJobListingCode[i] + '")');
         divSingleButton.appendChild(button);
-        div.appendChild(divSingleButton);
+        courseCol.appendChild(divSingleButton);
     }
+
+
+
+    var h3two  = document.createElement('h5');
+    h3two.innerHTML = "Please Select a Status";
+    statCol.appendChild(h3two);
+
+
+    for (var i = 0; i < statusArray.length; i ++) {
+        var divSingleButton = document.createElement('div');
+        divSingleButton.setAttribute('style','padding:20px;');
+        var button = document.createElement('button');
+        button.setAttribute('class','btn btn-primary');
+        button.innerHTML = statusArray[i];
+        button.setAttribute('onclick', 'submitInitialSelection("' + statusArray[i] + '")');
+        divSingleButton.appendChild(button);
+        statCol.appendChild(divSingleButton);
+    }
+
+
+
+
+
+    col1.appendChild(courseCol);
+    col2.appendChild(statCol);
+    row.appendChild(col1);
+    row.appendChild(col2);
+    div.appendChild(row);
 
     if(queryString != "") {
         div.hidden = true;
@@ -177,6 +218,11 @@ function createDict(userUID) {
                if(!dictJobListingCode.includes(doc.data().courseCode)) {
                    dictJobListingCode.push(doc.data().courseCode);
                }
+
+               if(!statusArray.includes(doc.data().status)) {
+                   statusArray.push(doc.data().status);
+               }
+
                jobListingDictionary[doc.id] = doc.data().courseCode;
                dictJobListingRole[doc.id] = doc.data().role;
                console.log(dictJobListingCode);
