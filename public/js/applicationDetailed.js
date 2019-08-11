@@ -190,7 +190,6 @@ async function createButtons (status, div) {
         mailMyInterviewAvailabilities.innerHTML = 'Mail My Availabilities';
         mailMyInterviewAvailabilities.setAttribute('onclick', 'sendEmail()');
 
-
         var br = document.createElement('br');
 
         var goToMyInterviews = document.createElement('button');
