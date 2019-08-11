@@ -16,8 +16,6 @@ var courseCodeArr = [];
 var divButtons = document.createElement('div');
 divButtons.setAttribute('class','text-center');
 
-
-
 function onLoad() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -28,7 +26,6 @@ function onLoad() {
             window.location.assign('index.html');
         }
     });
-    
 }
 
 function createDict () {
@@ -158,7 +155,7 @@ function actuallyCreatingShit(userUID) {
     var option = document.createElement('option');
     option.value = 0;
     option.selected = true;
-    option.disabled = null;
+    option.disabled = true;
     option.innerHTML = "Filter By Job Listing"
     select.appendChild(option);
 
@@ -201,19 +198,17 @@ function actuallyCreatingShit(userUID) {
 
                             var divSingleButton = document.createElement('div');
                             divSingleButton.setAttribute('style','padding:20px;');
+
                             var button = document.createElement('button');
                             button.setAttribute('class','btn btn-primary');
+
                             var theLink = 'classAllocations.html?' + doc.id;
                             button.setAttribute('onclick','submitInitialCourseSelection("' + theLink + '")');
                             button.innerHTML = doc.data().courseCode + " " + doc.data().role;
                             divSingleButton.appendChild(button);
                             divButtons.appendChild(divSingleButton);
 
-
-
-
                             var option = document.createElement('option');
-                            
                             option.value = doc.id;
                             option.innerHTML = doc.data().courseCode + " " + doc.data().role;
                             select.appendChild(option);
@@ -228,8 +223,7 @@ function actuallyCreatingShit(userUID) {
                                     var tr = table.insertRow(-1);   
                                     var selectTutor = document.createElement('select');
                                     selectTutor.setAttribute('class','form-control');
-                                    
-
+                                
                                     var courseCodeCol = document.createElement('td');
                                     courseCodeCol.setAttribute('style','vertical-align:middle;');
                                     var roleCol = document.createElement('td');
@@ -302,7 +296,6 @@ function actuallyCreatingShit(userUID) {
                                             saveSingleButton.innerHTML = "Save";
                                             saveSingleButton.setAttribute('onclick',"saveSingleButton('" + magneto + "')");
                                             saveButtonCol.appendChild(saveSingleButton);
-                                            
                                         }
     
                                         tr.appendChild(saveButtonCol);
@@ -310,7 +303,7 @@ function actuallyCreatingShit(userUID) {
                                 }
                             }
                     }
-                             
+             
                 });
             }).catch(function(error) {
                 console.log(error);
@@ -318,6 +311,7 @@ function actuallyCreatingShit(userUID) {
                 var h3 = document.getElementById('classAllocationsTitle');
                 if (queryString == "" || queryString == "0") {
                     console.log("Last Step");
+
                     //divDropdown.appendChild(select);
                     //divButtonDropdown.appendChild(submitFilterButton);
                     h3.innerHTML = "Please Select a Job Listing";
@@ -335,16 +329,12 @@ function actuallyCreatingShit(userUID) {
                     console.log(dictionary);
                     console.log(classAllocationDict);
                 }
-                
             });  
         
           } else {
             console.log("no user signed in");
           }
-          
-        
     });
-
 }
 
 function createMailButton(div) {
@@ -396,9 +386,7 @@ function prepareEmail() {
                 courseCodeEmail = doc.data().courseCode;
                 classAllocationEmail.push(doc.data().applicantName + " | " + doc.data().applicantEmail + " | " +classTimesConverter(doc.data().classTime));
                 lecturerNameEmail = doc.data().lecturerName;
-
             }
-        
         });
     }).then(function() {
         var bcc = "mailto:?bcc=" + arrayOfEmails.join(',');
@@ -419,10 +407,6 @@ function prepareEmail() {
             window.location.reload();
         }, 500);
     });
-    
-
-    
-  
 }
 
 function saveSingleButton(theValue) {
@@ -459,8 +443,6 @@ function saveSingleButton(theValue) {
     console.log(theSelect);
     console.log(theSelect.value);
 }
-
-
 
 function submitInitialCourseSelection(link) {
     window.location.assign(link); 
