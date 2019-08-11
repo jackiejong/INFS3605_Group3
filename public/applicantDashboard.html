@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
   </head>
 
-  <body>
+  <body onload="onLoad()">
       <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
           <div class="container">
               <a class="navbar-brand logo" href="#">
@@ -45,9 +45,59 @@
           </div>
       </nav>
 
-  <main class="page pricing-table-page">
-    <h1>MAIN content here for home page</h1>
-</main>
+      <main class="page pricing-table-page" style="padding-top:100px;">
+        <section class="clean-block clean-pricing dark" style="margin-top: -37px;height: 1109px;">
+            <div class="container">
+                <p></p>
+                <p>&nbsp; &nbsp;&nbsp;</p>
+                <h2>Listings expiring soon</h2>
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card clean-testimonial-item border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 id="listingTitle1"></h3>
+                                <h4 class="card-title" id="expiryDate1"></h4>
+                                <a class="card-link text-right" href="#" id="listingViewDetail1">View details &gt;</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card clean-testimonial-item border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 id="listingTitle2"></h3>
+                                <h4 class="card-title" id="expiryDate2"></h4>
+                                <a class="card-link text-right" href="#" id="listingViewDetail2">View details &gt;</a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 offset-xl-0">
+                        <div class="card clean-testimonial-item border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 id="listingTitle3"></h3>
+                                <h4 class="card-title" id="expiryDate3"></h4>
+                                <a class="card-link text-right" href="#" id="listingViewDetail3">View details &gt;</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="margin-top: 0px;"><a class="learn-more" href="applicantJobListings.html" style="margin-top: -66px;margin-left: 181px;">See more&gt;</a></div>
+            </div>
+            <h2 style="margin-left: 90px ;margin-top: 37px;">Current Status of Applications</h2>
+            <div class="col" style="height: 632px;margin-top: 14px;">
+                <div class="border-warning clean-pricing-item" style="width: 1100px;margin: 0px 60px;height: 326px; margin-left:auto;margin-right:auto;">
+                    <div class="features"></div>
+                    <div class="price"></div>
+                    <div class="col">
+                        <div class="text-center">
+                            <div id="insertTableHere"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 <footer class="page-footer dark">
     <footer class="page-footer dark">
         <div class="footer-copyright"><a href=aboutUs_app.html style="font-size: 12.8px;">About us</a>

@@ -16,10 +16,7 @@ function onLoad() {
 }
 
 
-function onClick(something) {
-    //window.alert(something);
-    window.location.href=something;
-}
+
 
 function classTimesConverter(inputDate) {
     var days = ['Monday', 'Tuesday','Wednesday','Thursday','Friday'];
@@ -187,8 +184,8 @@ function generateProgressBar(status) {
         div.setAttribute('style', 'width:80%;');
         div.innerHTML = "Allocating Classes";
     } else if (status == "Accepted") {
-        div.setAttribute('class','progress-bar bg-warning');
-        div.setAttribute('style', 'width:80%;');
+        div.setAttribute('class','progress-bar bg-success');
+        div.setAttribute('style', 'width:100%;');
         div.innerHTML = "Accepted";
     } else {
         div.setAttribute('class','progress-bar bg-danger');
@@ -198,4 +195,10 @@ function generateProgressBar(status) {
 
     divUpper.appendChild(div);
     return divUpper;
+}
+
+
+function onClick(something) {
+    //window.alert(something);
+    window.location.href=something;
 }

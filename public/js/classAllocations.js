@@ -34,7 +34,7 @@ function createDict () {
         querySnapshot.forEach((doc) => {  
             //console.log("-------------------Accepted No " + i + "----------------------");
 
-            if (doc.data().status == "Accepted - Allocate Class") {
+            if (doc.data().status == "Accepted - Allocate Class" || doc.data().status == "Accepted") {
                 for (var h = 0; h < doc.data().applicantAvailabilities.length; h ++) {              
                     var keyDict = doc.id + "?" + doc.data().jobListing + "?" + doc.data().applicantAvailabilities[h] ;
                     var valueDict = doc.data().applicantName;
@@ -432,12 +432,20 @@ function saveSingleButton(theValue) {
         lecturerName:newLecturerName,
         applicantEmail:newApplicantEmail
       }).then(function() {
-        console.log("Document successfully written!");
-        window.alert('Class Allocated!');
-        window.location.reload();
+        db.collection('jobApplication').doc(theValueSplits[0]).update({
+            status:'Accepted'
+        }).then(function() {
+            console.log("Document successfully written!");
+            window.alert('Class Allocated!');
+            window.location.reload();
+        });
+
+
+
+        
       })
       .catch(function(error) {
-        console.error("Error writing document: ", error);
+            console.error("Error writing document: ", error);
       });
       
     console.log(theSelect);
