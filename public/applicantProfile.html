@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/TOM_baselineCSS.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+  </head>
+  <body onload="onLoad()">
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+                <div class="container"><a class="navbar-brand logo" href="applicantDashboard.html">TOM</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#"></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-truncate text-capitalize" href="applicantAppStatus.html">Applications</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-capitalize" href="applicantJobListings.html" style="font-family: Montserrat, sans-serif;">Job Listings</a></li>
+                        </li>
+                        </li>
+                    </ul>
+                </div><img src="assets/img/ICON.png" onclick="logout()"></div>
+            </nav>
+
+    <main class="page product-page" >
+        <section class="clean-block clean-product dark" style="height: 600px;">
+            <div class="container">
+                <div class="block-heading">
+                        <h1 class="text-left" style="margin-right: 0px;margin-bottom: 5px;margin-left: 56px;margin-top: -56px;color: rgb(255,193,7);font-size: 42px;"><strong>Profile</strong></h1>
+                    <p class="text-left" style="margin-right: 630px;margin-top: -10px;margin-bottom: 17px;">Details about lecturer's profile page</p>
+                    <div class="row">
+                        <div class="col d-inline-block" style="width: 500px;">
+                            <div class="border-warning d-inline-block clean-pricing-item" style="width: 587px;margin: 0px 60px;height: 349px;">
+                                <div class="heading" style="height: 43px;">
+                                    <h3 class="text-left" style="height: 51px;">General Account Settings</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table text-left">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left border-white" style="width: 184px;">Name</th>
+                                                <th class="text-left border-white" style="width: 238px;color: rgb(0,0,0);" id="lecturerName"></th>                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left border-white"><strong>Email Address</strong></td>
+                                                <td class="border-white" id=lecturerEmail></td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-left border-white"><strong>Transcript</strong></td>
+                                                    <td class="border-white"><a id="transcriptName"></a></td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="text-left border-white"><strong>Cover Letter</strong></td>
+                                                    <td class="border-white"><a id="coverLetterName"></a></td>
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="features"></div>
+                                <div class="price"></div>
+                            </div>
+                        </div>
+                        <div class="col" style="width: 55px;">
+                            <div class="border-warning d-block clean-pricing-item" style="width: 358px;margin: 0px 60px;height: 349px;margin-top: 0px;margin-right: 0px;margin-left: 102px;">
+                                <div class="heading" style="height: 43px;">
+                                    <h3 class="text-left" style="height: 3px;">Help with Page</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-white border-white" style="width: 75px;"><img src="assets/img/info.png" style="height: 34px;"></td>
+                                                <td class="border-white" href="#">
+                                                  <a href="#">Help Document</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white" style="height: 50px;"><img src="assets/img/contact.png" style="height: 34px;"></td>
+                                                <td class="border-white">
+                                                  <a href="mailto:akhil.bonu@outlook.com?subject=TOM%20-%20Contact%20Us">Contact Us</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white"><img src="assets/img/rubbish-bin.png" style="height: 34px;"></td>
+                                                <td class="border-white">
+                                                  <a href="#" onclick="deleteAcc()">Delete Account</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-white border-white"><img src="assets/img/warning-sign.png" style="height: 34px;"></td>
+                                                <td class="border-white" href="#">
+                                                  <a href="mailto:akhil.bonu@outlook.com?subject=TOM%20-%20Report%20a%20Problem">Report a Problem</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="features"></div>
+                                <div class="price"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>s
+
+
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2019 Copyright TOM</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/TOM_baselineJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+      
+      <!-- TODO: Add SDKs for Firebase products that you want to use 
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+     <script defer src="/__/firebase/6.2.4/firebase-auth.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-database.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-messaging.js"></script>
+     <script defer src="/__/firebase/6.2.4/firebase-storage.js"></script>
+     <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+     <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyBfqneXzlRZosgvgi78dDm5fsWfmTTFCP0",
+          authDomain: "infs3605group3.firebaseapp.com",
+          databaseURL: "https://infs3605group3.firebaseio.com",
+          projectId: "infs3605group3",
+          storageBucket: "infs3605group3.appspot.com",
+          messagingSenderId: "757094635140",
+          appId: "1:757094635140:web:23089838804a1db6"
+        };
+      // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+     </script>
+     <script src="../js/applicantProfile.js"></script>
+
+     
+     
+  </body>
+</html>
