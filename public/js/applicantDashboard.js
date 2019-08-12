@@ -81,8 +81,8 @@ function populateTheOtherData() {
     querySnapshot.forEach((doc) => {
       console.log("===================Hi===================");
      
-      console.log(`${doc.id} => ${doc.data()}`);
-      if (!appliedJobs.includes(doc.id)) {
+      console.log(doc.id , jobListingArray[0],jobListingArray[1],jobListingArray[2]);
+      
             if (jobListingArray[0] == doc.id) {
 
                 var listingTitleID = 'listingTitle1';
@@ -99,8 +99,12 @@ function populateTheOtherData() {
                 
                 listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
                 expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
-                    
+                if (!appliedJobs.includes(doc.id)) {
+                    viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+                } else {
+                    viewDetails.setAttribute('class','btn btn-secondary');
+                    viewDetails.innerHTML = "Applied";
+                }
             } else if (jobListingArray[1] == doc.id) {
                 var listingTitleID = 'listingTitle2';
                 var expiryDateID = 'expiryDate2';
@@ -116,8 +120,12 @@ function populateTheOtherData() {
                 
                 listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
                 expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
-
+                if (!appliedJobs.includes(doc.id)) {
+                    viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+                }else {
+                    viewDetails.setAttribute('class','btn btn-secondary');
+                    viewDetails.innerHTML = "Applied";
+                }
             } else if(jobListingArray[2] == doc.id) {
                 var listingTitleID = 'listingTitle3';
                 var expiryDateID = 'expiryDate3';
@@ -133,9 +141,14 @@ function populateTheOtherData() {
                 
                 listingTitle.innerHTML = doc.data().courseCode + " " + doc.data().role + "<br>" + doc.data().courseName;
                 expiryDate.innerHTML = "Expiry Date: " + timeStampConverter(doc.data().expiryDate);
-                viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+                if (!appliedJobs.includes(doc.id)) {
+                    viewDetails.setAttribute('onclick','window.location.href="applicantApply.html?' + doc.id + '"');
+                } else {
+                    viewDetails.setAttribute('class','btn btn-secondary');
+                    viewDetails.innerHTML = "<strong>Applied</strong>";
+                }
             }
-      }
+      
     });
   });
 }

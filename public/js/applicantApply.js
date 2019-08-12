@@ -80,7 +80,7 @@ function dataPopulationManager(userUID) {
             appName = doc.data().name;
             applicantName.value = doc.data().name;
             applicantEmail.value = doc.data().email;
-            appliedJobs = appliedJobs;
+            appliedJobs = doc.data().appliedJobs;
             applicantEmailThis = doc.data().email;
             console.log("YAS");
         } else {
@@ -176,6 +176,7 @@ function onSubmit() {
 
     var applicantAvailabilities =[];
     appliedJobs.push(queryString);
+    console.log(appliedJobs);
     
     var checks = document.getElementsByClassName('checks');
     for (var i = 0; i < classTimes.length; i ++) {
@@ -197,29 +198,31 @@ function onSubmit() {
         applicantEmail:applicantEmailThis,
         lecturerName:lecturerNameThis
     }).then(function() {
-        console.log("Document successfully written!");
-        //window.location.assign('applicantJobListings.html');
-      })
-      .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
+            console.log("Document successfully written!");
+            //window.location.assign('applicantJobListings.html');
 
-    db.collection('applicant').doc(applicantID).set({
-        appliedJobs:appliedJobs
-    }, { merge: true }).then(function() {
-        window.location.assign('applicantJobListings.html');
-    });
-
-    if(inputCoverLetter.files[0] != null) {
+            if(inputCoverLetter.files[0] != null) {
+            
+                var coverLetterStorageRef = firebase.storage().ref(applicantID + "/coverLetter.pdf");
+                coverLetterStorageRef.put(inputCoverLetter.files[0]);
+            }
         
-        var coverLetterStorageRef = firebase.storage().ref(applicantID + "/coverLetter.pdf");
-        coverLetterStorageRef.put(inputCoverLetter.files[0]);
-    }
+            if (inputTranscript.files[0] != null) {
+                var transcriptStorageRef = firebase.storage().ref(applicantID + "/transcript.pdf");
+                transcriptStorageRef.put(inputTranscript.files[0]);
+            }
 
-    if (inputTranscript.files[0] != null) {
-        var transcriptStorageRef = firebase.storage().ref(applicantID + "/transcript.pdf");
-        transcriptStorageRef.put(inputTranscript.files[0]);
-    }
+            db.collection('applicant').doc(applicantID).set({
+                appliedJobs:appliedJobs,
+                skills: applicantSkills.value,
+                experience: applicantExperience.value
+            }, { merge: true }).then(function() {
+                window.location.assign('applicantJobListings.html');
+            });
+      }).catch(function(error) {
+        console.error("Error writing document: ", error);
+    });    
+    
 }
 
 function uploadCoverLetter() {
